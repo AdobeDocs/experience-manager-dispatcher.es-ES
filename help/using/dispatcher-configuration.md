@@ -3,9 +3,9 @@ title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 002458d52df4680ded5cb84a8119bc000e3ca88a
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8857'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -1324,7 +1324,7 @@ Para obtener más información sobre las propiedades de glob, consulte [Diseño 
 >
 >Esta funcionalidad está disponible con la versión **4.1.11** de Dispatcher.
 
-La propiedad `/headers` permite definir los tipos de encabezado HTTP que Dispatcher va a almacenar en caché. En la primera solicitud a un recurso sin caché, todos los encabezados que coincidan con uno de los valores configurados (consulte el ejemplo de configuración que aparece a continuación) se almacenarán en un archivo independiente, junto al archivo de caché. En las solicitudes posteriores al recurso almacenado en caché, los encabezados almacenados se agregan a la respuesta.
+La propiedad `/headers` permite definir los tipos de encabezado HTTP que Dispatcher va a almacenar en caché. En la primera solicitud a un recurso sin caché, todos los encabezados que coincidan con uno de los valores configurados (consulte el ejemplo de configuración que aparece a continuación) se almacenarán en un archivo independiente, junto al archivo de caché. En las solicitudes posteriores al recurso almacenado en caché, los encabezados almacenados se añadirán a la respuesta.
 
 A continuación se muestra un ejemplo de la configuración predeterminada:
 
