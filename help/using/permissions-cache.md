@@ -1,19 +1,15 @@
 ---
 title: Almacenar contenido seguro en la caché
-seo-title: Caching Secured Content in AEM Dispatcher
 description: Descubra cómo funciona el almacenamiento en caché con permisos confidenciales en Dispatcher.
-seo-description: Learn how permission-sensitive caching works in AEM Dispatcher.
-uuid: abfed68a-2efe-45f6-bdf7-2284931629d6
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 31eaa42b17838d97cacd5c535e04be01a3eb6807
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '918'
-ht-degree: 100%
+source-wordcount: '910'
+ht-degree: 89%
 
 ---
 
@@ -73,8 +69,8 @@ Para implementar el almacenamiento en caché que con permisos confidenciales, re
 
 >[!NOTE]
 >
->Cuando hay una CDN (o cualquier otra caché) delante de Dispatcher, debe configurar los encabezados de caché en consecuencia para que la CDN no almacene en caché el contenido privado. Por ejemplo: `Header always set Cache-Control private`.
->Para AEM as a Cloud Service, consulte la página [Almacenamiento en caché](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html?lang=es) para obtener más información sobre cómo establecer encabezados de almacenamiento en caché privados.
+>Cuando hay una CDN (o cualquier otra caché) delante de Dispatcher, debe configurar los encabezados de almacenamiento en caché en consecuencia para que la CDN no almacene en caché el contenido privado. Por ejemplo: `Header always set Cache-Control private`.
+>AEM Para obtener información as a Cloud Service, consulte la [Almacenamiento en caché](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) para obtener más información sobre cómo establecer encabezados de almacenamiento en caché privados.
 
 ## Creación del servlet Auth Checker {#create-the-auth-checker-servlet}
 
@@ -82,7 +78,7 @@ Cree e implemente un servlet que realice la autenticación y la autorización de
 
 El servlet debe ser accesible para todos los usuarios. Por lo tanto, el servlet debe ampliar la clase `org.apache.sling.api.servlets.SlingSafeMethodsServlet`, que proporciona acceso de solo lectura al sistema.
 
-El servlet solo recibe solicitudes de HEAD del procesamiento, por lo que solo necesita implementar el método `doHead`.
+El servlet solo recibe solicitudes de HEAD del procesamiento, por lo que solo debe implementar el `doHead` método.
 
 El procesamiento incluye el URI del recurso solicitado como parámetro de la solicitud HTTP. Por ejemplo, se accede a un servlet de autorización a través de `/bin/permissioncheck`. Para realizar una comprobación de seguridad en la página /content/geometrixx-outdoors/en.html, el procesamiento incluye la siguiente URL en la solicitud HTTP:
 
@@ -151,7 +147,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 >[!NOTE]
 >
->Si sus requisitos permiten el almacenamiento en caché de documentos autenticados, establezca la propiedad /allowAuthorized en la sección /cache a `/allowAuthorized 1`. Consulte [Almacenamiento en caché cuando se utiliza la autenticación](/help/using/dispatcher-configuration.md) para obtener más información.
+>Si sus requisitos permiten el almacenamiento en caché de documentos autenticados, establezca la propiedad /allowAuthorized en la sección /cache a `/allowAuthorized 1`. Consulte el tema [Almacenar en caché cuando se utiliza la autenticación](/help/using/dispatcher-configuration.md) para obtener más información.
 
 La sección auth_checker del archivo dispatcher.any controla el comportamiento del almacenamiento en caché sensible a permisos. La sección auth_checker incluye las siguientes subsecciones:
 

@@ -1,22 +1,18 @@
 ---
 title: Optimizar un sitio web para el rendimiento de la caché
-seo-title: Optimizing a Website for Cache Performance
 description: Aprenda a diseñar un sitio web para maximizar las ventajas del almacenamiento en caché.
-seo-description: Dispatcher offers a number of built-in mechanisms that you can use to optimize performance. Learn how to design your web site to maximize the benefits of caching.
-uuid: 2d4114d1-f464-4e10-b25c-a1b9a9c715d1
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: ba323503-1494-4048-941d-c1d14f2e85b2
 redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
-source-git-commit: 762f575a58f53d25565fb9f67537e372c760674f
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '1134'
-ht-degree: 100%
+source-wordcount: '1125'
+ht-degree: 73%
 
 ---
 
@@ -37,14 +33,14 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 >
 >Las versiones de Dispatcher son independientes de AEM. Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher insertado en la documentación de una versión anterior de AEM.
 
-Dispatcher ofrece una serie de mecanismos integrados que puede utilizar para optimizar el rendimiento. Esta sección le explica cómo diseñar su sitio web para maximizar los beneficios del almacenamiento en caché.
+Dispatcher ofrece varios mecanismos integrados que puede utilizar para optimizar el rendimiento. Esta sección le explica cómo diseñar su sitio web para maximizar los beneficios del almacenamiento en caché.
 
 >[!NOTE]
 >
 >Puede ayudarle a recordar que Dispatcher almacena la caché en un servidor web estándar. Esto significa que:
 >
 >* puede almacenar en caché todo lo que se pueda almacenar como página y solicitar mediante una dirección URL
->* no puede almacenar otros elementos, como encabezados HTTP, cookies, datos de sesión y datos de formularios.
+>* no puede almacenar otros elementos, como encabezados HTTP, cookies, datos de sesión y datos de formulario.
 >
 >En general, muchas estrategias de almacenamiento en caché implican la selección de buenas direcciones URL y no depender de estos datos adicionales.
 
@@ -53,7 +49,7 @@ Dispatcher ofrece una serie de mecanismos integrados que puede utilizar para opt
 Los encabezados de solicitud HTTP no se almacenan en caché, por lo que pueden producirse problemas si almacena información de codificación de páginas en el encabezado. En este caso, cuando Dispatcher sirve una página desde la caché, se utiliza la codificación predeterminada del servidor web para esa página. Existen dos formas de evitar este problema:
 
 * Si solo utiliza una codificación, asegúrese de que la utilizada en el servidor web sea la misma que la predeterminada del sitio web de AEM.
-* Utilice una etiqueta `<META>` en la sección HTML `head` para configurar la codificación, como en el siguiente ejemplo:
+* Para establecer la codificación, utilice un `<META>` etiqueta en el HTML `head` , como en el ejemplo siguiente:
 
 ```xml
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
@@ -91,7 +87,7 @@ www.myCompany.com/news/main.large.html
 
 >[!NOTE]
 >
->Para la mayoría de los aspectos del diseño, también es posible utilizar hojas de estilo o secuencias de comandos del lado del cliente. Normalmente funcionan muy bien con el almacenamiento en caché.
+>Para la mayoría de los aspectos del diseño, también es posible utilizar hojas de estilo o secuencias de comandos del lado del cliente. Normalmente funcionan bien con el almacenamiento en caché.
 >
 >Esto también es útil en la versión impresa, donde puede usar una URL como:
 >
@@ -101,7 +97,7 @@ www.myCompany.com/news/main.large.html
 
 ## Invalidar archivos de imagen utilizados como títulos {#invalidating-image-files-used-as-titles}
 
-Si procesa títulos de páginas u otros textos como imágenes, se recomienda almacenar los archivos para que se eliminen tras actualizar el contenido de la página:
+Si ha representado títulos de páginas u otros textos como imágenes, almacene los archivos para que se eliminen tras actualizar el contenido de la página:
 
 1. Coloque el archivo de imagen en la misma carpeta que la página.
 1. Utilice el siguiente formato de nomenclatura para el archivo de imagen:
@@ -122,16 +118,16 @@ Si utiliza imágenes para las entradas de navegación, el método es básicament
 * Scripts que procesa las solicitudes &quot;.normal&quot; y devuelve la imagen normal.
 * Scripts que procesa las solicitudes &quot;.active&quot; y devuelve la imagen activa.
 
-Es importante crear estas imágenes con el mismo nombre que la página, para garantizar que una actualización de contenido elimine estas imágenes, así como la página.
+Es importante crear estas imágenes con el mismo nombre que la página para garantizar que una actualización de contenido elimine estas imágenes y la página.
 
-En las páginas que no se modifiquen, las imágenes permanecerán en la caché, aunque las páginas en sí suelen invalidarse automáticamente.
+En las páginas que no se modifiquen, las imágenes permanecerán en la caché, aunque las páginas en sí se invalidarán automáticamente.
 
 ## Personalización {#personalization}
 
 Dispatcher no puede almacenar en caché los datos personalizados, por lo que se recomienda limitar la personalización a donde sea necesario. Para explicar por qué:
 
 * Si utiliza una página de inicio personalizable libremente, esa página deberá estar compuesta cada vez que un usuario la solicite.
-* Si, por el contrario, ofrece una opción de 10 páginas de inicio diferentes, puede almacenar en caché cada una de ellas, mejorando el rendimiento.
+* Si, por el contrario, ofrece una opción de diez páginas de inicio diferentes, puede almacenar en caché cada una de ellas, mejorando el rendimiento.
 
 >[!NOTE]
 >
@@ -143,21 +139,20 @@ Dispatcher no puede almacenar en caché los datos personalizados, por lo que se 
 >* utilice JavaScript del lado del cliente para mostrar información personalizada. Sin embargo, debe asegurarse de que la página se muestre correctamente si un usuario desactiva JavaScript.
 >
 
-
 ## Conexiones fijas {#sticky-connections}
 
-[Las conexiones fijas](dispatcher.md#TheBenefitsofLoadBalancing) garantizan que todos los documentos de un usuario se compongan en el mismo servidor. Si un usuario abandona esta carpeta y más tarde vuelve a ella, la conexión se mantiene. Defina una carpeta para guardar todos los documentos que requieran conexiones fijas para el sitio web. Intente no meter otros documentos en ella. Esto afecta al equilibrio de cargas si utiliza páginas personalizadas y datos de sesión.
+[Las conexiones fijas](dispatcher.md#TheBenefitsofLoadBalancing) garantizan que todos los documentos de un usuario se compongan en el mismo servidor. Si un usuario abandona esta carpeta y más tarde vuelve a ella, la conexión se mantiene. Defina una carpeta para que pueda contener todos los documentos que requieran conexiones fijas para el sitio web. Intente no meter otros documentos en ella. Esto afecta al equilibrio de cargas si utiliza páginas personalizadas y datos de sesión.
 
 ## Tipos MIME {#mime-types}
 
 Existen dos maneras en las que un explorador puede determinar el tipo de archivo:
 
-1. Por su extensión (p. ej. .html, .gif, .jpg, etc.)
+1. Por su extensión (por ejemplo, .html, .gif y .jpg)
 1. Por el tipo MIME que el servidor envía con el archivo.
 
-Para la mayoría de los archivos, el tipo MIME está implícito en la extensión del archivo. es decir:
+Para la mayoría de los archivos, el tipo MIME está implícito en la extensión del archivo. Es decir:
 
-1. Por su extensión (p. ej. .html, .gif, .jpg, etc.)
+1. Por su extensión (por ejemplo, .html, .gif y .jpg)
 1. Por el tipo MIME que el servidor envía con el archivo.
 
 Si el nombre del archivo no tiene extensión, se mostrará como texto sin formato.
@@ -167,5 +162,5 @@ El tipo MIME forma parte del encabezado HTTP y, como tal, Dispatcher no lo almac
 Para asegurarse de que los archivos se almacenan en caché correctamente, siga estas directrices:
 
 * Asegúrese de que los archivos siempre tengan la extensión adecuada.
-* Evite los scripts genéricos del servidor de archivos, que tienen direcciones URL como download.jsp?file=2214. Vuelva a escribir el script para utilizar las direcciones URL que contengan la especificación del archivo; para el ejemplo anterior esto sería download.2214.pdf.
+* Evite los scripts genéricos del servidor de archivos, que tienen direcciones URL como download.jsp?file=2214. Vuelva a escribir el script de modo que utilice direcciones URL que contengan la especificación del archivo. Para el ejemplo anterior, este sería `download.2214.pdf`.
 

@@ -1,23 +1,19 @@
 ---
 title: Lista de comprobación de seguridad de Dispatcher
-seo-title: The Dispatcher Security Checklist
 description: Lista de comprobación de seguridad que debe completarse antes de continuar con la producción.
-seo-description: A security checklist that should be completed before going on production.
-uuid: 7bfa3202-03f6-48e9-8d2e-2a40e137ecbe
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: fbfafa55-c029-4ed7-ab3e-1bebfde18248
 jcr-lastmodifiedby: remove-legacypath-6-1
 index: y
 internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
-source-git-commit: 5a387498c7fd83cad1fafdbfded6a78f55acbc14
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '639'
-ht-degree: 100%
+source-wordcount: '591'
+ht-degree: 51%
 
 ---
 
@@ -34,19 +30,19 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-Adobe recomienda completar la siguiente lista de comprobación antes de continuar con la producción.
+El Adobe recomienda completar la siguiente lista de comprobación antes de continuar con la producción.
 
 >[!CAUTION]
 >
->También debe completar la lista de comprobación de seguridad de su versión de AEM antes de empezar. Consulte la [documentación de Adobe Experience Manager](https://helpx.adobe.com/es/experience-manager/6-5/sites/administering/using/security-checklist.html) correspondiente.
+>AEM Complete la Lista de comprobación de seguridad de su versión de antes de empezar. Consulte la correspondiente [Documentación de Adobe Experience Manager](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist).
 
 ## Utilice la última versión de Dispatcher {#use-the-latest-version-of-dispatcher}
 
-Debe instalar la versión más reciente disponible para su plataforma. Debe actualizar la instancia de Dispatcher para utilizar la versión más reciente y aprovechar las mejoras del producto y de la seguridad. Consulte [Instalación de Dispatcher](dispatcher-install.md).
+Instale la última versión disponible para su plataforma. Asegúrese de actualizar la instancia de Dispatcher para utilizar la versión más reciente y aprovechar las mejoras del producto y de la seguridad. Consulte [Instalación de Dispatcher](dispatcher-install.md).
 
 >[!NOTE]
 >
->Puede comprobar la versión actual de la instalación de Dispatcher mirando el archivo de registro de Dispatcher.
+>Consulte el archivo de registro de Dispatcher para comprobar la versión actual de la instalación.
 >
 >`[Thu Apr 30 17:30:49 2015] [I] [23171(140735307338496)] Dispatcher initialized (build 4.1.9)`
 >
@@ -58,7 +54,7 @@ Adobe recomienda que [limite los clientes que pueden vaciar la caché.](dispatch
 
 ## Habilite HTTPS para la seguridad de la capa de transporte {#enable-https-for-transport-layer-security}
 
-Adobe recomienda habilitar la capa de transporte HTTPS en las instancias de autor y publicación.
+El Adobe recomienda habilitar la capa de transporte HTTPS en las instancias de autor y publicación.
 
 <!-- 
 
@@ -79,17 +75,17 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## Restrinja el acceso {#restrict-access}
 
-Al configurar Dispatcher, debe restringir el acceso externo en la medida de lo posible. Consulte [Ejemplo de sección /filter](dispatcher-configuration.md#main-pars_184_1_title) en la documentación de Dispatcher.
+Al configurar Dispatcher, limite el acceso externo en la medida de lo posible. Consulte [Ejemplo de sección /filter](dispatcher-configuration.md#main-pars_184_1_title) en la documentación de Dispatcher.
 
 ## Asegúrese de que se deniegue el acceso a las direcciones URL administrativas {#make-sure-access-to-administrative-urls-is-denied}
 
 Asegúrese de utilizar filtros para bloquear el acceso externo a cualquier dirección URL administrativa, como la consola web.
 
-Consulte la [Prueba de seguridad de Dispatcher](dispatcher-configuration.md#testing-dispatcher-security) para obtener una lista de las direcciones URL que deben bloquearse.
+Consulte [Prueba de seguridad de Dispatcher](dispatcher-configuration.md#testing-dispatcher-security) para obtener una lista de las direcciones URL que deben bloquearse.
 
 ## Utilice Listas de permitidos en lugar de Listas de bloqueados {#use-allowlists-instead-of-blocklists}
 
-Las listas de permitidos son una mejor manera de controlar el acceso, ya que suponen inherentemente que todas las solicitudes de acceso deben denegarse a menos que formen parte explícita de la lista de permitidos. Este modelo proporciona un control más restrictivo sobre las nuevas solicitudes que pueden no haberse revisado aún o tenido en cuenta durante una determinada fase de configuración.
+Las listas de permitidos son una mejor manera de controlar el acceso, ya que suponen inherentemente que todas las solicitudes de acceso deben denegarse a menos que formen parte explícita de la lista de permitidos. Este modelo proporciona un control más restrictivo sobre las nuevas solicitudes que pueden no haberse revisado aún o considerado durante una determinada fase de configuración.
 
 ## Ejecute Dispatcher con un usuario del sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
 
@@ -104,12 +100,12 @@ Además, los usuarios de IIS deben configurar su sitio web de la siguiente maner
 
 Un ataque de denegación de servicio (DoS) es un intento de hacer que un recurso de equipo no esté disponible para los usuarios a los que va destinado.
 
-En el nivel de Dispatcher, existen dos métodos de configuración para evitar ataques DoS: [](https://experienceleague.adobe.com/docs/?lang=es#/filter (Filtros))
+En el nivel de Dispatcher, hay [dos métodos de configuración para evitar ataques DoS](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/configure-aem-dispatcher-to-prevent-dos-attacks-aem-community/m-p/447780).
 
 * Utilice el módulo mod_rewrite (por ejemplo, [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)) para validar URL (si las reglas de patrones de URL no son demasiado complejas).
 
 * Impida que Dispatcher almacene en caché las direcciones URL con extensiones falsas mediante [filtros](dispatcher-configuration.md#configuring-access-to-conten-tfilter).\
-   Por ejemplo, cambie las reglas de almacenamiento en caché para limitar el almacenamiento en caché a los tipos de MIME esperados, como:
+  Por ejemplo, cambie las reglas de almacenamiento en caché para limitar el almacenamiento en caché a los tipos de MIME esperados, como:
 
    * `.html`
    * `.jpg`
@@ -120,7 +116,7 @@ En el nivel de Dispatcher, existen dos métodos de configuración para evitar at
    * `.pdf`
    * `.ppt`
 
-   Se puede ver un archivo de configuración de ejemplo para [restringir el acceso externo](#restrict-access), que incluye restricciones para tipos de MIME.
+  Se puede ver un archivo de configuración de ejemplo para [restringir el acceso externo](#restrict-access), que incluye restricciones para tipos de MIME.
 
 Para habilitar de forma segura la funcionalidad completa en las instancias de publicación, configure filtros para evitar el acceso a los siguientes nodos:
 
@@ -152,17 +148,19 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## Configure Dispatcher para prevenir ataques de tipo CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM ofrece un [marco de trabajo](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=es) para evitar los ataques de falsificación de solicitudes entre sitios. Para utilizar correctamente este marco, necesita permitir el soporte de tokens CSRF en Dispatcher. Para ello:
+AEM ofrece un [marco de trabajo](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) para evitar los ataques de falsificación de solicitudes entre sitios. Para utilizar correctamente este marco, debe lista de permitidos la compatibilidad con tokens CSRF en Dispatcher.
+<!-- OLD URL ABOVE USED TO BE https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps -->
+Para ello, haga lo siguiente:
 
 1. Crear un filtro para permitir la ruta `/libs/granite/csrf/token.json`;
 1. Agregue el encabezado `CSRF-Token` a la sección `clientheaders` de la configuración de Dispatcher.
 
 ## Impedir el clickjacking {#prevent-clickjacking}
 
-Para evitar el clickjacking, le recomendamos que configure su servidor web para que proporcione el encabezado `X-FRAME-OPTIONS` HTTP establecido en `SAMEORIGIN`.
+Para evitar el secuestro de clics, Adobe recomienda configurar el servidor web para que proporcione el `X-FRAME-OPTIONS` Encabezado HTTP establecido en `SAMEORIGIN`.
 
-Para obtener más [información sobre el clickjacking, consulte el sitio de OWASP](https://owasp.org/www-community/attacks/Clickjacking).
+Para obtener más información sobre el secuestro de clics, consulte la [Sitio de OWASP](https://owasp.org/www-community/attacks/Clickjacking).
 
 ## Realizar una prueba de penetración {#perform-a-penetration-test}
 
-Adobe recomienda encarecidamente realizar una prueba de penetración de su infraestructura de AEM antes de continuar con la producción.
+Adobe AEM recomienda realizar una prueba de penetración de su infraestructura de antes de continuar con la producción.

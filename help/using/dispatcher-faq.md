@@ -1,13 +1,11 @@
 ---
 title: Problemas principales de Dispatcher
-seo-title: Top issues for AEM Dispatcher
-description: Problemas principales de Dispatcher de AEM
-seo-description: Top issues for Adobe AEM Dispatcher
+description: Problemas principales de Adobe Experience Manager Dispatcher.
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: f83b02d74a22e055b486305dfe5420e152efb452
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '1578'
-ht-degree: 100%
+source-wordcount: '1542'
+ht-degree: 87%
 
 ---
 
@@ -19,7 +17,7 @@ ht-degree: 100%
 
 ### ¿Qué es Dispatcher?
 
-Dispatcher es una herramienta de equilibrio de carga o almacenamiento en caché de Adobe Experience Manager que ayuda a crear un entorno de creación web dinámico y rápido. Para el almacenamiento en caché, Dispatcher funciona como parte de un servidor HTTP, como Apache. Tiene el objetivo de almacenar (o &quot;almacenar en caché&quot;) la mayor cantidad posible de contenido estático del sitio web y acceder al motor de diseño del sitio web con la menor frecuencia posible. En una función de equilibrio de carga, Dispatcher distribuye las solicitudes de usuario (carga) entre diferentes instancias de AEM (procesamientos).
+Dispatcher es una herramienta de equilibrio de carga o almacenamiento en caché de Adobe Experience Manager que ayuda a crear un entorno de creación web dinámico y rápido. Para el almacenamiento en caché, Dispatcher funciona como parte de un servidor HTTP, como Apache. Tiene el objetivo de almacenar (o &quot;almacenar en caché&quot;) la mayor parte posible del contenido del sitio web estático y acceder al diseño del motor del sitio web con la menor frecuencia posible. En una función de equilibrio de carga, Dispatcher distribuye las solicitudes de usuario (carga) entre diferentes instancias de AEM (procesamientos).
 
 Para almacenar en la caché, el módulo de Dispatcher utiliza la capacidad del servidor web para proporcionar contenido estático. Así pues, Dispatcher coloca los documentos guardados en la caché en la raíz del documento del servidor web.
 
@@ -82,7 +80,7 @@ En algunas aplicaciones, puede ser posible utilizar tanto conexiones fijas como 
 
 ### ¿Puede una instancia de Dispatcher y otra de AEM Publish residir en el mismo equipo físico?
 
-Sí, si la máquina es suficientemente potente. Sin embargo, se recomienda configurar la instancia de Dispatcher y AEM Publish en diferentes equipos.
+Sí, si la máquina es suficientemente potente. AEM Sin embargo, debe configurar la instancia de Dispatcher y la instancia de publicación de en equipos diferentes.
 
 Normalmente, la instancia de publicación reside dentro del cortafuegos y Dispatcher en la DMZ. Si decide que la instancia de publicación y Dispatcher estén en el mismo equipo físico, asegúrese de que la configuración del cortafuegos prohíba el acceso directo a la instancia de publicación desde redes externas.
 
@@ -105,7 +103,7 @@ Content-Length: 0
 
 Dispatcher eliminará los archivos en caché y las carpetas que tengan nombres que coincidan con el valor del encabezado CQ-Handle. Por ejemplo, un CQ-Handle de `/content/geomtrixx-outdoors/en` coincide con los siguientes elementos:
 
-Todos los archivos (de cualquier extensión de archivo) denominados en el directorio geometrixx-outdoors. 
+Todos los archivos (de cualquier extensión) denominados en del directorio geometrixx-outdoors.
 Cualquier directorio llamado `_jcr_content` debajo del directorio en (que, si existe, contiene procesamientos en caché de subnodos de la página).
 El directorio `en` solo se elimina si la variable `CQ-Action` es `Delete` o `Deactivate`.
 
@@ -117,7 +115,7 @@ Consulte la página [Almacenar contenido seguro en caché](permissions-cache.md)
 
 ### ¿Cómo puedo asegurar las comunicaciones entre las instancias de Dispatcher y CQ?
 
-Consulte las páginas [Lista de comprobación de seguridad de Dispatcher](security-checklist.md) y [Lista de comprobación de seguridad de AEM](https://experienceleague.adobe.com/docs/experience-manager-64/administering/security/security-checklist.html?lang=es).
+Consulte las páginas [Lista de comprobación de seguridad de Dispatcher](security-checklist.md) y [Lista de comprobación de seguridad de AEM](https://experienceleague.adobe.com/en/docs/experience-manager-64/administering/security/security-checklist).
 
 ### El problema `jcr:content` de Dispatcher cambió a `jcr%3acontent`
 
@@ -131,7 +129,7 @@ Más información: [https://sling.apache.org/documentation/the-sling-engine/mapp
 
 ### ¿Cómo configuro los agentes de vaciado de Dispatcher en una instancia de publicación?
 
-Consulte la página [Replicación](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=es#configuring-your-replication-agents).
+Consulte la página [Replicación](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-your-replication-agents).
 
 ### ¿Cómo puedo solucionar problemas de vaciado de Dispatcher?
 
@@ -141,7 +139,7 @@ Si las operaciones de eliminación están causando que Dispatcher se vacíe, [us
 
 ### ¿Cómo vacío los recursos DAM de la caché de Dispatcher?
 
-Puede utilizar la funcionalidad &quot;replicación en cadena&quot;. Con esta funcionalidad activada, el agente de vaciado de Dispatcher enviará una solicitud de vaciado cuando reciba una replicación del autor.
+Puede utilizar la funcionalidad &quot;replicación en cadena&quot;. Con esta función habilitada, el agente de vaciado de Dispatcher envía una solicitud de vaciado cuando se recibe una replicación del autor.
 
 Para habilitarlo:
 
@@ -153,7 +151,7 @@ Para habilitarlo:
 ¿Cómo determina Dispatcher si un documento está actualizado?
 Para determinar si un documento está actualizado, Dispatcher realiza estas acciones:
 
-Comprueba si el documento depende de la invalidación automática. Si no depende de ello, considera que el documento está actualizado.
+Comprueba si el documento depende de la invalidación automática. Si no es así, el documento se considera actualizado.
 Si el documento está configurado para la invalidación automática, Dispatcher comprueba si es anterior o posterior a la fecha del último cambio disponible. Si es anterior, Dispatcher solicita la versión actual a la instancia de AEM y reemplaza la versión en la caché.
 
 ### ¿Cómo devuelve documentos Dispatcher?

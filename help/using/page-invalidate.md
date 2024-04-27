@@ -1,9 +1,6 @@
 ---
 title: Invalidar páginas en la caché de AEM
-seo-title: Invalidating Cached Pages From Adobe AEM
-description: Aprenda a configurar la interacción entre Dispatcher y AEM para garantizar una administración eficaz de la caché.
-seo-description: Learn how to configure the interaction between Adobe AEM Dispatcher and AEM to ensure effective cache management.
-uuid: 66533299-55c0-4864-9beb-77e281af9359
+description: Aprenda a configurar la interacción entre Dispatcher y Adobe Experience Manager para garantizar una administración eficaz de la caché.
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
@@ -11,12 +8,11 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: f255701f23a628ba0d8b6cd91228462e1b552ffa
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '1421'
-ht-degree: 100%
+source-wordcount: '1408'
+ht-degree: 65%
 
 ---
 
@@ -26,9 +22,11 @@ Al utilizar Dispatcher con AEM, la interacción debe configurarse para garantiza
 
 ## Configurar cuentas de usuario de AEM {#setting-up-aem-user-accounts}
 
-La cuenta de usuario predeterminada `admin` se utiliza para autenticar los agentes de replicación instalados de forma predeterminada. Debe crear una cuenta de usuario dedicada para utilizarla con agentes de replicación.
+La cuenta de usuario predeterminada `admin` se utiliza para autenticar los agentes de replicación instalados de forma predeterminada. Cree una cuenta de usuario dedicada para utilizarla con agentes de replicación.
 
-Para obtener más información, consulte la sección [Configurar usuarios de replicación y transporte](https://helpx.adobe.com/es/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps) de la lista de comprobación de seguridad de AEM.
+Para obtener más información, consulte la [Replicación de configuración y usuarios de transporte](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) AEM de la lista de comprobación de seguridad de la.
+
+<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## Invalidar la caché de Dispatcher desde el entorno de creación {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
@@ -60,20 +58,20 @@ Utilice el siguiente procedimiento para configurar un agente de replicación en 
 
 1. (opcional) Para habilitar las solicitudes de invalidación de alias o de rutas de vanidad, seleccione la opción **Actualización de alias**.
 1. En la pestaña Transporte, introduzca el URI necesario para acceder a Dispatcher.\
-   Si está utilizando un agente de vaciado de Dispatcher estándar, probablemente necesite actualizar el nombre de host y el puerto; por ejemplo, https://&lt;*dispatcherHost*>:&lt;*portApache*>/dispatcher/invalidate.cache
+   Si está utilizando un agente de vaciado de Dispatcher estándar, actualice el nombre de host y el puerto; por ejemplo, https://&lt;*dispatcherHost*>:&lt;*portApache*>/dispatcher/invalidate.cache
 
    **Nota:** Para los agentes de vaciado de Dispatcher, la propiedad URI solo se utiliza si utiliza entradas de host virtual basadas en rutas para diferenciar entre granjas. Utilice este campo para dirigirse a la granja para invalidarla. Por ejemplo, la granja n.º 1 tiene un host virtual de `www.mysite.com/path1/*` y la granja n.º 2 lo tiene de `www.mysite.com/path2/*`. Puede utilizar una URL de `/path1/invalidate.cache` para dirigirse a la primera granja de servidores y `/path2/invalidate.cache` para dirigirse a la segunda. Para obtener más información, consulte [Utilizar Dispatcher con varios dominios](dispatcher-domains.md).
 
 1. Configure otros parámetros según sea necesario.
 1. Haga clic en Aceptar para activar el agente.
 
-También puede acceder y configurar el agente de vaciado de Dispatcher desde la [interfaz de usuario táctil de AEM](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=es#configuring-a-dispatcher-flush-agent).
+También puede acceder y configurar el agente de vaciado de Dispatcher desde la [interfaz de usuario táctil de AEM](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent).
 
 Para obtener más información sobre cómo habilitar el acceso a las URL personales, consulte [Habilitar el acceso a las URL de vanidad](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
 
 >[!NOTE]
 >
->El agente para vaciar la caché de Dispatcher no tiene que tener un nombre de usuario y una contraseña, pero si se configura, se enviarán con una autenticación básica.
+>El agente para vaciar la caché de Dispatcher no tiene que tener un nombre de usuario y una contraseña, pero si se configura, se envían con una autenticación básica.
 
 Hay dos problemas potenciales con este enfoque:
 
@@ -83,7 +81,7 @@ Hay dos problemas potenciales con este enfoque:
 
 ## Invalidar la caché de Dispatcher desde una instancia de publicación {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
-En determinadas circunstancias, se pueden conseguir mejoras en el rendimiento transfiriendo la administración de la caché del entorno de creación a una instancia de publicación. A continuación, será el entorno de publicación (no el entorno de creación de AEM) el que enviará una solicitud de invalidación de la caché a Dispatcher cuando se reciba una página publicada.
+En determinadas circunstancias, se pueden conseguir mejoras en el rendimiento transfiriendo la administración de la caché del entorno de creación a una instancia de publicación. AEM A continuación, es el entorno de publicación (no el entorno de creación de) el que envía una solicitud de invalidación de la caché a Dispatcher cuando se recibe una página publicada.
 
 Estas circunstancias incluyen:
 
@@ -102,14 +100,16 @@ Comment Type: draft
 >
 >La decisión de utilizar este método debe tomarla un administrador AEM experimentado.
 
-La descarga de Dispatcher está controlada por un agente de replicación que opera en la instancia de publicación. Sin embargo, la configuración se realiza en el entorno de creación y luego se transfiere activando el agente:
+El vaciado de Dispatcher está controlado por un agente de replicación que opera en la instancia de publicación. Sin embargo, la configuración se realiza en el entorno de creación y luego se transfiere activando el agente:
 
 1. Abra la consola Herramientas de AEM.
 1. Abra el agente de replicación necesario debajo de Herramientas/replicación/agentes en publicación. Puede utilizar el agente de vaciado de Dispatcher instalado de forma predeterminada.
 1. Haga clic en Editar y, en la pestaña Configuración, asegúrese de que esté seleccionado **Habilitado**.
 1. (opcional) Para habilitar las solicitudes de invalidación de alias o de rutas de vanidad, seleccione la opción **Actualización de alias**.
 1. En la pestaña Transporte, introduzca el URI necesario para acceder a Dispatcher.\
-   Si está utilizando un agente de vaciado de Dispatcher estándar, probablemente necesite actualizar el nombre de host y el puerto; por ejemplo, `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
+   Si utiliza un agente de vaciado de Dispatcher estándar, debe actualizar el nombre de host y el puerto. Por ejemplo,
+
+   `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
 
    **Nota:** Para los agentes de vaciado de Dispatcher, la propiedad URI solo se utiliza si utiliza entradas de host virtual basadas en rutas para diferenciar entre granjas. Utilice este campo para dirigirse a la granja para invalidarla. Por ejemplo, la granja n.º 1 tiene un host virtual de `www.mysite.com/path1/*` y la granja n.º 2 lo tiene de `www.mysite.com/path2/*`. Puede utilizar una URL de `/path1/invalidate.cache` para dirigirse a la primera granja de servidores y `/path2/invalidate.cache` para dirigirse a la segunda. Para obtener más información, consulte [Utilizar Dispatcher con varios dominios](dispatcher-domains.md).
 
@@ -144,17 +144,17 @@ Dispatcher descarga (elimina) los archivos en caché y las carpetas que tienen n
 
 * Todos los archivos (de cualquier extensión) llamados `en` en el directorio `geometrixx-outdoors`
 
-* Cualquier directorio llamado &quot;`_jcr_content`&quot; debajo del directorio en (que, si existe, contiene procesamientos en caché de subnodos de la página)
+* Cualquier directorio llamado &quot; `_jcr_content`&quot; debajo del directorio en (que, si existe, contiene procesamientos en caché de subnodos de la página)
 
-Todos los demás archivos de la caché de Dispatcher (o hasta un nivel en particular, dependiendo de la configuración `/statfileslevel`) se invalidarán tocando el archivo `.stat`. La fecha de la última modificación de este archivo se comparará con la fecha de la última modificación de un documento almacenado en caché y el documento se recuperará si el archivo `.stat` es más reciente. Consulte [Invalidación de archivos por nivel de carpeta](dispatcher-configuration.md#main-pars_title_26) para obtener más información.
+Todos los demás archivos de la caché de Dispatcher (o hasta un nivel en particular, según la variable `/statfileslevel` configuración) se invalidan tocando la opción `.stat` archivo. La fecha de la última modificación de este archivo se compara con la fecha de la última modificación de un documento almacenado en caché y el documento se recupera si la variable `.stat` el archivo es más reciente. Consulte [Invalidación de archivos por nivel de carpeta](dispatcher-configuration.md#main-pars_title_26) para obtener más información.
 
-La invalidación (es decir, el contacto de archivos .stat) se puede evitar enviando un encabezado adicional `CQ-Action-Scope: ResourceOnly`. Esto se puede utilizar para vaciar recursos concretos sin invalidar otras partes de la caché, como los datos JSON creados dinámicamente y que requieren vaciado regular independientemente de la caché (por ejemplo, representar datos obtenidos de un sistema de terceros para mostrar noticias, lectores de stock, etc.).
+La invalidación (es decir, el contacto de archivos .stat) se puede evitar enviando un encabezado adicional `CQ-Action-Scope: ResourceOnly`. Esto se puede utilizar para vaciar recursos concretos sin invalidar otras partes de la caché, como los datos JSON creados dinámicamente y que requieren vaciado regular independientemente de la caché. Por ejemplo, representar datos obtenidos de un sistema de terceros para mostrar noticias y tableros de cotizaciones.
 
 ### Eliminar archivos y volver a almacenarlos en la caché {#delete-and-recache-files}
 
 Ejecute una solicitud HTTP que haga que Dispatcher elimine los archivos en caché y que recupere y vuelva a almacenar inmediatamente el archivo. Elimine y vuelva a almacenar en caché inmediatamente los archivos cuando los sitios web reciban solicitudes simultáneas del cliente para la misma página. El almacenamiento inmediato garantiza que Dispatcher recupere y almacene en caché la página solo una vez, en lugar de una vez por cada una de las solicitudes simultáneas del cliente.
 
-**Nota:** Eliminar y volver a almacenar archivos en la caché solo debe realizarse en la instancia de publicación. Cuando se realiza desde la instancia de autor, las condiciones de carrera se producen cuando se intenta recuperar los recursos antes de publicarlos.
+**Nota:** La eliminación y el almacenamiento en caché de los archivos solo deben realizarse en la instancia de publicación. Cuando se realiza desde la instancia de autor, las condiciones de carrera se producen cuando se intenta recuperar los recursos antes de publicarlos.
 
 La solicitud HTTP tiene el siguiente formulario:
 
@@ -193,6 +193,7 @@ Cuando se implementa el servlet en la instancia de publicación, la siguiente UR
 >[!NOTE]
 >
 >Este servlet de ejemplo no es seguro y solo muestra el uso del mensaje de solicitud HTTP Post. Su solución debe asegurar el acceso al servlet.
+>
 
 ```java
 package com.adobe.example;

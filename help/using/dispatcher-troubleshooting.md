@@ -1,9 +1,6 @@
 ---
 title: Solución de problemas de Dispatcher
-seo-title: Troubleshooting AEM Dispatcher Problems
 description: Aprenda a solucionar problemas de Dispatcher.
-seo-description: Learn to troubleshoot AEM Dispatcher issues.
-uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
@@ -11,12 +8,11 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '560'
-ht-degree: 100%
+source-wordcount: '538'
+ht-degree: 96%
 
 ---
 
@@ -30,7 +26,7 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Consulte también la [Base de conocimientos de Dispatcher](https://helpx.adobe.com/es/experience-manager/kb/index/dispatcher.html), la [Solución de problemas de vaciado de Dispatcher](https://experienceleague.adobe.com/search.html?lang=es#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) y las [Preguntas frecuentes sobre los problemas principales de Dispatcher](dispatcher-faq.md) para obtener más información.
+>Compruebe la [Base de conocimiento de Dispatcher](https://helpx.adobe.com/es/experience-manager/kb/index/dispatcher.html), [Solución de problemas de vaciado de Dispatcher](https://experienceleague.adobe.com/search.html?lang=es#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]), y el [Preguntas frecuentes sobre problemas principales de Dispatcher](dispatcher-faq.md) para obtener más información.
 
 ## Comprobar la configuración básica {#check-the-basic-configuration}
 
@@ -44,10 +40,10 @@ Como siempre, los primeros pasos son comprobar los conceptos básicos:
    * ¿Tiene varias instancias de Dispatcher?
 
       * ¿Ha determinado qué Dispatcher está administrando el sitio web o la página que está investigando?
+
    * ¿Ha implementado filtros?
 
       * ¿Estos filtros afectan al asunto que está investigando?
-
 
 ## Herramientas de diagnóstico de IIS {#iis-diagnostic-tools}
 
