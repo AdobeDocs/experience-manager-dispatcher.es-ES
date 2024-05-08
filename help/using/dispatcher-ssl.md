@@ -10,15 +10,15 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1302'
-ht-degree: 90%
+ht-degree: 100%
 
 ---
 
 # Utilizar SSL con Dispatcher {#using-ssl-with-dispatcher}
 
-Utilice conexiones SSL entre Dispatcher y el equipo de renderización:
+Utilice conexiones SSL entre Dispatcher y el equipo de procesamiento:
 
 * [SSL unidireccional](#use-ssl-when-dispatcher-connects-to-aem)
 * [SSL mutuo](#configuring-mutual-ssl-between-dispatcher-and-aem)
@@ -33,9 +33,9 @@ Configure Dispatcher para que se comunique con la instancia de procesamiento de 
 
 Antes de configurar Dispatcher, configure AEM o CQ para utilizar SSL:
 
-* AEM 6.2: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* AEM 6.1: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* Versiones de AEM anteriores: consulte [esta página](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions).
+* AEM 6.2: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.1: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* Versiones de AEM anteriores: consulte [esta página](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions).
 
 ### Encabezados de solicitud relacionados con SSL {#ssl-related-request-headers}
 
@@ -129,7 +129,7 @@ Para configurar SSL mutuo, necesita certificados firmados por una autoridad de c
 
 Para configurar SSL mutuo, realice los siguientes pasos:
 
-1. [Instale](dispatcher-install.md) la última versión de Dispatcher para su plataforma. Utilice un binario de Dispatcher que admita SSL (SSL) en el nombre del archivo, como `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
+1. [Instale](dispatcher-install.md) la última versión de Dispatcher para su plataforma. Utilice un binario de Dispatcher que admita SSL (SSL está en el nombre del archivo, como `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
 1. [Cree o consiga un certificado firmado por la CA](dispatcher-ssl.md#main-pars-title-3) para Dispatcher y la instancia de procesamiento.
 1. [Cree un repositorio de claves que contenga certificado de procesamiento](dispatcher-ssl.md#main-pars-title-6) y configure el servicio HTTP del procesamiento para utilizarlo.
 1. [Configure el módulo del servidor web de Dispatcher](dispatcher-ssl.md#main-pars-title-4) para SSL mutuo.
@@ -157,7 +157,7 @@ Si actúa como CA, utilice [OpenSSL](https://www.openssl.org/) para crear la aut
 
 Utilice OpenSSL para crear las solicitudes de certificado que se enviarán a la CA de terceros o para firmar con la CA.
 
-Al crear un certificado, OpenSSL utiliza la propiedad Nombre común para identificar al titular del certificado. Para el certificado de la instancia de procesamiento, utilice el nombre de host del equipo de instancia como Nombre común si configura Dispatcher para que acepte el certificado. Haga esto solo si coincide con el nombre de host de la instancia de publicación. Consulte la [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) propiedad.
+Al crear un certificado, OpenSSL utiliza la propiedad Nombre común para identificar al titular del certificado. Para el certificado de la instancia de representación, utilice el nombre de host del equipo de la instancia como nombre común si configura Dispatcher para aceptar el certificado. Haga esto solo si coincide con el nombre de host de la instancia de publicación. Consulte la propiedad [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11).
 
 1. Abra un terminal y cambie el directorio actual al que contenga el archivo CH.sh de sus bibliotecas OpenSSL.
 1. Introduzca el siguiente comando y proporcione los valores cuando se le solicite. Si es necesario, utilice el nombre de host de la instancia de publicación como Nombre común. El nombre de host es un nombre con resolución DNS para la dirección IP del procesamiento:
@@ -247,11 +247,11 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 #### Configurar la instancia de procesamiento {#configuring-the-render-instance}
 
-Para configurar el servicio HTTP de la instancia de procesamiento para que utilice SSL, utilice el certificado de procesamiento con las instrucciones del *`Enable SSL on the Publish Instance`* sección:
+Para configurar el servicio HTTP de la instancia de procesamiento para que utilice SSL, utilice el certificado de procesamiento con las instrucciones en la sección *`Enable SSL on the Publish Instance`*:
 
-* AEM 6.2: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* AEM 6.1: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* Versiones de AEM anteriores: consulte [esta página.](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.2: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.1: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* Versiones de AEM anteriores: consulte [esta página.](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 
 ### Configurar SSL para el módulo de Dispatcher {#configuring-ssl-for-the-dispatcher-module}
 

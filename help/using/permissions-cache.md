@@ -7,9 +7,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '910'
-ht-degree: 89%
+ht-degree: 100%
 
 ---
 
@@ -69,8 +69,8 @@ Para implementar el almacenamiento en caché que con permisos confidenciales, re
 
 >[!NOTE]
 >
->Cuando hay una CDN (o cualquier otra caché) delante de Dispatcher, debe configurar los encabezados de almacenamiento en caché en consecuencia para que la CDN no almacene en caché el contenido privado. Por ejemplo: `Header always set Cache-Control private`.
->AEM Para obtener información as a Cloud Service, consulte la [Almacenamiento en caché](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) para obtener más información sobre cómo establecer encabezados de almacenamiento en caché privados.
+>Cuando hay una red de distribución de contenido (CDN) (o cualquier otra caché) delante de Dispatcher, debe configurar los encabezados de amacenamiento en caché en consecuencia para que la CDN no almacene en caché el contenido privado. Por ejemplo: `Header always set Cache-Control private`.
+>Para AEM as a Cloud Service, consulte la página [Almacenamiento en caché](https://experienceleague.adobe.com/es_es/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) para obtener más información sobre cómo establecer encabezados de almacenamiento en caché privados.
 
 ## Creación del servlet Auth Checker {#create-the-auth-checker-servlet}
 
@@ -78,7 +78,7 @@ Cree e implemente un servlet que realice la autenticación y la autorización de
 
 El servlet debe ser accesible para todos los usuarios. Por lo tanto, el servlet debe ampliar la clase `org.apache.sling.api.servlets.SlingSafeMethodsServlet`, que proporciona acceso de solo lectura al sistema.
 
-El servlet solo recibe solicitudes de HEAD del procesamiento, por lo que solo debe implementar el `doHead` método.
+El servlet solo recibe solicitudes de HEAD del procesamiento, por lo que solo debe implementar el método `doHead`.
 
 El procesamiento incluye el URI del recurso solicitado como parámetro de la solicitud HTTP. Por ejemplo, se accede a un servlet de autorización a través de `/bin/permissioncheck`. Para realizar una comprobación de seguridad en la página /content/geometrixx-outdoors/en.html, el procesamiento incluye la siguiente URL en la solicitud HTTP:
 
@@ -147,7 +147,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 >[!NOTE]
 >
->Si sus requisitos permiten el almacenamiento en caché de documentos autenticados, establezca la propiedad /allowAuthorized en la sección /cache a `/allowAuthorized 1`. Consulte el tema [Almacenar en caché cuando se utiliza la autenticación](/help/using/dispatcher-configuration.md) para obtener más información.
+>Si sus requisitos permiten el almacenamiento en caché de documentos autenticados, establezca la propiedad /allowAuthorized en la sección /cache a `/allowAuthorized 1`. Consulte el tema [Almacenamiento en caché cuando se utiliza la autenticación](/help/using/dispatcher-configuration.md) para obtener más información.
 
 La sección auth_checker del archivo dispatcher.any controla el comportamiento del almacenamiento en caché sensible a permisos. La sección auth_checker incluye las siguientes subsecciones:
 

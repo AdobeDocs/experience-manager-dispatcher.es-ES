@@ -10,9 +10,9 @@ index: y
 internal: n
 snippet: y
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1125'
-ht-degree: 73%
+ht-degree: 100%
 
 ---
 
@@ -33,23 +33,23 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 >
 >Las versiones de Dispatcher son independientes de AEM. Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher insertado en la documentación de una versión anterior de AEM.
 
-Dispatcher ofrece varios mecanismos integrados que puede utilizar para optimizar el rendimiento. Esta sección le explica cómo diseñar su sitio web para maximizar los beneficios del almacenamiento en caché.
+Dispatcher ofrece una serie de mecanismos integrados que puede utilizar para optimizar el rendimiento. Esta sección le explica cómo diseñar su sitio web para maximizar los beneficios del almacenamiento en caché.
 
 >[!NOTE]
 >
 >Puede ayudarle a recordar que Dispatcher almacena la caché en un servidor web estándar. Esto significa que:
 >
->* puede almacenar en caché todo lo que se pueda almacenar como página y solicitar mediante una dirección URL
->* no puede almacenar otros elementos, como encabezados HTTP, cookies, datos de sesión y datos de formulario.
+>* Se puede almacenar en caché todo lo que se quiera almacenar como página y solicitar mediante una dirección URL
+>* No se pueden almacenar otros elementos, como encabezados HTTP, cookies, datos de sesión y datos de formularios.
 >
 >En general, muchas estrategias de almacenamiento en caché implican la selección de buenas direcciones URL y no depender de estos datos adicionales.
 
 ## Utilizar una codificación de página coherente {#using-consistent-page-encoding}
 
-Los encabezados de solicitud HTTP no se almacenan en caché, por lo que pueden producirse problemas si almacena información de codificación de páginas en el encabezado. En este caso, cuando Dispatcher sirve una página desde la caché, se utiliza la codificación predeterminada del servidor web para esa página. Existen dos formas de evitar este problema:
+Los encabezados de petición HTTP no se almacenan en caché, por lo que pueden producirse problemas si almacena información de codificación de páginas en el encabezado. En este caso, cuando Dispatcher sirve una página desde la caché, se utiliza la codificación predeterminada del servidor web para esa página. Existen dos formas de evitar este problema:
 
 * Si solo utiliza una codificación, asegúrese de que la utilizada en el servidor web sea la misma que la predeterminada del sitio web de AEM.
-* Para establecer la codificación, utilice un `<META>` etiqueta en el HTML `head` , como en el ejemplo siguiente:
+* Utilice una etiqueta `<META>` en la sección HTML `head` para configurar la codificación, como en el siguiente ejemplo:
 
 ```xml
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
@@ -87,9 +87,9 @@ www.myCompany.com/news/main.large.html
 
 >[!NOTE]
 >
->Para la mayoría de los aspectos del diseño, también es posible utilizar hojas de estilo o secuencias de comandos del lado del cliente. Normalmente funcionan bien con el almacenamiento en caché.
+>Para la mayoría de los aspectos de diseño, también es posible utilizar hojas de estilo o secuencias de comandos del lado del cliente. Normalmente, funcionan bien con el almacenamiento en caché.
 >
->Esto también es útil en la versión impresa, donde puede usar una URL como:
+>Esto también es útil en la versión impresa, donde se puede usar una URL como la siguiente:
 >
 >`www.myCompany.com/news/main.print.html`
 >
@@ -97,7 +97,7 @@ www.myCompany.com/news/main.large.html
 
 ## Invalidar archivos de imagen utilizados como títulos {#invalidating-image-files-used-as-titles}
 
-Si ha representado títulos de páginas u otros textos como imágenes, almacene los archivos para que se eliminen tras actualizar el contenido de la página:
+Si procesa títulos de páginas u otros textos como imágenes, se recomienda almacenar los archivos para que se eliminen tras actualizar el contenido de la página:
 
 1. Coloque el archivo de imagen en la misma carpeta que la página.
 1. Utilice el siguiente formato de nomenclatura para el archivo de imagen:
@@ -112,22 +112,22 @@ Por ejemplo, puede almacenar el título de la página myPage.html en el archivo 
 
 ## Invalidar archivos de imagen utilizados para la navegación {#invalidating-image-files-used-for-navigation}
 
-Si utiliza imágenes para las entradas de navegación, el método es básicamente el mismo que con los títulos, un poco más complejo. Almacene todas las imágenes de navegación con las páginas de destino. Si utiliza dos imágenes para la normal y la activa, puede utilizar los siguientes scripts:
+Si utiliza imágenes para las entradas de navegación, el método es básicamente el mismo que con los títulos, aunque un poco más complejo. Almacene todas las imágenes de navegación con las páginas de destino. Si utiliza dos imágenes para la normal y la activa, puede utilizar los siguientes scripts:
 
 * Scripts que muestra la página normal.
 * Scripts que procesa las solicitudes &quot;.normal&quot; y devuelve la imagen normal.
 * Scripts que procesa las solicitudes &quot;.active&quot; y devuelve la imagen activa.
 
-Es importante crear estas imágenes con el mismo nombre que la página para garantizar que una actualización de contenido elimine estas imágenes y la página.
+Es importante crear estas imágenes con el mismo nombre que la página, para garantizar que una actualización de contenido elimine estas imágenes, así como la página.
 
-En las páginas que no se modifiquen, las imágenes permanecerán en la caché, aunque las páginas en sí se invalidarán automáticamente.
+En las páginas que no se modifiquen, las imágenes permanecerán en la caché, aunque las páginas en sí se invalidan automáticamente.
 
 ## Personalización {#personalization}
 
 Dispatcher no puede almacenar en caché los datos personalizados, por lo que se recomienda limitar la personalización a donde sea necesario. Para explicar por qué:
 
 * Si utiliza una página de inicio personalizable libremente, esa página deberá estar compuesta cada vez que un usuario la solicite.
-* Si, por el contrario, ofrece una opción de diez páginas de inicio diferentes, puede almacenar en caché cada una de ellas, mejorando el rendimiento.
+* Si, por el contrario, ofrece una opción de 10 páginas de inicio diferentes, puede almacenar en caché cada una de ellas, mejorando así el rendimiento.
 
 >[!NOTE]
 >
@@ -141,18 +141,18 @@ Dispatcher no puede almacenar en caché los datos personalizados, por lo que se 
 
 ## Conexiones fijas {#sticky-connections}
 
-[Las conexiones fijas](dispatcher.md#TheBenefitsofLoadBalancing) garantizan que todos los documentos de un usuario se compongan en el mismo servidor. Si un usuario abandona esta carpeta y más tarde vuelve a ella, la conexión se mantiene. Defina una carpeta para que pueda contener todos los documentos que requieran conexiones fijas para el sitio web. Intente no meter otros documentos en ella. Esto afecta al equilibrio de cargas si utiliza páginas personalizadas y datos de sesión.
+[Las conexiones fijas](dispatcher.md#TheBenefitsofLoadBalancing) garantizan que todos los documentos de un usuario se compongan en el mismo servidor. Si un usuario abandona esta carpeta y más tarde vuelve a ella, la conexión se mantiene. Defina una carpeta para guardar todos los documentos que requieran conexiones fijas para el sitio web. Intente no meter otros documentos en ella. Esto afecta al equilibrio de cargas si utiliza páginas personalizadas y datos de sesión.
 
 ## Tipos MIME {#mime-types}
 
 Existen dos maneras en las que un explorador puede determinar el tipo de archivo:
 
-1. Por su extensión (por ejemplo, .html, .gif y .jpg)
+1. Por su extensión (por ejemplo, .HTML, .GIF y .JPG)
 1. Por el tipo MIME que el servidor envía con el archivo.
 
-Para la mayoría de los archivos, el tipo MIME está implícito en la extensión del archivo. Es decir:
+Para la mayoría de los archivos, el tipo MIME está implícito en la extensión del archivo. Esto significa lo siguiente:
 
-1. Por su extensión (por ejemplo, .html, .gif y .jpg)
+1. Por su extensión (por ejemplo, .HTML, .GIF y .JPG)
 1. Por el tipo MIME que el servidor envía con el archivo.
 
 Si el nombre del archivo no tiene extensión, se mostrará como texto sin formato.

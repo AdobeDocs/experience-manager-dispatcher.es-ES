@@ -1,17 +1,17 @@
 ---
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '421'
-ht-degree: 62%
+ht-degree: 100%
 
 ---
 # Código de conducta de Adobe
 
-## Promesa del Adobe
+## El compromiso de Adobe
 
-Para fomentar un entorno abierto y acogedor, tanto los colaboradores como los administradores se comprometen a hacer de la participación en un proyecto y de la comunidad una experiencia libre de acoso para todos. Esta experiencia es independiente de la edad, tamaño corporal, discapacidad, etnia, identidad y expresión de género, nivel de experiencia, nacionalidad, apariencia personal, raza, religión o identidad y orientación sexual.
+Para fomentar un ambiente abierto y acogedor, tanto los contribuyentes como los mantenedores se comprometen a hacer de la participación en un proyecto y la comunidad una experiencia libre de acoso para todos. Esta experiencia es independiente de la edad, tamaño corporal, discapacidad, origen étnico, identidad y expresión de género, nivel de experiencia, nacionalidad, apariencia personal, raza, religión o identidad y orientación sexual.
 
-## Estándares del Adobe
+## Estándares de Adobe
 
 Algunos ejemplos de comportamiento que contribuyen a crear un entorno positivo son:
 
@@ -29,11 +29,11 @@ Algunos ejemplos de comportamiento inaceptable de los participantes son:
 * Publicación de información privada de terceros, como una dirección física o electrónica, sin permiso explícito
 * Otras conductas que puedan considerarse razonablemente inapropiadas en un entorno profesional
 
-## Responsabilidades del Adobe
+## Responsabilidades de Adobe
 
 Los responsables de los proyectos son responsables de aclarar las normas de comportamiento aceptable y se espera que adopten medidas correctivas apropiadas y justas en respuesta a cualquier caso de comportamiento inaceptable.
 
-Los administradores de proyectos tienen el derecho y la responsabilidad de eliminar, editar o rechazar comentarios, confirmaciones, código, ediciones de wiki, problemas u otras contribuciones que no estén alineadas con este Código de conducta. O bien, prohibir temporal o permanentemente a cualquier colaborador por otros comportamientos que consideren inapropiados, amenazantes, ofensivos o dañinos.
+Los mantenedores del proyecto tienen el derecho y la responsabilidad de eliminar, editar o rechazar comentarios, confirmaciones, códigos, ediciones de wiki, problemas u otras contribuciones que no estén alineadas con este Código de conducta. También prohibir temporal o permanentemente a cualquier colaborador por otros comportamientos que consideren inapropiados, amenazantes, ofensivos o dañinos.
 
 ## Ámbito
 
@@ -41,11 +41,11 @@ Este Código de conducta se aplica tanto en los espacios del proyecto como en lo
 
 ## Aplicación
 
-Se pueden notificar casos de comportamiento abusivo, discriminatorio o inaceptable poniéndose en contacto con el equipo del proyecto en Grp-opensourceoffice@adobe.com. Todas las quejas se revisan e investigan y pueden dar lugar a una respuesta que se considere necesaria y adecuada a las circunstancias. El equipo del proyecto está obligado a mantener la confidencialidad con respecto al denunciante de un incidente. Los detalles adicionales de las políticas de ejecución específicas pueden publicarse por separado.
+Se pueden notificar casos de comportamiento abusivo, discriminatorio o inaceptable poniéndose en contacto con el equipo del proyecto en Grp-opensourceoffice@adobe.com. Todas las denuncias son examinadas e investigadas y pueden dar lugar a la respuesta que se considere necesaria y adecuada a las circunstancias. El equipo del proyecto está obligado a mantener la confidencialidad con respecto al denunciante de un incidente. Los detalles adicionales de las políticas de ejecución específicas pueden publicarse por separado.
 
 Los responsables de los proyectos que no sigan o apliquen el Código de conducta de buena fe pueden tener repercusiones temporales o permanentes determinadas por otros miembros de la dirección del proyecto.
 
 ## Atribución
 
-El presente Código de conducta es una adaptación de la [Pacto del colaborador](https://www.contributor-covenant.org/), versión 1.4, disponible en [Pacto del colaborador](https://www.contributor-covenant.org/version/1/4/code-of-conduct/).
+Este Código de conducta se adapta a la versión 1.4 del [Pacto para los colaboradores](https://www.contributor-covenant.org/), disponible en el [Pacto para los colaboradores](https://www.contributor-covenant.org/version/1/4/code-of-conduct/).
 

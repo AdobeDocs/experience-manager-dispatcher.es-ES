@@ -11,9 +11,9 @@ feature: Dispatcher
 topic: Administration
 role: Admin
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '78'
-ht-degree: 98%
+ht-degree: 100%
 
 ---
 
@@ -28,7 +28,7 @@ ht-degree: 98%
 + Configurar {#configuring}
    + [Configurar Dispatcher](dispatcher-configuration.md)
    + [Invalidar páginas en la caché de AEM](page-invalidate.md)
-   + [Optimizar un sitio web para el rendimiento de la caché](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
+   + [Optimizar un sitio web para el rendimiento de la caché](https://experienceleague.adobe.com/es_es/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
    + [Almacenar contenido seguro en la caché](permissions-cache.md)
    + [Utilizar Dispatcher con varios dominios](dispatcher-domains.md)
    + [Utilizar SSL con Dispatcher](dispatcher-ssl.md)
