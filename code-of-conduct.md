@@ -1,15 +1,15 @@
 ---
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '421'
-ht-degree: 100%
+source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+workflow-type: tm+mt
+source-wordcount: '435'
+ht-degree: 69%
 
 ---
 # Código de conducta de Adobe
 
 ## El compromiso de Adobe
 
-Para fomentar un ambiente abierto y acogedor, tanto los contribuyentes como los mantenedores se comprometen a hacer de la participación en un proyecto y la comunidad una experiencia libre de acoso para todos. Esta experiencia es independiente de la edad, tamaño corporal, discapacidad, origen étnico, identidad y expresión de género, nivel de experiencia, nacionalidad, apariencia personal, raza, religión o identidad y orientación sexual.
+Para fomentar un ambiente abierto y acogedor, tanto los contribuyentes como los mantenedores se comprometen a hacer de la participación en un proyecto y la comunidad una experiencia libre de acoso para todos. Esta experiencia es independiente de la edad, tamaño corporal, discapacidad, etnia, identidad de género y expresión. Independientemente del nivel de experiencia, nacionalidad, apariencia personal, raza, religión o identidad y orientación sexual.
 
 ## Estándares de Adobe
 
@@ -33,11 +33,11 @@ Algunos ejemplos de comportamiento inaceptable de los participantes son:
 
 Los responsables de los proyectos son responsables de aclarar las normas de comportamiento aceptable y se espera que adopten medidas correctivas apropiadas y justas en respuesta a cualquier caso de comportamiento inaceptable.
 
-Los mantenedores del proyecto tienen el derecho y la responsabilidad de eliminar, editar o rechazar comentarios, confirmaciones, códigos, ediciones de wiki, problemas u otras contribuciones que no estén alineadas con este Código de conducta. También prohibir temporal o permanentemente a cualquier colaborador por otros comportamientos que consideren inapropiados, amenazantes, ofensivos o dañinos.
+Los administradores de proyectos tienen el derecho y la responsabilidad de eliminar, editar o rechazar comentarios. Esta supervisión incluye confirmaciones, código, ediciones de wiki, problemas u otras contribuciones no alineadas con este Código de conducta. También prohibir temporal o permanentemente a cualquier colaborador por otros comportamientos que consideren inapropiados, amenazantes, ofensivos o dañinos.
 
 ## Ámbito
 
-Este Código de conducta se aplica tanto en los espacios del proyecto como en los espacios públicos cuando una persona representa al proyecto o su comunidad. Algunos ejemplos de representación de un proyecto o comunidad incluyen el uso de una dirección de correo electrónico oficial del proyecto, la publicación a través de una cuenta oficial de medios sociales o la actuación como representante designado en un evento en línea o sin conexión. Los responsables de los proyectos podrán definir y aclarar la representación de un proyecto.
+Este Código de conducta se aplica tanto en los espacios del proyecto como en los espacios públicos cuando una persona representa al proyecto o su comunidad. Algunos ejemplos de representación de un proyecto o comunidad son el uso de una dirección de correo electrónico oficial del proyecto. También puede incluir publicaciones a través de una cuenta oficial en los medios sociales. O puede incluir actuar como representante designado en un evento en línea o sin conexión. Los administradores de proyectos pueden definir y aclarar mejor la representación de un proyecto.
 
 ## Aplicación
 
@@ -48,4 +48,6 @@ Los responsables de los proyectos que no sigan o apliquen el Código de conducta
 ## Atribución
 
 Este Código de conducta se adapta a la versión 1.4 del [Pacto para los colaboradores](https://www.contributor-covenant.org/), disponible en el [Pacto para los colaboradores](https://www.contributor-covenant.org/version/1/4/code-of-conduct/).
+
+
 

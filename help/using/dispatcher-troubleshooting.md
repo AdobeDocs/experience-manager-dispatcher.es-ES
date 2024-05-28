@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '538'
-ht-degree: 100%
+source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+workflow-type: tm+mt
+source-wordcount: '539'
+ht-degree: 90%
 
 ---
 
@@ -20,9 +20,9 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Las versiones de Dispatcher son independientes de AEM, pero la documentación de Dispatcher está incrustada en la de AEM. Utilice siempre la documentación de Dispatcher incrustada en la documentación para la versión más reciente de AEM.
+>Las versiones de Dispatcher son independientes de AEM. AEM Sin embargo, la documentación de Dispatcher está incrustada en la documentación de la. Utilice siempre la documentación de Dispatcher incrustada en la documentación para la versión más reciente de AEM.
 >
->Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher insertado en la documentación de una versión anterior de AEM.
+>Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher. AEM Ese vínculo está incrustado en la documentación de una versión anterior de la aplicación de.
 
 >[!NOTE]
 >
@@ -78,7 +78,7 @@ Problemas al intentar eliminar modelos de flujo de trabajo al acceder a una inst
 
 1. Haga clic en **Sí** para confirmar.
 1. Aparece un cuadro de mensaje de error que muestra lo siguiente:\
-   “`ERROR 'Could not delete workflow model!!`”.
+   `ERROR 'Could not delete workflow model!!`.
 
 **Resolución**
 
