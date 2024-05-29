@@ -1,10 +1,10 @@
 ---
 title: AEM Configuración de Dispatcher
-description: AEM Obtenga información sobre cómo configurar Dispatcher de la. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, los archivos de configuración, las variables de entorno y el nombre de la instancia. Obtenga información sobre la definición de granjas, la identificación de hosts virtuales, etc.
+description: Obtenga información sobre cómo configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, los archivos de configuración, las variables de entorno y el nombre de la instancia. Obtenga información sobre la definición de granjas, la identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '8898'
+source-wordcount: '8876'
 ht-degree: 82%
 
 ---
@@ -25,7 +25,7 @@ Todos los elementos de AEM y Dispatcher se pueden instalar en redes IPv4 e IPv6.
 
 De forma predeterminada, la configuración de Dispatcher se almacena en el archivo de texto `dispatcher.any`, aunque puede cambiar el nombre y la ubicación de este archivo durante la instalación.
 
-AEM El archivo de configuración contiene una serie de propiedades de un solo valor o de varios valores que controlan el comportamiento del Dispatcher de la aplicación de Dispatcher de la siguiente manera:
+El archivo de configuración contiene una serie de propiedades de un solo valor o de varios valores que controlan el comportamiento de Dispatcher:
 
 * Los nombres de las propiedades llevan como prefijo una barra diagonal `/`.
 * Las propiedades de varios valores encierran elementos secundarios utilizando llaves `{ }`.
@@ -152,7 +152,7 @@ Utilice la propiedad `/name` para especificar un nombre único para identificar 
 
 La propiedad `/farms` define uno o más conjuntos de comportamientos de Dispatcher, donde cada conjunto se asocia con diferentes sitios web o direcciones URL. La propiedad `/farms` puede incluir una o varias granjas:
 
-* AEM Utilice una única granja de servidores cuando desee que Dispatcher de la administre todas las páginas o sitios web del mismo modo.
+* Utilice una única granja de servidores cuando desee que Dispatcher administre todas las páginas o sitios web del mismo modo.
 * Cree varias granjas cuando diferentes áreas del sitio web o sitios web diferentes requieran un comportamiento de Dispatcher diferente.
 
 La propiedad `/farms` es una propiedad de nivel superior de la estructura de configuración. Para definir una granja, agregue una propiedad secundaria a la propiedad `/farms`. Utilice un nombre de propiedad que identifique de forma exclusiva la granja en la instancia de Dispatcher.
@@ -197,7 +197,7 @@ Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 | [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | Los anfitriones virtuales de esta granja. |
 | [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | Compatibilidad con la administración y la autenticación de sesiones. |
 | [/renders](#defining-page-renderers-renders) | Servidores que ofrecen páginas procesadas (normalmente instancias de publicación de AEM). |
-| [/filter](#configuring-access-to-content-filter) | AEM Define las direcciones URL a las que el Dispatcher de habilita el acceso. |
+| [/filter](#configuring-access-to-content-filter) | Define las direcciones URL a las que Dispatcher habilita el acceso. |
 | [/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls) | Configura el acceso a las URL de vanidad. |
 | [/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost) | Compatibilidad con el reenvío de solicitudes de distribución. |
 | [/cache](#configuring-the-dispatcher-cache-cache) | Configura el comportamiento del almacenamiento en caché. |
@@ -259,7 +259,7 @@ Comment Type: draft
 
 La propiedad `/clientheaders` define una lista de encabezados HTTP que Dispatcher pasa de la solicitud HTTP del cliente al procesador (instancia de AEM).
 
-AEM AEM De forma predeterminada, el Dispatcher de reenvía los encabezados HTTP estándar a la instancia de. En algunos casos, es posible que desee reenviar encabezados adicionales o eliminar encabezados específicos:
+AEM De forma predeterminada, Dispatcher reenvía los encabezados HTTP estándar a la instancia de. En algunos casos, es posible que desee reenviar encabezados adicionales o eliminar encabezados específicos:
 
 * Añada encabezados personalizados que la instancia de AEM espera en la petición HTTP.
 * Quite los encabezados, como los de autenticación, que solo sean relevantes para el servidor web.
@@ -455,7 +455,7 @@ Un ejemplo de configuración sería de la siguiente manera:
 
 ## Definir procesadores de página {#defining-page-renderers-renders}
 
-El `/renders` AEM define la dirección URL a la que Dispatcher envía solicitudes para procesar un documento. La siguiente sección de ejemplo `/renders` identifica una instancia de AEM única para el procesamiento:
+El `/renders` define la dirección URL a la que Dispatcher envía solicitudes para procesar un documento. La siguiente sección de ejemplo `/renders` identifica una instancia de AEM única para el procesamiento:
 
 ```xml
 /renders
@@ -618,7 +618,7 @@ Si los filtros no se activan del modo esperado, habilite [Registro de rastreo](#
 
 #### Filtro de ejemplo: Denegar todo {#example-filter-deny-all}
 
-AEM La siguiente sección de filtro de ejemplo hace que Dispatcher rechace las solicitudes de todos los archivos. Debe denegar el acceso a todos los archivos y permitir el acceso a áreas específicas.
+La siguiente sección de filtro de ejemplo hace que Dispatcher rechace las solicitudes de todos los archivos. Debe denegar el acceso a todos los archivos y permitir el acceso a áreas específicas.
 
 ```xml
 /0001  { /type "deny" /url "*"  }
@@ -695,7 +695,7 @@ A continuación se muestra un ejemplo de regla que bloquea la captura de conteni
 
 ### Ejemplo `/filter` sección {#example-filter-section}
 
-AEM Al configurar el Dispatcher de, limite el acceso externo en la medida de lo posible. El siguiente ejemplo ofrece un acceso mínimo a los visitantes externos:
+Al configurar Dispatcher, restrinja el acceso externo en la medida de lo posible. El siguiente ejemplo ofrece un acceso mínimo a los visitantes externos:
 
 * `/content`
 * contenido variado, como diseños y bibliotecas de cliente; por ejemplo:
@@ -914,7 +914,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
  -->
 
-AEM AEM Configure la instancia de Dispatcher de para habilitar el acceso a las direcciones URL de vanidad configuradas para sus páginas de destino.
+AEM Configure Dispatcher para habilitar el acceso a las URL de vanidad configuradas para sus páginas de.
 
 Cuando se habilita el acceso a las URL de vanidad, Dispatcher llama periódicamente a un servicio que se ejecuta en la instancia de procesamiento para obtener una lista de URL de vanidad. Dispatcher almacena esta lista en un archivo local. Cuando se deniega una solicitud de una página debido a un filtro en la sección `/filter`, Dispatcher consulta la lista de URL de vanidad. Si la URL denegada está en la lista, Dispatcher permite el acceso a la URL de vanidad.
 
@@ -932,7 +932,7 @@ La sección `/vanity_urls` contiene las siguientes propiedades:
 
 * `/url`: Ruta al servicio de URL de vanidad que se ejecuta en la instancia de procesamiento. El valor de esta propiedad debe ser `"/libs/granite/dispatcher/content/vanityUrls.html"`.
 
-* `/file`: Ruta al archivo local donde Dispatcher almacena la lista de URL de vanidad. AEM Asegúrese de que Dispatcher de tiene acceso de escritura a este archivo.
+* `/file`: Ruta al archivo local donde Dispatcher almacena la lista de URL de vanidad. Asegúrese de que Dispatcher tiene acceso de escritura a este archivo.
 * `/delay`: (Segundos) El tiempo entre llamadas a la URL de vanidad.
 
 >[!NOTE]
@@ -1003,7 +1003,7 @@ La propiedad `/docroot` identifica el directorio donde se almacenan los archivos
 
 >[!NOTE]
 >
->AEM El valor debe tener la misma ruta que la raíz del documento del servidor web para que Dispatcher y el servidor web administren los mismos archivos.\
+>El valor debe tener la misma ruta que la raíz del documento del servidor web para que Dispatcher y el servidor web administren los mismos archivos.\
 >El servidor web es responsable de entregar el código de estado correcto cuando se utiliza el archivo de caché de Dispatcher, por esto es importante que también se pueda encontrar.
 
 Si utiliza varias granjas, cada granja debe utilizar una raíz de documento diferente.
@@ -1012,7 +1012,7 @@ Si utiliza varias granjas, cada granja debe utilizar una raíz de documento dife
 
 La propiedad `/statfile` identifica el archivo que se va a utilizar como archivo de estado. Dispatcher utiliza este archivo para registrar la hora de la última actualización del contenido. El archivo de estado puede ser cualquier archivo del servidor web.
 
-El archivo de estado no tiene contenido. AEM Cuando se actualiza el contenido, Dispatcher actualiza la marca de tiempo. El nombre predeterminado del archivo de estado es `.stat` y se almacena en la carpeta docroot. Dispatcher bloquea el acceso al archivo de estado.
+El archivo de estado no tiene contenido. Cuando se actualiza el contenido, Dispatcher actualiza la marca de tiempo. El nombre predeterminado del archivo de estado es `.stat` y se almacena en la carpeta docroot. Dispatcher bloquea el acceso al archivo de estado.
 
 >[!NOTE]
 >
@@ -1020,9 +1020,9 @@ El archivo de estado no tiene contenido. AEM Cuando se actualiza el contenido, D
 
 ### Servir documentos anticuados cuando se producen errores {#serving-stale-documents-when-errors-occur}
 
-La propiedad `/serveStaleOnError` controla si Dispatcher devuelve documentos invalidados cuando el servidor de procesamiento devuelve un error. AEM De forma predeterminada, cuando se toca un archivo de estado y se invalida el contenido almacenado en caché, Dispatcher elimina el contenido almacenado en caché de la forma predeterminada. Esta acción se realiza la próxima vez que se solicita.
+La propiedad `/serveStaleOnError` controla si Dispatcher devuelve documentos invalidados cuando el servidor de procesamiento devuelve un error. De forma predeterminada, cuando se toca un archivo de estado y se invalida el contenido almacenado en caché, Dispatcher elimina el contenido almacenado en caché. Esta acción se realiza la próxima vez que se solicita.
 
-If `/serveStaleOnError` se establece en `"1"`, Dispatcher no elimina el contenido invalidado de la caché. Es decir, a menos que el servidor de procesamiento devuelva una respuesta correcta. AEM AEM Una respuesta 5xx del usuario o un tiempo de espera de conexión hace que Dispatcher de la conexión ofrezca el contenido obsoleto y responda con un estado HTTP de 111 (Error de revalidación).
+If `/serveStaleOnError` se establece en `"1"`, Dispatcher no elimina el contenido invalidado de la caché. Es decir, a menos que el servidor de procesamiento devuelva una respuesta correcta. AEM Una respuesta 5xx del usuario o un tiempo de espera de conexión hace que Dispatcher presente el contenido obsoleto y responda con un estado HTTP de 111 (Error de revalidación).
 
 ### Almacenar en caché cuando se utiliza la autenticación {#caching-when-authentication-is-used}
 
@@ -1349,7 +1349,7 @@ A continuación se muestra un ejemplo de la configuración predeterminada:
 
 >[!NOTE]
 >
->AEM AEM Si necesita que Dispatcher de la almacene y entregue encabezados de respuesta ETag desde la interfaz de usuario, haga lo siguiente:
+>AEM Si necesita que Dispatcher almacene y entregue encabezados de respuesta ETag desde la interfaz de usuario, haga lo siguiente:
 >
 >* Agregue el nombre del encabezado a la sección `/cache/headers`.
 >* Añada la siguiente [directiva de Apache](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) a la sección relacionada con Dispatcher:
@@ -1389,7 +1389,7 @@ La invalidación de la caché basada en el tiempo depende de la propiedad `/enab
 Antes de la versión 4.3.5 de Dispatcher, la lógica de invalidación de TTL se basaba únicamente en el valor de TTL configurado. Con la versión 4.3.5 de Dispatcher, se tienen en cuenta tanto el TTL establecido **y** como las reglas de invalidación de la caché de Dispatcher. Como tal, para un archivo en la caché:
 
 1. Si `/enableTTL` se establece en 1, se comprueba la expiración del archivo. Si el archivo ha expirado según el TTL establecido, no se realizan otras comprobaciones y el archivo en caché se vuelve a solicitar desde el back-end.
-2. Si el archivo no ha caducado o `/enableTTL` no está configurado, se aplican las reglas de invalidación de caché estándar como las reglas que [`/statfileslevel`](#invalidating-files-by-folder-level) y [`/invalidate`](#automatically-invalidating-cached-files) set. AEM Este flujo significa que el Dispatcher de puede invalidar los archivos para los que el TTL no ha caducado.
+2. Si el archivo no ha caducado o `/enableTTL` no está configurado, se aplican las reglas de invalidación de caché estándar como las reglas que [`/statfileslevel`](#invalidating-files-by-folder-level) y [`/invalidate`](#automatically-invalidating-cached-files) set. Este flujo significa que Dispatcher puede invalidar archivos para los que el TTL no ha caducado.
 
 Esta nueva implementación admite casos de uso en los que los archivos tienen un TTL más largo (por ejemplo, en la CDN). Sin embargo, esos archivos se pueden invalidar incluso si el TTL no ha caducado. Favorece la actualización del contenido respecto a la proporción de visitas de caché en Dispatcher.
 
@@ -1431,7 +1431,7 @@ Dispatcher admite un máximo de ocho categorías de estadísticas. Si define má
 
 **Selección de procesamiento**
 
-AEM Cada vez que Dispatcher requiere una página representada, utiliza el siguiente algoritmo para seleccionar el procesamiento:
+Cada vez que Dispatcher requiere una página representada, utiliza el siguiente algoritmo para seleccionar el procesamiento:
 
 1. Si la solicitud contiene el nombre de procesamiento en una cookie `renderid`, Dispatcher utilizará ese procesamiento.
 1. Si la solicitud no incluye ninguna cookie `renderid`, Dispatcher comparará las estadísticas de procesamiento:
@@ -1455,7 +1455,7 @@ Defina una categoría para cada tipo de documento del que desea mantener estadí
 
 La categoría `name` debe ser única en la granja. El `pattern` se describe en la sección [Diseño de patrones para propiedades glob](#designing-patterns-for-glob-properties).
 
-AEM Para determinar la categoría de un URI, Dispatcher compara el URI con cada patrón de categoría hasta que encuentre una coincidencia. Dispatcher comienza con la primera categoría de la lista y continúa en orden. Por tanto, coloque primero las categorías con patrones más específicos.
+Para determinar la categoría de un URI, Dispatcher compara el URI con cada patrón de categoría hasta que encuentre una coincidencia. Dispatcher comienza con la primera categoría de la lista y continúa en orden. Por tanto, coloque primero las categorías con patrones más específicos.
 
 Por ejemplo, Dispatcher en el archivo predeterminado `dispatcher.any` define las categorías HTML y otros. La categoría HTML es más específica y, por lo tanto, aparece primero:
 
@@ -1548,7 +1548,7 @@ Utilice la propiedad `/health_check` para especificar una dirección URL que se 
 
 ### Especificación del retraso en el reintento de página {#specifying-the-page-retry-delay}
 
-La propiedad `/retryDelay` establece el tiempo (en segundos) que Dispatcher espera entre rondas de intentos de conexión con los procesamientos de granja. AEM Por cada ronda, el número máximo de veces que Dispatcher intenta establecer una conexión con un procesamiento es el número de procesamientos de la granja.
+La propiedad `/retryDelay` establece el tiempo (en segundos) que Dispatcher espera entre rondas de intentos de conexión con los procesamientos de granja. Por cada ronda, el número máximo de veces que Dispatcher intenta establecer una conexión con un procesamiento es el número de procesamientos de la granja.
 
 Dispatcher utiliza un valor de `"1"` si `/retryDelay` no está definido explícitamente. El valor predeterminado suele ser el adecuado.
 
@@ -1560,7 +1560,7 @@ Dispatcher utiliza un valor de `"1"` si `/retryDelay` no está definido explíci
 
 La propiedad `/numberOfRetries` establece el número máximo de rondas de intentos de conexión que Dispatcher realiza con los procesamientos. Si Dispatcher no se puede conectar correctamente a un proceso después de este número de reintentos, Dispatcher devuelve una respuesta fallida.
 
-AEM Por cada ronda, el número máximo de veces que Dispatcher intenta establecer una conexión con un procesamiento es el número de procesamientos de la granja. AEM Por lo tanto, el número máximo de veces que Dispatcher intenta una conexión es de ( `/numberOfRetries`) x (el número de procesamientos).
+Por cada ronda, el número máximo de veces que Dispatcher intenta establecer una conexión con un procesamiento es el número de procesamientos de la granja. Por lo tanto, el número máximo de veces que Dispatcher intenta una conexión es ( `/numberOfRetries`) x (el número de procesamientos).
 
 Si el valor no se define explícitamente, el valor predeterminado es `5`.
 
@@ -1575,7 +1575,7 @@ Para reenviar solicitudes a diferentes procesamientos cuando falla la solicitud 
 * Cuando una solicitud a un procesamiento devuelva el estado HTTP 503 (NO DISPONIBLE), Dispatcher enviará la solicitud a un procesamiento diferente.
 * Cuando una solicitud a un procesamiento devuelva el estado HTTP 50x (distinto de 503), Dispatcher enviará una solicitud para la página configurada para `health_check` propiedad.
    * Si la comprobación de estado devuelve 500 (INTERNAL_SERVER_ERROR), Dispatcher enviará la solicitud original a un procesamiento diferente.
-   * AEM Si la comprobación de estado devuelve el estado HTTP 200, Dispatcher devuelve el error HTTP 500 inicial al cliente.
+   * Si la comprobación de estado devuelve el estado HTTP 200, Dispatcher devolverá el error HTTP 500 inicial al cliente.
 
 Para habilitar la conmutación por error, agregue la siguiente línea a la granja (o sitio web):
 

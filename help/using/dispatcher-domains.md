@@ -1,16 +1,16 @@
 ---
-title: Utilizar Dispatcher con varios dominios
-description: Aprenda a utilizar Dispatcher para procesar solicitudes de páginas en varios dominios web.
+title: Uso de Dispatcher con varios dominios
+description: Aprenda a utilizar Dispatcher para procesar solicitudes de página en varios dominios web.
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '2918'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '2929'
+ht-degree: 87%
 
 ---
 
@@ -38,7 +38,7 @@ Por ejemplo, una empresa publica sitios web para dos de sus marcas: la marca A y
 
 Las páginas para `BrandA.com` se almacenan debajo de `/content/sitea`. Las solicitudes del cliente para la URL `https://BrandA.com/en.html` se devuelven como la página representada para el nodo `/content/sitea/en`. Del mismo modo, las páginas para `BrandB.com` se almacenan debajo de `/content/siteb`.
 
-Al utilizar Dispatcher para almacenar en caché el contenido, se deben realizar asociaciones entre la dirección URL de la página en la solicitud HTTP del cliente, la ruta del archivo correspondiente en la caché y la ruta del archivo correspondiente en el repositorio.
+Cuando utilice Dispatcher para almacenar en caché el contenido, realice asociaciones entre la dirección URL de la página en la solicitud HTTP del cliente, la ruta del archivo en caché correspondiente y la ruta del archivo correspondiente en el repositorio.
 
 ## Solicitudes de cliente
 
@@ -46,7 +46,7 @@ Cuando los clientes envían solicitudes HTTP al servidor web, la dirección URL 
 
 ![](assets/chlimage_1-8.png)
 
-1. El sistema de nombres de dominio detecta la dirección IP del servidor web que está registrado para el nombre de dominio en la solicitud HTTP.
+1. El sistema de nombres de dominio detecta la dirección IP del servidor web registrado para el nombre de dominio en la solicitud HTTP.
 1. La solicitud HTTP se envía al servidor web.
 1. La solicitud HTTP se pasa a Dispatcher.
 1. Dispatcher determina si los archivos en caché son válidos. Si lo son, los archivos en caché se proporcionan al cliente.
@@ -66,7 +66,7 @@ Para utilizar Dispatcher con varios dominios, debe configurar AEM, Dispatcher y 
 
 ## Asignar URL {#url-mapping}
 
-Para permitir que las direcciones URL de dominio y las rutas de contenido se resuelvan en archivos en caché, en algún momento del proceso se debe traducir una ruta de archivo o una dirección URL de página. Se proporcionan descripciones de las siguientes estrategias comunes, donde las traducciones de ruta o URL se producen en diferentes puntos del proceso:
+Para permitir que las direcciones URL de dominio y las rutas de contenido se resuelvan en archivos en caché, se debe traducir una ruta de archivo o una dirección URL de página durante el proceso. Se proporcionan descripciones de las siguientes estrategias comunes, donde las traducciones de ruta o URL se producen en diferentes puntos del proceso:
 
 * (Recomendado) La instancia de publicación de AEM utiliza la asignación de Sling para la resolución de recursos a fin de implementar reglas de reescritura de URL internas. Las direcciones URL del dominio se traducen en rutas del repositorio de contenido. Consulte [AEM reescribe las URL entrantes](#aem-rewrites-incoming-urls).
 * El servidor web utiliza reglas de reescritura de URL internas que traducen las URL de dominio a rutas de caché. Consulte [El servidor web reescribe las URL entrantes](#the-web-server-rewrites-incoming-urls).
@@ -210,7 +210,7 @@ Los granjas para hosts virtuales deben tener las siguientes configuraciones para
 * La propiedad `/virtualhosts` se establece en el nombre de dominio. Esta propiedad permite a Dispatcher asociar la granja con el dominio.
 * La propiedad `/filter` permite acceder a la ruta de la URL de solicitud truncada después de la parte del nombre de dominio. Por ejemplo, para la dirección URL `https://branda.com/en.html`, la ruta se interpreta como `/en.html`, por lo que el filtro debe permitir el acceso a esta ruta.
 
-* La propiedad `/docroot` se establece en la ruta del directorio raíz del contenido del sitio del dominio en la caché de Dispatcher. Esta ruta se utiliza como prefijo de la URL concatenada de la solicitud original. Por ejemplo, el docroot de `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` hace que la solicitud de `https://branda.com/en.html` se resuelva en el archivo `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`.
+* El `/docroot` La propiedad se establece en la ruta del directorio raíz. Es decir, el directorio raíz del contenido del sitio del dominio en la caché de Dispatcher. Esta ruta se utiliza como prefijo de la URL concatenada de la solicitud original. Por ejemplo, el docroot de `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` hace que la solicitud de `https://branda.com/en.html` se resuelva en el archivo `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`.
 
 Además, la instancia de publicación de AEM debe designarse como el procesamiento para el host virtual. Configure otras propiedades de granja según sea necesario. El siguiente código es una configuración de granja abreviada para el dominio branda.com:
 
@@ -236,11 +236,11 @@ Además, la instancia de publicación de AEM debe designarse como el procesamien
 
 ### Creación de una granja de Dispatcher para la invalidación de la caché
 
-Se requiere una granja de Dispatcher para administrar solicitudes de invalidación de archivos en caché. Esta granja debe poder acceder a los archivos .stat en los directorios docroot de cada host virtual.
+Se requiere una granja de Dispatcher para administrar solicitudes de invalidación de archivos en caché. Esta granja debe poder acceder a los archivos .stat en la `docroot` de cada host virtual.
 
-Las siguientes configuraciones de propiedad permiten a Dispatcher resolver archivos en el repositorio de contenido de AEM de archivos en la caché:
+AEM Las siguientes configuraciones de propiedad permiten a Dispatcher resolver archivos en el repositorio de contenido de la de archivos en la caché:
 
-* La propiedad `/docroot` se establece en el docroot predeterminado del servidor web. Normalmente, este es el directorio donde se crea la carpeta `/content`. Un valor de ejemplo para Apache en Linux® es `/usr/lib/apache/httpd-2.4.3/htdocs`.
+* El `/docroot` La propiedad está establecida en el valor predeterminado `docroot` del servidor web. Normalmente, el icono /`docroot` es el directorio donde el `/content` se ha creado la carpeta. Un valor de ejemplo para Apache en Linux® es `/usr/lib/apache/httpd-2.4.3/htdocs`.
 * La propiedad `/filter` permite acceder a los archivos que se encuentran debajo del directorio `/content`.
 
 La propiedad `/statfileslevel`debe ser lo suficientemente alta como para que los archivos .stat se creen en el directorio raíz de cada host virtual. Esta propiedad permite invalidar por separado la caché de cada dominio. Para la configuración de ejemplo, un valor `/statfileslevel` de `2` crea archivos .stat en el directorio `*docroot*/content/sitea` y en el `*docroot*/content/siteb`.
@@ -302,7 +302,7 @@ Después de crear la asignación para la página de contenido, para descubrir as
 
 ### Ejemplos de nodos de mapeo de recursos
 
-En la siguiente tabla se enumeran los nodos que implementan la asignación de recursos para el dominio branda.com. Se crean nodos similares para el dominio `brandb.com`, como `/etc/map/http/brandb.com`. En todos los casos, las asignaciones son necesarias cuando las referencias en la página HTML no se resuelven correctamente en el contexto de Sling.
+En la siguiente tabla se enumeran los nodos que implementan la asignación de recursos para el dominio branda.com. Se crean nodos similares para el dominio `brandb.com`, como `/etc/map/http/brandb.com`. En todos los casos, las asignaciones son necesarias cuando las referencias de la página del HTML no se resuelven correctamente en el contexto de Sling.
 
 | Ruta del nodo | Tipo | Propiedad |
 |--- |--- |--- |
@@ -344,11 +344,11 @@ Configure los siguientes aspectos en el servidor web:
 
 El siguiente ejemplo de archivo httpd.conf configura dos hosts virtuales para un servidor web Apache:
 
-* Los nombres de servidor (que coinciden con los nombres de dominio) son `brandA.com` (línea 16) y `brandB.com` (línea 32).
+* Los nombres de servidor (que coinciden con los nombres de dominio) son `brandA.com` (Línea 16) y `brandB.com` (Línea 32).
 
-* La raíz del documento de cada dominio virtual es el directorio de la caché de Dispatcher que contiene las páginas del sitio. (líneas 20 y 33)
-* La regla de reescritura de URL para cada dominio virtual es una expresión regular que prefija la ruta de la página solicitada con la ruta de las páginas en la caché. (líneas 19 y 35)
-* La propiedad `DispatherUseProcessedURL` se establece en `1`. (línea 10)
+* La raíz del documento de cada dominio virtual es el directorio de la caché de Dispatcher que contiene las páginas del sitio. (Líneas 20 y 33)
+* La regla de reescritura de URL para cada dominio virtual es una expresión regular. La expresión regular prefija la ruta de la página solicitada. Lleva el prefijo de la ruta a las páginas de la caché. (Líneas 19 y 35)
+* La propiedad `DispatherUseProcessedURL` se establece en `1`. (Línea 10)
 
 Por ejemplo, el servidor web realiza las siguientes acciones cuando recibe una solicitud con la dirección URL `https://brandA.com/en/products.html`:
 
@@ -417,7 +417,7 @@ Cuando el servidor web vuelve a escribir las direcciones URL, Dispatcher requier
 
 El siguiente archivo de configuración de ejemplo se basa en el archivo de ejemplo `dispatcher.any` que se instala con Dispatcher. Se requieren los siguientes cambios para admitir las configuraciones de servidor web del archivo `httpd.conf` anterior:
 
-* La propiedad `/virtualhosts` hace que Dispatcher administre solicitudes para los dominios `brandA.com` y `brandB.com`. (línea 12)
+* La propiedad `/virtualhosts` hace que Dispatcher administre solicitudes para los dominios `brandA.com` y `brandB.com`. (Línea 12)
 * La propiedad `/statfileslevel` se establece en 2, de modo que los archivos .stat se crean en cada directorio que contiene el contenido web del dominio (línea 41): `/statfileslevel "2"`
 
 Como de costumbre, la raíz del documento de la caché es la misma que la raíz del documento del servidor web (línea 40): `/usr/lib/apache/httpd-2.4.3/htdocs`
@@ -512,7 +512,7 @@ El [reescritor Sling](https://sling.apache.org/documentation/bundles/output-rewr
 
 ### La canalización de reescritura por defecto de AEM {#the-aem-default-rewriter-pipeline}
 
-AEM utiliza una reescritura de canalización por defecto que procesa documentos de tipo text/html:
+AEM utiliza una reescritura de canalización predeterminada que procesa documentos del tipo text/html:
 
 * El generador analiza los documentos HTML y genera eventos SAX cuando encuentra elementos de cuerpo, base, vínculo, script y área. El alias del generador es `htmlparser`.
 * La canalización incluye los siguientes transformadores: `linkchecker`, `mobile`, `mobiledebug`, `contentsync`. El transformador `linkchecker` externaliza las rutas a archivos HTML o HTM a los que se hace referencia para evitar que se rompan los vínculos.

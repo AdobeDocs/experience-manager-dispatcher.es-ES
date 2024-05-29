@@ -9,9 +9,9 @@ redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/u
 index: y
 internal: n
 snippet: y
-source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '1129'
+source-wordcount: '1128'
 ht-degree: 81%
 
 ---
@@ -57,7 +57,7 @@ Los encabezados de petición HTTP no se almacenan en caché, por lo que pueden p
 
 ## Evitar parámetros de URL {#avoid-url-parameters}
 
-Si es posible, evite los parámetros de URL para las páginas que desee almacenar en caché. AEM Por ejemplo, si tiene una galería de imágenes, la siguiente URL nunca se almacenará en caché (a menos que el Dispatcher esté en la caché de la página de Dispatcher). [configurado en consecuencia](dispatcher-configuration.md#main-pars_title_24)):
+Si es posible, evite los parámetros de URL para las páginas que desee almacenar en caché. Por ejemplo, si tiene una galería de imágenes, la siguiente URL nunca se almacenará en caché (a menos que Dispatcher [configurado en consecuencia](dispatcher-configuration.md#main-pars_title_24)):
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1

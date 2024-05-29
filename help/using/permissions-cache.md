@@ -6,10 +6,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '910'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '924'
+ht-degree: 86%
 
 ---
 
@@ -42,7 +42,7 @@ Los siguientes diagramas ilustran el orden de los eventos que se producen cuando
 
 1. Dispatcher determina que el contenido no se almacena en caché o que requiere una actualización.
 1. Dispatcher reenvía la solicitud original al procesador.
-1. El procesador llama al servlet AEM authorizer (que no es el servlet Dispatcher AuthChcker) para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
+1. AEM El procesador llama al servlet del autorizador de la (este servlet no es el servlet Dispatcher AuthChcker) para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
 1. Dispatcher reenvía la respuesta al explorador. Dispatcher añade el cuerpo del mensaje de respuesta del procesador a la caché.
 
 ## El usuario no está autorizado {#user-is-not-authorized}
@@ -51,9 +51,9 @@ Los siguientes diagramas ilustran el orden de los eventos que se producen cuando
 
 1. Dispatcher comprueba la caché.
 1. Dispatcher envía un mensaje de solicitud al procesador que incluye todas las líneas de encabezado de la solicitud del explorador.
-1. El procesador llama al servlet Auth Checker para realizar una comprobación de seguridad que da error y el procesador reenvía la solicitud original a Dispatcher.
+1. El procesador llama al servlet Auth Checker para realizar una comprobación de seguridad, que falla, y el procesador reenvía la solicitud original a Dispatcher.
 1. Dispatcher reenvía la solicitud original al procesador.
-1. El procesador llama al servlet AEM authorizer (que no es el servlet Dispatcher AuthChcker) para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
+1. AEM El procesador llama al servlet del autorizador de la (este servlet no es el servlet Dispatcher AuthChcker) para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
 1. Dispatcher reenvía la respuesta al explorador. Dispatcher añade el cuerpo del mensaje de respuesta del procesador a la caché.
 
 ## Implementar el almacenamiento en caché con permisos confidenciales {#implementing-permission-sensitive-caching}
@@ -74,7 +74,7 @@ Para implementar el almacenamiento en caché que con permisos confidenciales, re
 
 ## Creación del servlet Auth Checker {#create-the-auth-checker-servlet}
 
-Cree e implemente un servlet que realice la autenticación y la autorización del usuario que solicita el contenido web. El servlet puede utilizar cualquier método de autenticación y autorización, como la cuenta de usuario AEM y las ACL del repositorio, o un servicio de búsqueda LDAP. El servlet se implementa en la instancia de AEM que Dispatcher utiliza como procesador.
+Cree e implemente un servlet que realice la autenticación y la autorización del usuario que solicita el contenido web. El servlet puede utilizar cualquier autenticación. También puede utilizar cualquier método de autorización. AEM Por ejemplo, puede utilizar la cuenta de usuario y las ACL del repositorio de la. O bien, puede utilizar un servicio de búsqueda LDAP. El servlet se implementa en la instancia de AEM que Dispatcher utiliza como procesador.
 
 El servlet debe ser accesible para todos los usuarios. Por lo tanto, el servlet debe ampliar la clase `org.apache.sling.api.servlets.SlingSafeMethodsServlet`, que proporciona acceso de solo lectura al sistema.
 

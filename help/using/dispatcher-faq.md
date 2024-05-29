@@ -2,10 +2,10 @@
 title: Problemas principales de Dispatcher
 description: Problemas principales de Dispatcher de Adobe Experience Manager.
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '1542'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '1547'
+ht-degree: 89%
 
 ---
 
@@ -17,13 +17,13 @@ ht-degree: 100%
 
 ### ¿Qué es Dispatcher?
 
-Dispatcher es una herramienta de equilibrio de carga o almacenamiento en caché de Adobe Experience Manager que ayuda a crear un entorno de creación web dinámico y rápido. Para el almacenamiento en caché, Dispatcher funciona como parte de un servidor HTTP, como Apache. Tiene el objetivo de almacenar (o “almacenar en caché”) la mayor cantidad posible de contenido estático del sitio web y acceder al motor de diseño del sitio web con la menor frecuencia posible. En una función de equilibrio de carga, Dispatcher distribuye las solicitudes de usuario (carga) entre diferentes instancias de AEM (procesamientos).
+Dispatcher es la herramienta de almacenamiento en caché de Adobe Experience Manager, o herramienta de equilibrio de carga, o ambas, que ayuda a crear un entorno de creación web dinámico y rápido. Para el almacenamiento en caché, Dispatcher funciona como parte de un servidor HTTP, como Apache. Tiene el objetivo de almacenar (o &quot;almacenar en caché&quot;) la mayor parte posible del contenido del sitio web estático. Y acceder al diseño del motor del sitio web con la menor frecuencia posible. En una función de equilibrio de carga, Dispatcher distribuye las solicitudes de usuario (carga) entre diferentes instancias de AEM (procesamientos).
 
-Para almacenar en la caché, el módulo de Dispatcher utiliza la capacidad del servidor web para proporcionar contenido estático. Así pues, Dispatcher coloca los documentos guardados en la caché en la raíz del documento del servidor web.
+Para almacenar en la caché, el módulo de Dispatcher utiliza la capacidad del servidor web para proporcionar contenido estático. Dispatcher coloca los documentos almacenados en caché en la raíz del documento en el servidor web.
 
 ### ¿Cómo realiza Dispatcher el almacenamiento en caché?
 
-Dispatcher utiliza la capacidad del servidor web para proporcionar contenido estático. Dispatcher almacena documentos en caché en la raíz del documento del servidor web. Dispatcher tiene dos métodos principales para actualizar el contenido de la caché cuando se realizan cambios en el sitio web.
+Dispatcher utiliza la capacidad del servidor web para proporcionar contenido estático. Dispatcher almacena documentos en caché en la raíz del documento en el servidor web. Dispatcher tiene dos métodos principales para actualizar el contenido de la caché cuando se realizan cambios en el sitio web.
 
 * **Las actualizaciones de contenido** quitan las páginas que han cambiado, así como los archivos que están directamente asociados a ellas.
 * **La invalidación automática** invalida automáticamente las partes de la caché que pueden estar desactualizadas tras una actualización. Es decir, marca las páginas relevantes como desactualizadas, sin eliminar nada.
@@ -119,7 +119,7 @@ Consulte las páginas [Lista de comprobación de seguridad de Dispatcher](securi
 
 ### El problema `jcr:content` de Dispatcher cambió a `jcr%3acontent`
 
-**Pregunta**: el negocio se ha enfrentado recientemente a un problema a nivel de Dispatcher. Una de las llamadas AJAX que obtenía algunos datos del repositorio de CQ tenía `jcr:content` en ella. Esto se codificó en `jcr%3acontent` dando como resultado ese conjunto de resultados incorrecto.
+**Pregunta**: el negocio se ha enfrentado recientemente a un problema a nivel de Dispatcher. AJAX Una de las llamadas a la que recibía algunos datos del repositorio de CQ tenía `jcr:content` en ella. Esto se codificó en `jcr%3acontent` dando como resultado ese conjunto de resultados incorrecto.
 
 **Respuesta**: utilice el método `ResourceResolver.map()` para obtener una URL &quot;favorable&quot; para ser utilizada / desde la que se emitirán peticiones GET y también para resolver el problema de almacenamiento en caché con Dispatcher. El método map() codifica los `:` dos puntos para guiones bajos y el método resolve() los descodifica de nuevo en el formato legible SLING JCR. Utilice el método map() para generar la URL que se utiliza en la llamada de Ajax.
 
@@ -139,12 +139,13 @@ Si las operaciones de eliminación están causando que Dispatcher se vacíe, [us
 
 ### ¿Cómo vacío los recursos DAM de la caché de Dispatcher?
 
-Puede utilizar la funcionalidad &quot;replicación en cadena&quot;. Con esta funcionalidad activada, el agente de vaciado de Dispatcher envía una solicitud de vaciado cuando recibe una replicación del autor.
+Puede utilizar la funcionalidad &quot;replicación en cadena&quot;. Con esta función habilitada, el agente de vaciado de Dispatcher envía una solicitud de vaciado cuando se recibe una replicación de la instancia de autor.
 
 Para habilitarlo:
 
 1. [Siga los siguientes pasos](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance) para crear agentes de vaciado al publicar.
-1. Vaya a la configuración de cada uno de estos agentes y, en la pestaña **Activadores**, marque el cuadro **Al recibir**.
+1. Vaya a la configuración de cada agente.
+1. En el **Déclencheur** pestaña, marque la **Recepción activada** cuadro.
 
 ## Varios
 
