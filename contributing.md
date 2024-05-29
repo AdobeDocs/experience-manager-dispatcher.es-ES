@@ -1,13 +1,13 @@
 ---
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '496'
-ht-degree: 100%
+source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
+workflow-type: tm+mt
+source-wordcount: '500'
+ht-degree: 69%
 
 ---
-# Contribución a la documentación de Adobe Experience Manager
+# Contribución a la documentación de Adobe Experience Manager Screens
 
-Gracias por contribuir con la documentación de Adobe Experience Manager. Adobe agradece las contribuciones de contenido de toda la comunidad de lectores, así como de otros empleados del Adobe.
+Gracias por contribuir con la documentación de Adobe Experience Manager Screens. Adobe agradece las contribuciones de contenido de toda la comunidad de lectores, así como de otros empleados del Adobe.
 
 Este archivo describe cómo puede contribuir, así como las directrices que debe seguir al realizar sus contribuciones.
 
@@ -36,13 +36,13 @@ El método que elija dependerá de la comodidad con la que edite la documentaci�
 
 ¿Tiene una sugerencia, una observación sobre los documentos actuales o una pregunta sobre cómo se describe algo? A continuación, cree un problema. Las incidencias también son ideales si tiene algo que aportar, pero no se siente cómodo editando los documentos o haciendo una solicitud de extracción usted mismo.
 
-Las incidencias permiten describir fácilmente su idea para mejorar los documentos y un miembro del equipo de documentación de AEM se encargará de revisarla. Para crear un problema, haga clic en el vínculo **Registrar un problema** en la parte superior del panel de navegación derecho en cualquier página.
+AEM Las incidencias permiten describir fácilmente su idea para mejorar los documentos y un miembro del equipo de documentación de la documentación de la documentación de la puede revisarla. Clic **Registrar un problema** en la parte superior del panel de navegación derecho en cualquier página para crear un problema.
 
 ### Crear una solicitud de extracción {#create-a-pull-request}
 
-Si ve un problema y sabe exactamente cómo solucionarlo, plantéese crear una solicitud de extracción. Las solicitudes de extracción le permiten realizar sus propios cambios en la documentación, que luego son revisados para su inclusión por un miembro del equipo de documentos de AEM. Para realizar los cambios sugeridos y crear la solicitud de extracción, haga clic en el vínculo **Editar esta página** en la parte superior del panel de navegación derecho de cualquier página.
+Si ve un problema y sabe exactamente cómo solucionarlo, plantéese crear una solicitud de extracción. Las solicitudes de extracción le permiten realizar sus propios cambios en la documentación. AEM Un miembro del equipo de documentos de la revisa las ediciones para su inclusión. Clic **Editar esta página** en la parte superior del panel de navegación derecho en cualquier página para realizar los cambios sugeridos y crear la solicitud de extracción.
 
-Todas las solicitudes de extracción deben ir acompañadas de un [contrato de licencia de colaborador o CLA](https://opensource.adobe.com/cla.html) firmado. Esto otorga permiso a Adobe para redistribuir sus contribuciones como parte del proyecto. Usted envía un Adobe CLA una vez. Entonces, si ya envió uno anteriormente, está listo para comenzar.
+Todas las solicitudes de extracción deben tener un [contrato de licencia de colaborador o CLA](https://opensource.adobe.com/cla.html) que está firmado. El CLA concede permiso al Adobe para redistribuir las aportaciones como parte del proyecto. Solo debe mandar un CLA de Adobe, así que si ya mandó uno en el pasado, con ese es suficiente.
 
 ### Vídeo introductorio breve
 
@@ -54,7 +54,7 @@ Consulte el siguiente vídeo para obtener una descripción general rápida de c�
 
 Si es un empleado de Adobe y tiene una contribución que hacer, utilice la organización `AdobeDocs` en el Git corporativo.
 
-Adobe agradece cualquier contribución. Se revisará si se ha realizado en el repositorio público. Sin embargo, las solicitudes de extracción de los empleados de Adobe son más fáciles de procesar y pueden aprobarse más rápidamente en el repositorio corporativo. Asegúrese de que la información confidencial solo se trate en el repositorio corporativo.
+El Adobe está encantado de recibir cualquier contribución y revisa su contribución si se realiza en el repositorio público. Sin embargo, las solicitudes de extracción de los empleados de Adobe son más fáciles de procesar y pueden aprobarse más rápidamente en el repositorio corporativo. Asegúrese de que la información confidencial solo se trate en el repositorio corporativo.
 
 ## Información adicional
 
