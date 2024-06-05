@@ -1,23 +1,23 @@
 ---
-title: Configuración de Adobe Experience Manager Dispatcher para prevenir ataques de tipo CSRF
-description: Aprenda a configurar Adobe Experience Manager Dispatcher para evitar ataques de falsificación de solicitud entre sitios.
+title: Configurar Dispatcher de Adobe Experience Manager para prevenir ataques de tipo CSRF
+description: Aprenda cómo configurar Dispatcher de Adobe Experience Manager para evitar ataques de falsificación de solicitudes en sitios múltiples.
 topic-tags: dispatcher
 content-type: reference
 exl-id: bcd38878-f977-46a6-b01a-03e4d90aef01
 source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '235'
-ht-degree: 48%
+ht-degree: 100%
 
 ---
 
-# Configuración de Adobe Experience Manager Dispatcher para prevenir ataques de tipo CSRF{#configuring-dispatcher-to-prevent-csrf-attacks}
+# Configurar Dispatcher de Adobe Experience Manager para prevenir ataques de tipo CSRF{#configuring-dispatcher-to-prevent-csrf-attacks}
 
-AEM (Adobe Experience Manager) proporciona un marco de trabajo para evitar ataques de falsificación de solicitudes entre sitios. Para utilizar correctamente este marco, realice los siguientes cambios en la configuración de Dispatcher:
+AEM (Adobe Experience Manager) ofrece un marco de trabajo para evitar los ataques de falsificación de solicitudes en sitios múltiples. Para utilizar correctamente este marco de trabajo, realice los siguientes cambios en la configuración de Dispatcher:
 
 >[!NOTE]
 >
->Asegúrese de actualizar los números de reglas en los siguientes ejemplos en función de la configuración existente. Recuerde que los distribuidores utilizan la última regla que coincide para conceder o denegar una autorización, de modo que coloque las reglas cerca de la parte inferior de la lista existente.
+>Asegúrese de actualizar los números de reglas en los siguientes ejemplos en función de la configuración existente. Recuerde que Dispatcher utiliza la última regla que coincide para conceder o denegar una autorización, de modo que las reglas quedan cerca de la parte inferior de la lista existente.
 
 1. En la sección `/clientheaders` de `author-farm.any` y `publish-farm.any`, agregue la siguiente entrada al final de la lista:\
    `CSRF-Token`
@@ -28,7 +28,7 @@ AEM (Adobe Experience Manager) proporciona un marco de trabajo para evitar ataqu
 
    `/0999 { /glob "/libs/granite/csrf/token.json" /type "deny" }`
 
-Para comprobar que la configuración está funcionando, observe el archivo dispatcher.log en modo DEBUG. Puede ayudarle a validar que la variable `token.json` para asegurarse de que los filtros no lo almacenen en caché o lo bloqueen. Debería ver mensajes similares a:\
+Para validar que la configuración esté funcionando, observe el archivo dispatcher.log en modo DEBUG. Puede ayudarle a validar que el archivo `token.json` para asegurarse de que los filtros no lo almacenen en caché o lo bloqueen. Debería ver mensajes similares a los siguientes:\
 `... checking [/libs/granite/csrf/token.json]  `
 `... request URL not in cache rules: /libs/granite/csrf/token.json`\
 `... cache-action for [/libs/granite/csrf/token.json]: NONE`

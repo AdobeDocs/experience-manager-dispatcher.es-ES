@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '539'
-ht-degree: 90%
+ht-degree: 100%
 
 ---
 
@@ -20,9 +20,9 @@ ht-degree: 90%
 
 >[!NOTE]
 >
->Las versiones de Dispatcher son independientes de AEM. AEM Sin embargo, la documentación de Dispatcher está incrustada en la documentación de la. Utilice siempre la documentación de Dispatcher incrustada en la documentación para la versión más reciente de AEM.
+>Las versiones de Dispatcher son independientes de AEM. Sin embargo, la documentación de Dispatcher está incrustada en la documentación de AEM. Utilice siempre la documentación de Dispatcher de la última versión de AEM.
 >
->Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher. AEM Ese vínculo está incrustado en la documentación de una versión anterior de la aplicación de.
+>Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación Dispatcher. Ese vínculo está incrustado en la documentación de una versión anterior de AEM.
 
 >[!NOTE]
 >
@@ -30,7 +30,7 @@ ht-degree: 90%
 
 ## Comprobar la configuración básica {#check-the-basic-configuration}
 
-Como siempre, los primeros pasos son comprobar los conceptos básicos:
+Como siempre, los primeros pasos son comprobar los datos básicos:
 
 * [Confirmar operación básica](/help/using/dispatcher-configuration.md#confirming-basic-operation)
 * Compruebe todos los archivos de registro de su servidor web y de Dispatcher. Si es necesario, aumente el `loglevel` utilizado para el [registro](/help/using/dispatcher-configuration.md#logging) de Dispatcher.

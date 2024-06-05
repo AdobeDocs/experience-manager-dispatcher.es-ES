@@ -1,17 +1,17 @@
 ---
 source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '714'
-ht-degree: 69%
+ht-degree: 100%
 
 ---
 # Directrices para contribuir a la documentación de Adobe Experience Manager
 
 ## Filosofía de la documentación
 
-Los usuarios de Adobe Experience Manager están trabajando en entornos altamente competitivos, esforzándose por crear experiencias digitales que los diferencien de su competencia. Por lo tanto, cuando el Adobe AEM ofrece herramientas avanzadas en el ámbito de la documentación, estas herramientas se complementan con una documentación precisa y clara. AEM Permite a los clientes utilizar de inmediato su inversión en el sector de la y maximizar el retorno de la inversión.
+Los usuarios de Adobe Experience Manager están trabajando en entornos altamente competitivos, esforzándose por crear experiencias digitales que los diferencien de su competencia. Por lo tanto, cuando Adobe ofrece herramientas avanzadas en AEM, estas herramientas se complementan con una documentación precisa y clara. Permite a los clientes utilizar de inmediato su inversión en AEM y maximizar el retorno de la inversión.
 
-El objetivo de la documentación de AEM es poner la información en manos de los usuarios de AEM lo antes posible. Por lo tanto, Adobe da prioridad a la documentación precisa y útil, y se esfuerza por actualizarla y mejorarla continuamente.
+La meta de la documentación de AEM es poner la información en manos de los usuarios de AEM lo antes posible. Por lo tanto, Adobe concede prioridad a una documentación precisa y útil, y se esfuerza por actualizarla y mejorarla continuamente.
 
 ## Contribuciones a la documentación
 
@@ -19,25 +19,25 @@ Para mejorar continuamente la documentación de AEM, contamos con la ayuda de to
 
 ## Normas de documentación
 
-Si bien el Adobe AEM acoge con satisfacción las aportaciones a su documentación, cualquier aportación a la documentación de la documentación de la en una solicitud de extracción o en una incidencia, debe ajustarse a las normas de aportación y documentación del Adobe.
+Aunque Adobe agradece las contribuciones a su documentación, toda contribución que se haga a la documentación de AEM, ya sea en forma de solicitud de extracción o de problema, debe ajustarse a las normas de contribución y documentación de Adobe.
 
 Las contribuciones que no cumplan estas normas se rechazarán.
 
-### Los casos de uso estándar se documentan durante el Adobe.
+### Los casos de uso estándar se documentan en Adobe.
 
 La documentación de AEM abarca casos de uso estándar. Los casos de uso que exceden el ámbito de la instalación estándar y el uso del producto no forman parte de la documentación de AEM.
 
 ### Generalmente, Adobe no registra los errores ni sus soluciones alternativas.
 
-La documentación de AEM abarca casos de uso estándar. Por este motivo, los errores, los efectos causados por errores y las soluciones alternativas para los errores no están documentados.
+La documentación de AEM abarca casos de uso estándar. Por este motivo, los errores, los efectos causados por estos y las soluciones alternativas no suelen registrarse.
 
-Las excepciones a esta regla se aplican a las notas de la versión, donde los problemas conocidos pueden enumerarse con posibles soluciones aprobadas por el equipo de administración del producto de.
+Las excepciones a esta regla se aplican a las notas de la versión, donde los problemas conocidos pueden enumerarse con posibles soluciones aprobadas por el equipo de administración del producto.
 
 ### Las contribuciones a la documentación no sirven para responder preguntas técnicas.
 
 Cualquier idea que tenga para mejorar la documentación de AEM es bienvenida como contribución. Sin embargo, los comentarios, las incidencias y las solicitudes de extracción están destinadas únicamente a las *contribuciones*. No están pensados para responder a sus preguntas sobre cómo utilizar AEM, implementar su proyecto de AEM o resolver problemas técnicos.
 
-AEM Puede informar de cualquier pregunta acerca de errores técnicos o de uso de la. Utilice el proceso de soporte normal mediante el [Portal de soporte Enterprise de Experience Cloud](https://experienceleague.adobe.com/?support-solution=General#support) o discutido en el [comunidad de Experience Manager](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community).
+Puede informar de cualquier pregunta acerca de errores técnicos o de uso de AEM. Utilice el proceso de soporte normal mediante el [Portal de soporte Enterprise de Experience Cloud](https://experienceleague.adobe.com/?support-solution=General#support) o discutido en la [comunidad de Experience Manager](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community).
 
 ***Las contribuciones a la documentación de AEM no sustituyen al equipo de asistencia de Adobe*** y se rechaza cualquier contribución de este tipo que busque respuestas a preguntas relacionadas con la asistencia.
 
@@ -45,7 +45,7 @@ AEM Puede informar de cualquier pregunta acerca de errores técnicos o de uso de
 
 Si crea un problema para sugerir mejoras en la documentación, debe incluir vínculos a las páginas afectadas. Si crea un problema utilizando el vínculo **Editar esta página** en una página de documentación, el problema se crea automáticamente con un vínculo a la página.
 
-Este proceso no se aplica a las solicitudes de extracción, ya que las solicitudes de extracción, por su naturaleza, hacen referencia a las páginas afectadas.
+Este proceso no se aplica a las solicitudes de extracción, ya que por su naturaleza hacen referencia a las páginas afectadas.
 
 ## Directrices de documentación
 
@@ -87,7 +87,7 @@ Intente evitar cualquier referencia directa a una versión específica en todo e
 
 ### Uso de Día, AEM, CQ, CRX
 
-En un artículo, haga siempre referencia al producto por su nombre completo **Adobe Experience Manager** la primera vez que se utiliza. A partir de entonces, puede denominarse **AEM**.
+En un artículo, haga siempre referencia al producto por su nombre completo **Adobe Experience Manager** la primera vez que se utiliza. A partir de entonces, se denomina **AEM**.
 
 No se deben utilizar las palabras Día, Software de día, CQ y CRX, excepto cuando sea inevitable, como en nombres de clase o en referencia al historial de AEM.
 

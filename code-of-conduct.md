@@ -1,8 +1,8 @@
 ---
 source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '435'
-ht-degree: 69%
+ht-degree: 100%
 
 ---
 # Código de conducta de Adobe
@@ -13,9 +13,9 @@ Para fomentar un ambiente abierto y acogedor, tanto los contribuyentes como los 
 
 ## Estándares de Adobe
 
-Algunos ejemplos de comportamiento que contribuyen a crear un entorno positivo son:
+Algunos ejemplos de comportamiento que contribuyen a crear un entorno positivo son los siguientes:
 
-* Uso de un lenguaje amable e inclusivo
+* Uso de un lenguaje acogedor e inclusivo
 * Respetar diferentes puntos de vista y experiencias
 * Aceptar amistosamente críticas constructivas
 * Centrarse en lo que es mejor para la comunidad
@@ -37,7 +37,7 @@ Los administradores de proyectos tienen el derecho y la responsabilidad de elimi
 
 ## Ámbito
 
-Este Código de conducta se aplica tanto en los espacios del proyecto como en los espacios públicos cuando una persona representa al proyecto o su comunidad. Algunos ejemplos de representación de un proyecto o comunidad son el uso de una dirección de correo electrónico oficial del proyecto. También puede incluir publicaciones a través de una cuenta oficial en los medios sociales. O puede incluir actuar como representante designado en un evento en línea o sin conexión. Los administradores de proyectos pueden definir y aclarar mejor la representación de un proyecto.
+Este Código de conducta se aplica tanto en los espacios del proyecto como en los espacios públicos cuando una persona representa al proyecto o su comunidad. Algunos ejemplos de representación de un proyecto o comunidad son el uso de una dirección de correo electrónico oficial del proyecto. También puede incluir publicaciones a través de una cuenta oficial en las redes sociales. O puede incluir actuar como representante designado en un evento en línea o sin conexión. Los administradores de proyectos pueden definir y aclarar mejor la representación de un proyecto.
 
 ## Aplicación
 
