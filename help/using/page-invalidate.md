@@ -12,7 +12,7 @@ exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
 source-wordcount: '1407'
-ht-degree: 74%
+ht-degree: 94%
 
 ---
 
@@ -24,7 +24,7 @@ Al utilizar Dispatcher con AEM, la interacción debe configurarse para garantiza
 
 La cuenta de usuario predeterminada `admin` se utiliza para autenticar los agentes de replicación instalados de forma predeterminada. Cree una cuenta de usuario dedicada para utilizarla con los agentes de replicación.
 
-Para obtener más información, consulte la [Configurar usuarios de replicación y transporte](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) AEM de la lista de comprobación de seguridad de la.
+Para obtener más información, consulte la sección [Configurar Replicación y usuarios de transporte](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) de la lista de comprobación de seguridad AEM.
 
 <!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
@@ -50,7 +50,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
  -->
 
-AEM Utilice el siguiente procedimiento para configurar un agente de replicación en la instancia de autor de la. La configuración invalida la caché de Dispatcher al activar la página:
+Utiliza el siguiente procedimiento para configurar un agente de replicación en la instancia de autor de AEM. La configuración invalida la caché de Dispatcher al activar la página:
 
 1. Abra la consola Herramientas de AEM. (`https://localhost:4502/miscadmin#/etc`)
 1. Abra el agente de replicación necesario debajo de Herramientas/replicación/agentes en autor. Puede utilizar el agente de vaciado de Dispatcher instalado de forma predeterminada.
@@ -72,19 +72,19 @@ Para obtener más información sobre cómo habilitar el acceso a las URL de vani
 
 >[!NOTE]
 >
->El agente para vaciar la caché de Dispatcher no necesita un nombre de usuario y una contraseña, pero si se configura, se envían con una autenticación básica.
+>El agente para vaciar la caché de Dispatcher no tiene que tener un nombre de usuario y una contraseña, pero si se configura, se envían con una autenticación básica.
 
 Hay dos problemas potenciales con este enfoque:
 
-* Se debe poder acceder a Dispatcher desde la instancia de creación. Si la red (por ejemplo, el cortafuegos) está configurada de tal manera que el acceso entre los dos está restringido, es posible que esta situación no sea el caso.
+* Se debe poder acceder a Dispatcher desde la instancia de creación. Si la red (por ejemplo, el cortafuegos) está configurada de tal manera que el acceso entre los dos está restringido, esta situación puede que no sea el caso.
 
-* La publicación y la invalidación de la caché se realizan al mismo tiempo. Dependiendo del momento, un usuario puede solicitar una página justo después de haberla eliminado de la caché y justo antes de que se publique la nueva página. AEM devolverá la página antigua y Dispatcher la almacenará en la caché de nuevo. Esta situación es más un problema para los sitios grandes.
+* La publicación y la invalidación de la caché se realizan al mismo tiempo. Dependiendo del momento, un usuario puede solicitar una página justo después de haberla eliminado de la caché y justo antes de que se publique la nueva página. AEM devolverá la página antigua y Dispatcher la almacenará en la caché de nuevo. Esta situación es un problema más bien para los sitios grandes.
 
 ## Invalidar la caché de Dispatcher desde una instancia de publicación {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 En determinadas circunstancias, se pueden conseguir mejoras en el rendimiento, al transferir la administración de la caché del entorno de creación a una instancia de publicación. A continuación, será el entorno de publicación (no el entorno de creación de AEM) el que envía una solicitud de invalidación de la caché a Dispatcher cuando se reciba una página publicada.
 
-Estas circunstancias incluyen:
+Estas circunstancias incluyen las siguientes:
 
 <!-- 
 
@@ -94,12 +94,12 @@ Comment Type: draft
 
  -->
 
-* AEM Prevención de posibles conflictos de temporización entre Dispatcher y la instancia de publicación (consulte). [Invalidar la caché de Dispatcher desde el entorno de creación](#invalidating-dispatcher-cache-from-the-authoring-environment)).
+* Prevenir posibles conflictos de programación entre Dispatcher de AEM y la instancia de publicación (consulte [Invalidación de la caché de Dispatcher desde el entorno de creación](#invalidating-dispatcher-cache-from-the-authoring-environment)).
 * El sistema incluye varias instancias de publicación que residen en servidores de alto rendimiento y solo una instancia de creación.
 
 >[!NOTE]
 >
->AEM Un administrador experimentado de la debe tomar la decisión de utilizar este método.
+>Un administrador de AEM experimentado debe tomar la decisión de utilizar este método.
 
 Un agente de replicación que opera en la instancia de publicación controla el vaciado de Dispatcher. Sin embargo, la configuración se realiza en el entorno de creación y luego se transfiere activando el agente:
 
@@ -122,7 +122,7 @@ Después de configurar, cuando active una página de autor a publicación, este 
 
 ## Invalidar manualmente la caché de Dispatcher {#manually-invalidating-the-dispatcher-cache}
 
-Para invalidar (o vaciar) la caché de Dispatcher sin activar una página, puede enviar una petición HTTP a Dispatcher. Por ejemplo, puede crear una aplicación AEM que permita a los administradores u otras aplicaciones vaciar la caché.
+Para invalidar (o vaciar) la caché de Dispatcher sin activar una página, puede enviar una petición HTTP a Dispatcher. Por ejemplo, puede crear una aplicación AEM que permita vaciar la caché a los administradores u otras aplicaciones.
 
 La solicitud HTTP hace que Dispatcher elimine archivos específicos de la caché. De forma opcional, Dispatcher actualiza la caché con una copia nueva.
 
@@ -143,11 +143,11 @@ Dispatcher descarga (elimina) los archivos en caché y las carpetas que tienen n
 
 * Todos los archivos (de cualquier extensión) llamados `en` en el directorio `geometrixx-outdoors`
 
-* Cualquier directorio llamado `_jcr_content` debajo de la `en` (que, si existe, contiene procesamientos en caché de subnodos de la página)
+* Cualquier directorio llamado `_jcr_content` debajo del directorio `en` (que, si existe, contiene procesamientos en caché de subnodos de la página)
 
 Todos los demás archivos de la caché de Dispatcher (o hasta un nivel en particular, dependiendo de la configuración `/statfileslevel`) se invalidan tocando el archivo `.stat`. La fecha de la última modificación de este archivo se comparará con la fecha de la última modificación de un documento almacenado en caché y el documento se recuperará si el archivo `.stat` es más reciente. Consulte [Invalidación de archivos por nivel de carpeta](dispatcher-configuration.md#main-pars_title_26) para obtener más información.
 
-La invalidación (es decir, el contacto de archivos .stat) se puede evitar enviando un encabezado adicional `CQ-Action-Scope: ResourceOnly`. Esta funcionalidad se puede utilizar para vaciar recursos concretos. Todo sin invalidar otras partes de la caché, como los datos JSON. Esos datos se crean dinámicamente y requieren vaciado regular independientemente de la caché. Por ejemplo, representar datos obtenidos de un sistema de terceros para mostrar noticias, lectores de stock, etc.
+La invalidación (es decir, el contacto de archivos .stat) se puede evitar enviando un encabezado adicional `CQ-Action-Scope: ResourceOnly`. Esta funcionalidad se puede utilizar para vaciar recursos concretos. Todo sin invalidar otras partes de la caché, como los datos JSON. Esos datos se crean dinámicamente y requieren vaciado regular independientemente de la caché. Por ejemplo, representar datos que se obtienen de un sistema de terceros para mostrar noticias, cotizaciones bursátiles, etc.
 
 ### Eliminar archivos y volver a almacenarlos en la caché {#delete-and-recache-files}
 
@@ -169,7 +169,7 @@ page_path1
 page_pathn
 ```
 
-Las rutas de página para volver a almacenar en caché inmediatamente se enumeran en líneas independientes en el cuerpo del mensaje. El valor de `CQ-Handle` es la ruta de una página que invalida las páginas que se van a almacenar de nuevo. (Consulte el parámetro `/statfileslevel` del elemento de configuración [Caché](dispatcher-configuration.md#main-pars_146_44_0010)). El siguiente ejemplo de mensaje de solicitud HTTP elimina y vuelve a almacenar en la caché el `/content/geometrixx-outdoors/en.html page`:
+Las rutas de página para volver a almacenar archivos en la caché inmediatamente se enumeran en líneas independientes en el cuerpo del mensaje. El valor de `CQ-Handle` es la ruta de una página que invalida las páginas que se van a almacenar de nuevo. (Consulte el parámetro `/statfileslevel` del elemento de configuración [Caché](dispatcher-configuration.md#main-pars_146_44_0010)). El siguiente ejemplo de mensaje de solicitud HTTP elimina y vuelve a almacenar en la caché el `/content/geometrixx-outdoors/en.html page`:
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
