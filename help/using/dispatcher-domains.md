@@ -7,7 +7,7 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: 3b24e3eb54aa48c4891943b7458c57525897517f
 workflow-type: ht
 source-wordcount: '2929'
 ht-degree: 100%
@@ -348,7 +348,7 @@ El siguiente ejemplo de archivo httpd.conf configura dos hosts virtuales para un
 
 * La raíz del documento de cada dominio virtual es el directorio de la caché de Dispatcher que contiene las páginas del sitio. (líneas 20 y 33)
 * La regla de reescritura de URL para cada dominio virtual es una expresión regular. La expresión regular añade un prefijo a la ruta de la página solicitada. Lleva como prefijo la ruta a las páginas de la caché. (líneas 19 y 35)
-* La propiedad `DispatherUseProcessedURL` se establece en `1`. (línea 10)
+* La propiedad `DispatcherUseProcessedURL` se establece en `1`. (línea 10)
 
 Por ejemplo, el servidor web realiza las siguientes acciones cuando recibe una solicitud con la dirección URL `https://brandA.com/en/products.html`:
 
