@@ -1,6 +1,6 @@
 ---
-title: Utilizar SSL con Dispatcher
-description: AEM Obtenga información sobre cómo configurar Dispatcher para que se comunique con los usuarios mediante conexiones SSL.
+title: Utilización de SSL con Dispatcher
+description: Aprenda a configurar Dispatcher para que se comunique con AEM mediante conexiones SSL.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
@@ -10,15 +10,15 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1310'
-ht-degree: 89%
+ht-degree: 100%
 
 ---
 
-# Utilizar SSL con Dispatcher {#using-ssl-with-dispatcher}
+# Utilización de SSL con Dispatcher {#using-ssl-with-dispatcher}
 
-Utilice conexiones SSL entre Dispatcher y el equipo de renderización:
+Utilice conexiones SSL entre Dispatcher y el equipo de procesamiento:
 
 * [SSL unidireccional](#use-ssl-when-dispatcher-connects-to-aem)
 * [SSL mutuo](#configuring-mutual-ssl-between-dispatcher-and-aem)
@@ -29,7 +29,7 @@ Utilice conexiones SSL entre Dispatcher y el equipo de renderización:
 
 ## Usar SSL cuando Dispatcher se conecta a AEM {#use-ssl-when-dispatcher-connects-to-aem}
 
-AEM Configure Dispatcher para que se comunique con la instancia de procesamiento de CQ o de la mediante conexiones SSL.
+Configure Dispatcher para que se comunique con la instancia de procesamiento de AEM o CQ mediante conexiones SSL.
 
 Antes de configurar Dispatcher, configure AEM o CQ para utilizar SSL:
 
@@ -121,7 +121,7 @@ Para utilizar SSL mutuo, configure las conexiones entre Dispatcher y el equipo d
 * Dispatcher comprueba que la CA del certificado de la instancia de procesamiento es de confianza.
 * (Opcional) Dispatcher comprueba que el certificado de la instancia de procesamiento coincide con la dirección del servidor de la instancia de procesamiento.
 
-Para configurar SSL mutuo, necesita certificados firmados con una entidad emisora de certificados (CA) de confianza. Los certificados autofirmados no son adecuados. Puede actuar como CA o utilizar los servicios de una CA de terceros para firmar sus certificados. Para configurar SSL mutuo, necesita los siguientes elementos:
+Para configurar un certificado SSL mutuo, necesita certificados firmados por una entidad emisora de certificados (CA) de confianza. Los certificados autofirmados no son adecuados. Puede actuar como CA o utilizar los servicios de una CA de terceros para firmar sus certificados. Para configurar SSL mutuo, necesita los siguientes elementos:
 
 * Certificados firmados para la instancia de procesamiento y Dispatcher
 * El certificado de CA (si actúa como CA)
@@ -130,8 +130,8 @@ Para configurar SSL mutuo, necesita certificados firmados con una entidad emisor
 Para configurar SSL mutuo, realice los siguientes pasos:
 
 1. [Instale](dispatcher-install.md) la última versión de Dispatcher para su plataforma. Utilice un binario de Dispatcher que admita SSL (SSL está en el nombre del archivo, como `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
-1. [Crear o obtener un certificado firmado por la CA](dispatcher-ssl.md#main-pars-title-3) para Dispatcher y la instancia de procesamiento.
-1. [Cree un repositorio de claves que contenga el certificado de procesamiento](dispatcher-ssl.md#main-pars-title-6) y configure el servicio HTTP del procesamiento.
+1. [Cree o consiga un certificado firmado por la CA](dispatcher-ssl.md#main-pars-title-3) para Dispatcher y la instancia de procesamiento.
+1. [Cree un almacén de claves que contenga el certificado de procesamiento](dispatcher-ssl.md#main-pars-title-6) y configure el servicio HTTP del procesamiento.
 1. [Configure el módulo del servidor web de Dispatcher](dispatcher-ssl.md#main-pars-title-4) para SSL mutuo.
 
 ### Crear o conseguir certificados firmados por la CA {#creating-or-obtaining-ca-signed-certificates}
@@ -286,7 +286,7 @@ Combine el certificado de Dispatcher y la clave privada no cifrada en un solo ar
 Agregue las siguientes propiedades a la [configuración del módulo Dispatcher](dispatcher-install.md#main-pars-55-35-1022) (en `httpd.conf`):
 
 * `DispatcherCertificateFile`: Ruta al archivo de certificado unificado de Dispatcher que contiene el certificado público y la clave privada no cifrada. Este archivo se utiliza cuando el servidor SSL solicita el certificado de cliente de Dispatcher.
-* `DispatcherCACertificateFile`: Ruta al archivo de certificado de la CA. Se utiliza si el servidor SSL presenta una CA en la que una autoridad raíz no confía.
+* `DispatcherCACertificateFile`: Ruta al archivo de certificado de la CA. Se utiliza si el servidor SSL presenta una CA en la que una entidad raíz no confía.
 * `DispatcherCheckPeerCN`: Si se habilita (`On`) o se deshabilita (`Off`) la comprobación de nombres de host para certificados de servidor remoto.
 
 El siguiente código es un ejemplo de configuración:

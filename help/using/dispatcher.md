@@ -6,9 +6,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3079'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
@@ -20,7 +20,7 @@ ht-degree: 97%
 
 Dispatcher es una herramienta de equilibrio de carga y de almacenamiento en caché de Adobe Experience Manager que se puede utilizar junto con un servidor web de clase empresarial.
 
-El proceso de implementación de Dispatcher es independiente del servidor web y de la plataforma del sistema operativo elegida:
+El proceso de implementación de Dispatcher es independiente del servidor web y de la plataforma del sistema operativo elegido:
 
 1. Obtenga información sobre Dispatcher (esta página). Consulte también las [preguntas más frecuentes sobre Dispatcher](/help/using/dispatcher-faq.md).
 1. Instale un [servidor web admitido](https://experienceleague.adobe.com/es_es/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements) según la documentación del servidor web.
@@ -30,7 +30,7 @@ El proceso de implementación de Dispatcher es independiente del servidor web y 
 
 >[!NOTE]
 >
->AEM Para comprender mejor cómo funciona Dispatcher con los recursos de la interfaz de usuario de la interfaz de usuario de:
+>Para comprender mejor cómo funciona Dispatcher con AEM, haga lo siguiente:
 >
 >* Consulte [Preguntas a los expertos de la comunidad de AEM para julio de 2017](https://communities.adobeconnect.com/pf0gem7igw1f/).
 >* Acceda a [este repositorio](https://github.com/adobe/aem-dispatcher-experiments). Contiene una colección de experimentos en formato de laboratorio &quot;para llevar a casa&quot;.
@@ -41,8 +41,8 @@ Utilice la siguiente información según sea necesario:
 * [Lista de comprobación de seguridad de Dispatcher ](security-checklist.md)
 * [Base de conocimientos de Dispatcher](https://helpx.adobe.com/es/experience-manager/kb/index/dispatcher.html)
 * [Optimizar un sitio web para el rendimiento de la caché](https://experienceleague.adobe.com/es_es/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-* [Uso de Dispatcher con varios dominios](dispatcher-domains.md)
-* [Utilizar SSL con Dispatcher](dispatcher-ssl.md)
+* [Utilización de Dispatcher con múltiples dominios](dispatcher-domains.md)
+* [Utilización de SSL con Dispatcher](dispatcher-ssl.md)
 * [Implementar el almacenamiento en caché con permisos confidenciales](permissions-cache.md)
 * [Solución de problemas de Dispatcher](dispatcher-troubleshooting.md)
 * [Preguntas más frecuentes sobre los problemas principales de Dispatcher](dispatcher-faq.md)
@@ -129,7 +129,7 @@ En una actualización de contenido, cambian uno o varios documentos AEM. AEM env
 Es necesario señalar los siguientes puntos:
 
 * Las actualizaciones de contenido se utilizan en general con un sistema de creación, que “sabe” lo que hay que reemplazar.
-* Las actualizaciones de contenido que afectan a los archivos se eliminan, pero no se reemplazan inmediatamente. AEM La próxima vez que se solicite un archivo de este tipo, Dispatcher recupera el nuevo archivo de la instancia de la instancia y lo coloca en la caché, sobrescribiendo el contenido antiguo.
+* Las actualizaciones de contenido que afectan a los archivos se eliminan, pero no se reemplazan inmediatamente. La próxima vez que se solicite un archivo de ese tipo, Dispatcher recuperará el nuevo archivo de la instancia de AEM y lo colocará en la caché, sobrescribiendo el contenido anterior.
 * En general, las imágenes creadas automáticamente y que contengan texto de una página se guardan en archivos de imagen que comiencen por el mismo identificador. De esa manera, se garantiza que exista la asociación para poder realizar la eliminación. Por ejemplo, puede guardar el texto de título de la página mypage.html como la imagen mypage.titlePicture.gif en la misma carpeta. De este modo, la imagen se elimina automáticamente de la caché cada vez que se actualiza la página, por lo que puede estar seguro de que la imagen siempre reflejará la versión actual de la página.
 * Puede tener varios archivos de estado, por ejemplo, uno por carpeta de idioma. Si se actualiza una página, AEM busca la siguiente carpeta principal que contenga un archivo de estado y que *afecte* a dicho archivo.
 

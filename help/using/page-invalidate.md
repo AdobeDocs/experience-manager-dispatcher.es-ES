@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1407'
-ht-degree: 94%
+ht-degree: 100%
 
 ---
 
@@ -124,11 +124,11 @@ Después de configurar, cuando active una página de autor a publicación, este 
 
 Para invalidar (o vaciar) la caché de Dispatcher sin activar una página, puede enviar una petición HTTP a Dispatcher. Por ejemplo, puede crear una aplicación AEM que permita vaciar la caché a los administradores u otras aplicaciones.
 
-La solicitud HTTP hace que Dispatcher elimine archivos específicos de la caché. De forma opcional, Dispatcher actualiza la caché con una copia nueva.
+La petición HTTP hace que Dispatcher elimine archivos específicos de la caché. De forma opcional, Dispatcher actualiza la caché con una copia nueva.
 
 ### Eliminar archivos en caché {#delete-cached-files}
 
-Ejecute una solicitud HTTP que haga que Dispatcher elimine archivos de la caché. Dispatcher volverá a almacenar en caché los archivos solo cuando reciba una solicitud de cliente para la página. La eliminación de archivos en caché de esta manera es idónea para sitios web que no reciban solicitudes simultáneas para la misma página.
+Emita una petición HTTP que haga que Dispatcher de AEM elimine archivos de la caché. Dispatcher volverá a almacenar en caché los archivos solo cuando reciba una solicitud de cliente para la página. La eliminación de archivos en caché de esta manera es idónea para sitios web que no reciban solicitudes simultáneas para la misma página.
 
 La solicitud HTTP tiene el siguiente formulario:
 
@@ -151,7 +151,7 @@ La invalidación (es decir, el contacto de archivos .stat) se puede evitar envia
 
 ### Eliminar archivos y volver a almacenarlos en la caché {#delete-and-recache-files}
 
-Ejecute una solicitud HTTP que haga que Dispatcher elimine los archivos en caché y que recupere y vuelva a almacenar inmediatamente el archivo. Elimine y vuelva a almacenar en caché inmediatamente los archivos cuando los sitios web reciban solicitudes simultáneas del cliente para la misma página. El almacenamiento inmediato garantiza que Dispatcher recupere y almacene en caché la página solo una vez, en lugar de una vez por cada una de las solicitudes simultáneas del cliente.
+Emita una petición HTTP que haga que Dispatcher elimine los archivos en caché, y que recupere y vuelva a almacenar en la caché inmediatamente el archivo. Elimine y vuelva a almacenar en caché inmediatamente los archivos cuando los sitios web reciban solicitudes simultáneas del cliente para la misma página. El almacenamiento inmediato garantiza que Dispatcher recupere y almacene en caché la página solo una vez, en lugar de una vez por cada una de las solicitudes simultáneas del cliente.
 
 **Nota:** Eliminar y volver a almacenar archivos en la caché solo debe realizarse en la instancia de publicación. Cuando se realiza desde la instancia de autor, las condiciones de carrera se producen cuando se intenta recuperar los recursos antes de publicarlos.
 
@@ -185,7 +185,7 @@ Content-Length: 36
 
 El siguiente código implementa un servlet que envía una solicitud de invalidación a Dispatcher. El servlet recibe un mensaje de solicitud que contiene parámetros `handle` y `page`. Estos parámetros proporcionan el valor del encabezado `CQ-Handle` y la ruta de acceso de la página a recuperar, respectivamente. El servlet utiliza los valores para construir la solicitud HTTP para Dispatcher.
 
-Cuando se implementa el servlet en la instancia de publicación, la siguiente URL hace que Dispatcher elimine la página /content/geometrixx-outdoors/en.html y, a continuación, almacene en caché una copia nueva.
+Cuando se implementa el servlet en la instancia de publicación, la siguiente URL hace que Dispatcher elimine la página /content/geometrixx-outdoors/en.html y, a continuación, almacena en caché una copia nueva.
 
 `10.36.79.223:4503/bin/flushcache/html?page=/content/geometrixx-outdoors/en.html&handle=/content/geometrixx-outdoors/en/men.html`
 
