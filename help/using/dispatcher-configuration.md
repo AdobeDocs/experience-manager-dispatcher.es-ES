@@ -2,10 +2,10 @@
 title: Configuración de Dispatcher de AEM
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, los archivos de configuración, las variables de entorno y la asignación de nombres a la instancia. Obtenga información sobre la definición de granjas, la identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
 workflow-type: tm+mt
-source-wordcount: '8876'
-ht-degree: 100%
+source-wordcount: '8938'
+ht-degree: 99%
 
 ---
 
@@ -19,7 +19,7 @@ Las siguientes secciones describen cómo configurar varios aspectos de Dispatche
 
 ## Compatibilidad con IPv4 e IPv6 {#support-for-ipv-and-ipv}
 
-Todos los elementos de AEM y Dispatcher se pueden instalar en redes IPv4 e IPv6. Consulte [IPV4 e IPV6](https://experienceleague.adobe.com/es_es/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#ipv-and-ipv).
+Todos los elementos de AEM y Dispatcher se pueden instalar en redes IPv4 e IPv6. Consulte [IPV4 e IPV6](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#ipv-and-ipv).
 
 ## Archivos de configuración de Dispatcher {#dispatcher-configuration-files}
 
@@ -402,9 +402,9 @@ En este ejemplo, la siguiente tabla muestra los hosts virtuales que se resuelven
 
 >[!CAUTION]
 >
->`/allowAuthorized` Establecer en `"0"` en la sección `/cache` para activar esta funcionalidad. Tal y como se detalla en la sección [Almacenamiento en caché cuando se utiliza la autenticación](#caching-when-authentication-is-used), cuando configure `/allowAuthorized 0 `, las solicitudes que incluyen información de autenticación **no** se guardan en caché. Si se requiere un almacenamiento en caché que distinga los permisos, consulte la página [Almacenamiento en caché de contenido seguro](https://experienceleague.adobe.com/es_es/docs/experience-manager-dispatcher/using/configuring/permissions-cache).
+>`/allowAuthorized` Establecer en `"0"` en la sección `/cache` para activar esta funcionalidad. Tal y como se detalla en la sección [Almacenamiento en caché cuando se utiliza la autenticación](#caching-when-authentication-is-used), cuando configure `/allowAuthorized 0 `, las solicitudes que incluyen información de autenticación **no** se guardan en caché. Si se requiere un almacenamiento en caché que distinga los permisos, consulte la página [Almacenamiento en caché de contenido seguro](https://experienceleague.adobe.com/es/docs/experience-manager-dispatcher/using/configuring/permissions-cache).
 
-Cree una sesión segura para acceder al conjunto de procesamiento, de modo que los usuarios tengan que iniciar la sesión para acceder a cualquier página del conjunto. Tras iniciar sesión, los usuarios pueden acceder a las páginas de la granja. Consulte [Creación de un grupo de usuarios cerrado](https://experienceleague.adobe.com/es_es/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used) para obtener información sobre el uso de esta función con CUG. Además, consulte la [Lista de comprobación de seguridad](/help/using/security-checklist.md) de Dispatcher antes de empezar.
+Cree una sesión segura para acceder al conjunto de procesamiento, de modo que los usuarios tengan que iniciar la sesión para acceder a cualquier página del conjunto. Tras iniciar sesión, los usuarios pueden acceder a las páginas de la granja. Consulte [Creación de un grupo de usuarios cerrado](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used) para obtener información sobre el uso de esta función con CUG. Además, consulte la [Lista de comprobación de seguridad](/help/using/security-checklist.md) de Dispatcher antes de empezar.
 
 La propiedad `/sessionmanagement` es una subpropiedad de `/farms`.
 
@@ -555,7 +555,7 @@ Utilice la sección `/filter` para especificar las solicitudes HTTP que acepta D
 
 >[!CAUTION]
 >
->Consulte la [Lista de comprobación de seguridad de Dispatcher](security-checklist.md) para obtener más información al restringir el acceso del uso de Dispatcher de AEM. Además, lea la [Lista de comprobación de seguridad AEM](https://experienceleague.adobe.com/es_es/docs/experience-manager-65/content/security/security-checklist#security) para obtener más información sobre la seguridad relacionada con su instalación de AEM.
+>Consulte la [Lista de comprobación de seguridad de Dispatcher](security-checklist.md) para obtener más información al restringir el acceso del uso de Dispatcher de AEM. Además, lea la [Lista de comprobación de seguridad AEM](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/security/security-checklist#security) para obtener más información sobre la seguridad relacionada con su instalación de AEM.
 
 La sección `/filter` consta de una serie de reglas que deniegan o permiten el acceso al contenido según los patrones de la parte de línea de solicitud de la petición HTTP. Utilice una estrategia de lista de permitidos para su sección `/filter`:
 
@@ -805,7 +805,7 @@ Dependiendo de la instalación, puede haber recursos adicionales en `/libs`, `/a
 
 >[!CAUTION]
 >
->Si está [utilizando informes en un entorno de publicación](https://experienceleague.adobe.com/es_es/docs/experience-manager-65/content/sites/administering/operations/reporting#using-reports-in-a-publish-environment), debe configurar Dispatcher para que deniegue el acceso a `/etc/reports` a los visitantes externos.
+>Si está [utilizando informes en un entorno de publicación](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/sites/administering/operations/reporting#using-reports-in-a-publish-environment), debe configurar Dispatcher para que deniegue el acceso a `/etc/reports` a los visitantes externos.
 
 ### Restringir cadenas de consulta {#restricting-query-strings}
 
@@ -937,7 +937,7 @@ La sección `/vanity_urls` contiene las siguientes propiedades:
 
 >[!NOTE]
 >
->Si su procesamiento es una instancia de AEM debe instalar el [paquete VanityURLS-Components desde la distribución de software](https://experience.adobe.com/#/downloads/content/software-distribution/es/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) para habilitar el servicio de URL de vanidad. (Consulte [Distribución de software](https://experienceleague.adobe.com/es_es/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution) para obtener más información).
+>Si su procesamiento es una instancia de AEM debe instalar el [paquete VanityURLS-Components desde la distribución de software](https://experience.adobe.com/#/downloads/content/software-distribution/es/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) para habilitar el servicio de URL de vanidad. (Consulte [Distribución de software](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution) para obtener más información).
 
 Utilice el siguiente procedimiento para habilitar el acceso a las URL de vanidad.
 
@@ -945,6 +945,21 @@ Utilice el siguiente procedimiento para habilitar el acceso a las URL de vanidad
 1. Para cada URL de vanidad que haya configurado para una página de AEM o CQ, asegúrese de que la configuración [`/filter`](#configuring-access-to-content-filter) deniegue la URL. Si es necesario, agregue un filtro que deniegue la dirección URL.
 1. Agregue la sección `/vanity_urls` debajo de `/farms`.
 1. Reinicie el servidor web Apache.
+
+Con Dispatcher **versión 4.3.6** se ha agregado un nuevo parámetro `/loadOnStartup`. Con este parámetro, se puede configurar la carga de URL de vanidad al inicio, de la siguiente manera:
+
+Al agregar `/loadOnStartup 0` (ver el ejemplo a continuación), puede deshabilitar la carga de URL de vanidad al inicio.
+
+```
+/vanity_urls {
+        /url "/libs/granite/dispatcher/content/vanityUrls.html"
+        /file "/tmp/vanity_urls"
+        /loadOnStartup 0
+        /delay 60
+      } 
+```
+
+Mientras `/loadOnStartup 1` carga las URL personales en el inicio. Tenga en cuenta que `/loadOnStartup 1` es el valor predeterminado actual de este parámetro.
 
 ## Reenviar solicitudes de distribución - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
@@ -1167,7 +1182,7 @@ Cuando se invalida un archivo en `/content/myWebsite/xx`, se toca cada archivo `
 
 >[!NOTE]
 >
->La invalidación se puede evitar enviando un encabezado `CQ-Action-Scope:ResourceOnly` adicional. Esto se puede utilizar para vaciar recursos concretos sin invalidar otras partes de la caché. Consulte [esta página](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) e [Invalidación manual de la caché de Dispatcher](https://experienceleague.adobe.com/es_es/docs/experience-manager-dispatcher/using/configuring/page-invalidate#configuring) para obtener más información.
+>La invalidación se puede evitar enviando un encabezado `CQ-Action-Scope:ResourceOnly` adicional. Esto se puede utilizar para vaciar recursos concretos sin invalidar otras partes de la caché. Consulte [esta página](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) e [Invalidación manual de la caché de Dispatcher](https://experienceleague.adobe.com/es/docs/experience-manager-dispatcher/using/configuring/page-invalidate#configuring) para obtener más información.
 
 >[!NOTE]
 >
