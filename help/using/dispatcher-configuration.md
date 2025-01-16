@@ -3,9 +3,9 @@ title: Configuración de Dispatcher de AEM
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, los archivos de configuración, las variables de entorno y la asignación de nombres a la instancia. Obtenga información sobre la definición de granjas, la identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8938'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -152,7 +152,7 @@ Utilice la propiedad `/name` para especificar un nombre único para identificar 
 
 La propiedad `/farms` define uno o más conjuntos de comportamientos de Dispatcher, donde cada conjunto se asocia con diferentes sitios web o direcciones URL. La propiedad `/farms` puede incluir una o varias granjas:
 
-* Utilice una única granja0 cuando desee que Dispatcher gestione todas las páginas o sitios web del mismo modo.
+* Utilice una única granja cuando desee que Dispatcher gestione todas las páginas o sitios web del mismo modo.
 * Cree varias granjas cuando diferentes áreas del sitio web o sitios web diferentes requieran un comportamiento de Dispatcher diferente.
 
 La propiedad `/farms` es una propiedad de nivel superior de la estructura de configuración. Para definir una granja, agregue una propiedad secundaria a la propiedad `/farms`. Utilice un nombre de propiedad que identifique de forma exclusiva la granja en la instancia de Dispatcher.
@@ -946,9 +946,9 @@ Utilice el siguiente procedimiento para habilitar el acceso a las URL de vanidad
 1. Agregue la sección `/vanity_urls` debajo de `/farms`.
 1. Reinicie el servidor web Apache.
 
-Con Dispatcher **versión 4.3.6** se ha agregado un nuevo parámetro `/loadOnStartup`. Con este parámetro, se puede configurar la carga de URL de vanidad al inicio, de la siguiente manera:
+Con Dispatcher **versión 4.3.6** se ha añadido un nuevo parámetro `/loadOnStartup`. Con este parámetro, se puede configurar la carga de URL mnemónica al inicio, de la siguiente manera:
 
-Al agregar `/loadOnStartup 0` (ver el ejemplo a continuación), puede deshabilitar la carga de URL de vanidad al inicio.
+Al añadir `/loadOnStartup 0` (ver el ejemplo a continuación), puede deshabilitar la carga de URL mnemónica en el inicio.
 
 ```
 /vanity_urls {
@@ -959,7 +959,7 @@ Al agregar `/loadOnStartup 0` (ver el ejemplo a continuación), puede deshabilit
       } 
 ```
 
-Mientras `/loadOnStartup 1` carga las URL personales en el inicio. Tenga en cuenta que `/loadOnStartup 1` es el valor predeterminado actual de este parámetro.
+Mientras `/loadOnStartup 1` carga las URL mnemónicas en el inicio. Tenga en cuenta que `/loadOnStartup 1` es el valor predeterminado actual de este parámetro.
 
 ## Reenviar solicitudes de distribución - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
