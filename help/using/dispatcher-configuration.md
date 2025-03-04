@@ -2,10 +2,10 @@
 title: Configuración de Dispatcher de AEM
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, los archivos de configuración, las variables de entorno y la asignación de nombres a la instancia. Obtenga información sobre la definición de granjas, la identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: da9bf0c1f4cceccfc6be9f4871a21d2bb703f0a4
-workflow-type: ht
-source-wordcount: '8938'
-ht-degree: 100%
+source-git-commit: a9ef9d7d2fe5c421cd8039579fd84961ea901def
+workflow-type: tm+mt
+source-wordcount: '8941'
+ht-degree: 99%
 
 ---
 
@@ -1037,7 +1037,7 @@ El archivo de estado no tiene contenido. Cuando se actualiza el contenido, Dispa
 
 La propiedad `/serveStaleOnError` controla si Dispatcher devuelve documentos invalidados cuando el servidor de procesamiento devuelve un error. De forma predeterminada, cuando se toca un archivo de estado y se invalida el contenido almacenado en caché, Dispatcher elimina el contenido almacenado en caché. Esta acción se realiza la próxima vez que se solicite.
 
-Si `/serveStaleOnError` se establece en `"1"`, Dispatcher no elimina el contenido invalidado de la caché. Es decir, a menos que el servidor de procesamiento devuelva una respuesta correcta. Una respuesta 5xx de AEM o un tiempo de espera de una conexión hace que Dispatcher presente el contenido obsoleto y responda con un estado HTTP de 111 (Error de revalidación).
+Si `/serveStaleOnError` se establece en `"1"`, Dispatcher no elimina el contenido invalidado de la caché. Es decir, a menos que el servidor de procesamiento devuelva una respuesta correcta. Una respuesta 502, 503 o 504 de AEM o el tiempo de espera de una conexión hace que Dispatcher presente el contenido obsoleto y responda con un estado HTTP de 111 (Error de revalidación).
 
 ### Almacenar en caché cuando se utiliza la autenticación {#caching-when-authentication-is-used}
 
