@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
 source-wordcount: '1407'
-ht-degree: 100%
+ht-degree: 95%
 
 ---
 
@@ -20,13 +20,13 @@ ht-degree: 100%
 
 Al utilizar Dispatcher con AEM, la interacción debe configurarse para garantizar una administración eficaz de la caché. Según el entorno, la configuración también podría aumentar el rendimiento.
 
-## Configurar cuentas de usuario de AEM {#setting-up-aem-user-accounts}
+## Configuración de cuentas de usuario de AEM {#setting-up-aem-user-accounts}
 
 La cuenta de usuario predeterminada `admin` se utiliza para autenticar los agentes de replicación instalados de forma predeterminada. Cree una cuenta de usuario dedicada para utilizarla con los agentes de replicación.
 
-Para obtener más información, consulte la sección [Configurar Replicación y usuarios de transporte](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) de la lista de comprobación de seguridad AEM.
+Para obtener más información, consulte la sección [Configuración de usuarios de replicación y transporte](https://experienceleague.adobe.com/es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) de la Lista de comprobación de seguridad de AEM.
 
-<!-- OLD URL from above https://helpx.adobe.com/es/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## Invalidar la caché de Dispatcher desde el entorno de creación {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
@@ -66,7 +66,7 @@ Utiliza el siguiente procedimiento para configurar un agente de replicación en 
 1. Configure otros parámetros según sea necesario.
 1. Haga clic en Aceptar para activar el agente.
 
-También puede acceder y configurar el agente de vaciado de Dispatcher desde la [interfaz de usuario táctil de AEM](https://experienceleague.adobe.com/es_es/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent).
+También puede acceder y configurar el agente de vaciado de Dispatcher desde la [interfaz de usuario táctil de AEM](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent).
 
 Para obtener más información sobre cómo habilitar el acceso a las URL de vanidad, consulte [Habilitar el acceso a las URL de vanidad](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
 
@@ -80,7 +80,7 @@ Hay dos problemas potenciales con este enfoque:
 
 * La publicación y la invalidación de la caché se realizan al mismo tiempo. Dependiendo del momento, un usuario puede solicitar una página justo después de haberla eliminado de la caché y justo antes de que se publique la nueva página. AEM devolverá la página antigua y Dispatcher la almacenará en la caché de nuevo. Esta situación es un problema más bien para los sitios grandes.
 
-## Invalidar la caché de Dispatcher desde una instancia de publicación {#invalidating-dispatcher-cache-from-a-publishing-instance}
+## Invalidación de la caché de Dispatcher desde una instancia de publicación {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 En determinadas circunstancias, se pueden conseguir mejoras en el rendimiento, al transferir la administración de la caché del entorno de creación a una instancia de publicación. A continuación, será el entorno de publicación (no el entorno de creación de AEM) el que envía una solicitud de invalidación de la caché a Dispatcher cuando se reciba una página publicada.
 
@@ -169,7 +169,7 @@ page_path1
 page_pathn
 ```
 
-Las rutas de página para volver a almacenar archivos en la caché inmediatamente se enumeran en líneas independientes en el cuerpo del mensaje. El valor de `CQ-Handle` es la ruta de una página que invalida las páginas que se van a almacenar de nuevo. (Consulte el parámetro `/statfileslevel` del elemento de configuración [Caché](dispatcher-configuration.md#main-pars_146_44_0010)). El siguiente ejemplo de mensaje de solicitud HTTP elimina y vuelve a almacenar en la caché el `/content/geometrixx-outdoors/en.html page`:
+Las rutas de página para volver a almacenar archivos en la caché inmediatamente se enumeran en líneas independientes en el cuerpo del mensaje. El valor de `CQ-Handle` es la ruta de una página que invalida las páginas que se van a almacenar de nuevo. (Consulte el parámetro `/statfileslevel` del elemento de configuración [Cache](dispatcher-configuration.md#main-pars_146_44_0010)). El siguiente ejemplo de mensaje de solicitud HTTP elimina y vuelve a almacenar en la caché el `/content/geometrixx-outdoors/en.html page`:
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  

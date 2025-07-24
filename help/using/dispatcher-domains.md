@@ -1,5 +1,5 @@
 ---
-title: Utilización de Dispatcher con múltiples dominios
+title: Uso de Dispatcher con varios dominios
 description: Aprenda a utilizar Dispatcher para procesar solicitudes de páginas en varios dominios web.
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
@@ -7,14 +7,16 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: b8dc67a9633c1a459a2851f4be99a5fcbec7fe79
-workflow-type: ht
-source-wordcount: '3008'
-ht-degree: 100%
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
+workflow-type: tm+mt
+source-wordcount: '2986'
+ht-degree: 89%
 
 ---
 
-# Utilizar Dispatcher con varios dominios {#using-dispatcher-with-multiple-domains}
+# Uso de Dispatcher con varios dominios {#using-dispatcher-with-multiple-domains}
+
+<!-- This article is missing required metadata image ALT tags throughout -->
 
 >[!NOTE]
 >
@@ -54,17 +56,17 @@ Cuando los clientes envían solicitudes HTTP al servidor web, la dirección URL 
 
 ## Invalidación de caché
 
-Cuando los agentes de replicación de vaciado de Dispatcher solicitan que Dispatcher invalide los archivos en caché, la ruta del contenido en el repositorio debe resolverse en el contenido de la caché.
+Cuando `Dispatcher Flush` agentes de replicación solicitan que Dispatcher invalide los archivos en caché, la ruta del contenido en el repositorio debe resolverse en el contenido de la caché.
 
 ![](assets/chlimage_1-9.png)
 
 * a - Se activará una página en la instancia de autor de AEM y el contenido se duplicará en la instancia de publicación.
-* b - El agente de vaciado de Dispatcher llama a Dispatcher para invalidar la caché del contenido replicado.
+* b - El agente `Dispatcher Flush` llama a Dispatcher para invalidar la memoria caché del contenido replicado.
 * c - Dispatcher toca uno o más archivos .stat para invalidar los archivos en caché.
 
 Para utilizar Dispatcher con varios dominios, debe configurar AEM, Dispatcher y el servidor web. Las soluciones descritas en esta página son generales y se aplican a la mayoría de los entornos. Debido a la complejidad de algunas topologías de AEM, su solución puede requerir más configuraciones personalizadas para resolver problemas específicos. Es probable que deba adaptar los ejemplos para satisfacer sus políticas de administración e infraestructura de TI.
 
-## Asignar URL {#url-mapping}
+## Asignación de URL {#url-mapping}
 
 Para permitir que las direcciones URL de dominio y las rutas de contenido se resuelvan en archivos almacenados en la caché, se debe convertir una ruta de archivo o una dirección URL de página durante el proceso. Se proporcionan descripciones de las siguientes estrategias comunes, donde las traducciones de ruta o URL se producen en diferentes puntos del proceso:
 
@@ -82,7 +84,7 @@ Su entorno debe implementar las siguientes configuraciones para apoyar el trabaj
 * El sistema de nombres de dominio resuelve los nombres de dominio en la dirección IP del servidor web.
 * La caché de Dispatcher refleja la estructura del directorio del repositorio de contenido de AEM. Las rutas de archivo debajo de la raíz del documento del servidor web son las mismas que las de los archivos del repositorio.
 
-## Entorno para los ejemplos dados {#environment-for-the-provided-examples}
+## Entorno para los ejemplos proporcionados {#environment-for-the-provided-examples}
 
 Las soluciones de ejemplo que se proporcionan se aplican a un entorno con las siguientes características:
 
@@ -198,9 +200,9 @@ Tenga en cuenta que los hosts virtuales heredan el valor de propiedad [Dispatche
 
 >[!NOTE]
 >
->En AEM as a Cloud Service, se debe utilizar una configuración vhost independiente con un elemento DocumentRoot en un nivel superior a cada una de las subpáginas. Esto se gestiona de forma predeterminada en el tipo de archivo, pero cuando se utilizan varios elementos DocumentRoot, se debe utilizar una configuración vhost de mayor prioridad para que se pueda gestionar la invalidación de la caché para toda la caché, ya que no se puede configurar por separado para cada sitio. El elemento ServerAlias de esta nueva configuración debe aceptar el encabezado de host “localhost”.
+>En AEM as a Cloud Service, se debe utilizar una configuración vhost independiente con DocumentRoot en un nivel superior a cada una de las subpáginas. Este proceso se gestiona de forma predeterminada en el tipo de archivo. Sin embargo, cuando se utilizan varios DocumentRoots, se requiere una configuración vhost de prioridad superior para administrar la invalidación de la caché para toda la caché, ya que no se puede configurar por separado para cada sitio. El ServerAlias de esta nueva configuración debe aceptar el encabezado de host &quot;localhost&quot;.
 
-### Configurar Dispatcher para administrar varios dominios {#configure-dispatcher-to-handle-multiple-domains}
+### Configuración de Dispatcher para gestionar varios dominios {#configure-dispatcher-to-handle-multiple-domains}
 
 Para admitir direcciones URL que incluyan nombres de dominio y sus hosts virtuales correspondientes, defina las siguientes granjas de Dispatcher:
 
@@ -282,11 +284,11 @@ Dispatcher initializing (build 4.1.2)
 [Fri Nov 02 16:27:18 2012] [I] [24974(140006182991616)] Dispatcher initialized (build 4.1.2)
 ```
 
-### Configurar la asignación de Sling para la resolución de recursos {#configure-sling-mapping-for-resource-resolution}
+### Configuración de la asignación de Sling para la resolución de recursos {#configure-sling-mapping-for-resource-resolution}
 
-Utilice la asignación de Sling para la resolución de recursos de modo que las URL basadas en dominio se resuelvan en el contenido de la instancia de publicación de AEM. La asignación de recursos traduce las direcciones URL entrantes de Dispatcher (originalmente desde solicitudes HTTP del cliente) a nodos de contenido.
+Utilice la asignación `Sling` para la resolución de recursos de modo que las direcciones URL basadas en dominio se resuelvan en el contenido de la instancia de publicación de AEM. La asignación de recursos traduce las direcciones URL entrantes de Dispatcher (originalmente desde solicitudes HTTP del cliente) a nodos de contenido.
 
-Para obtener más información sobre la asignación de recursos de Sling, consulte [Asignaciones para la resolución de recursos](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html) en la documentación de Sling.
+Para obtener más información acerca de la asignación de recursos de `Sling`, consulte [Asignaciones para la resolución de recursos](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html) en la documentación de `Sling`.
 
 Normalmente, se requieren asignaciones para los siguientes recursos, aunque pueden ser necesarias otras asignaciones adicionales:
 
@@ -302,7 +304,7 @@ Después de crear la asignación para la página de contenido, para descubrir as
 
 >[!NOTE]
 >
->El transformador Link Checker de la reescritura por defecto de Apache Sling modifica automáticamente los vínculos de la página para evitar vínculos rotos. Sin embargo, la reescritura de vínculos solo se realiza cuando su destino es un archivo HTML o HTM. Para actualizar vínculos a otros tipos de archivo, cree un componente transformador y agréguelo a una canalización de reescritura HTML.
+>El transformador Linkchecker de la reescritura por defecto de Apache `Sling` modifica automáticamente los hipervínculos de la página para evitar enlaces rotos. Sin embargo, la reescritura de vínculos solo se realiza cuando su destino es un archivo HTML o HTM. Para actualizar vínculos a otros tipos de archivo, cree un componente transformador y agréguelo a una canalización de reescritura HTML.
 
 ### Ejemplos de nodos de mapeo de recursos
 
@@ -316,9 +318,9 @@ En la siguiente tabla se enumeran los nodos que implementan la asignación de re
 | `/etc/map/http/branda.com/etc/designs` | `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/designs` |
 | `/etc/map/http/branda.com/etc/clientlibs` | `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/clientlibs` |
 
-## Configurar el agente de replicación de vaciado de Dispatcher {#configuring-the-dispatcher-flush-replication-agent}
+## Configuración del agente de replicación de vaciado de Dispatcher {#configuring-the-dispatcher-flush-replication-agent}
 
-El agente de replicación de vaciado de Dispatcher en la instancia de publicación de AEM debe enviar solicitudes de invalidación a la granja de Dispatcher correcta. Para dirigirse a una granja, utilice la propiedad URI del agente de replicación de vaciado de Dispatcher (en la pestaña Transport). Incluya el valor de la propiedad `/virtualhost` para la granja de Dispatcher configurada para invalidar la caché:
+El agente de replicación `Dispatcher Flush` de la instancia de publicación de AEM debe enviar solicitudes de invalidación a la granja de servidores de Dispatcher correcta. Para dirigirse a una granja, utilice la propiedad URI del agente de replicación `Dispatcher Flush` (en la ficha Transporte). Incluya el valor de la propiedad `/virtualhost` para la granja de Dispatcher configurada para invalidar la caché:
 
 `https://*webserver_name*:*port*/*virtual_host*/dispatcher/invalidate.cache`
 
@@ -412,7 +414,7 @@ LoadModule dispatcher_module modules/mod_dispatcher.so
 DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
-### Configurar una granja de Dispatcher {#configure-a-dispatcher-farm}
+### Configuración de una granja de Dispatcher {#configure-a-dispatcher-farm}
 
 Cuando el servidor web vuelve a escribir las direcciones URL, Dispatcher requiere una única granja definida de acuerdo con la [Configuración de Dispatcher](dispatcher-configuration.md). Las siguientes configuraciones son necesarias para admitir los hosts virtuales del servidor web y las reglas de cambio de nombre de URL:
 
@@ -498,23 +500,23 @@ Como de costumbre, la raíz del documento de la caché es la misma que la raíz 
 
 >[!NOTE]
 >
->Dado que se define una única granja de Dispatcher, el agente de replicación de vaciado de Dispatcher de la instancia de publicación de AEM no requiere configuraciones especiales.
+>Dado que se ha definido una única granja de servidores de Dispatcher, el agente de replicación `Dispatcher Flush` de la instancia de publicación de AEM no requiere configuraciones especiales.
 
-## Reescribir vínculos en archivos que no son HTML {#rewriting-links-to-non-html-files}
+## Reescribir vínculos en archivos que no sean de HTML {#rewriting-links-to-non-html-files}
 
 Para reescribir referencias a archivos que tengan extensiones distintas de .html o .htm, cree un componente transformador de reescritura de Sling y agréguelo a la canalización de reescritura predeterminada.
 
 Reescriba referencias cuando las rutas de recursos no se resuelven correctamente en el contexto del servidor web. Por ejemplo, se necesita un transformador cuando los componentes que generan imágenes crean vínculos como /content/sitea/en/products.navimage.png. El componente `topnav` de [Cómo crear un sitio web de internet con todas las funciones](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/implementing/developing/introduction/the-basics) crea estos vínculos.
 
-El [reescritor Sling](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) es un módulo que postprocesa la salida de Sling. Las implementaciones de canalización SAX del reescritor consisten en un generador, uno o más transformadores y un serializador:
+El reescritor [`Sling`](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) es un módulo que postprocesa la salida `Sling`. Las implementaciones de canalización SAX del reescritor consisten en un generador, uno o más transformadores y un serializador:
 
-* **Generador:** analiza el flujo de salida de Sling (documento HTML) y genera eventos SAX cuando encuentra tipos de elementos específicos.
+* **Generador:** analiza la secuencia de salida `Sling` (documento de HTML) y genera eventos SAX cuando encuentra tipos de elementos específicos.
 * **Transformador:** escucha eventos SAX y, en consecuencia, modifica el objetivo del evento (un elemento HTML). Una canalización de reescritura contiene cero o más transformadores. Los transformadores se ejecutan en secuencia, pasando los eventos SAX al siguiente transformador de la secuencia.
 * **Serializador:** serializa la salida, incluidas las modificaciones de cada transformador.
 
 ![](assets/chlimage_1-15.png)
 
-### La canalización de reescritura por defecto de AEM {#the-aem-default-rewriter-pipeline}
+### La canalización de reescritura predeterminada de AEM {#the-aem-default-rewriter-pipeline}
 
 AEM utiliza una reescritura de canalización predeterminada que procesa documentos de tipo text/html:
 
@@ -524,7 +526,7 @@ AEM utiliza una reescritura de canalización predeterminada que procesa document
 
 El nodo `/libs/cq/config/rewriter/default` define la canalización.
 
-### Crear un transformador {#creating-a-transformer}
+### Creación de un transformador {#creating-a-transformer}
 
 Para crear un componente de transformador y usarlo en una canalización, realice las siguientes tareas:
 

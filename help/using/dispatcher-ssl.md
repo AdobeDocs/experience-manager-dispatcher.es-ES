@@ -1,5 +1,5 @@
 ---
-title: Utilización de SSL con Dispatcher
+title: Usar SSL con Dispatcher
 description: Aprenda a configurar Dispatcher para que se comunique con AEM mediante conexiones SSL.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -9,14 +9,14 @@ index: y
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: 971cffd4f7ba8b1fa88a8af620a723ce59957007
-workflow-type: ht
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
+workflow-type: tm+mt
 source-wordcount: '1305'
-ht-degree: 100%
+ht-degree: 91%
 
 ---
 
-# Utilización de SSL con Dispatcher {#using-ssl-with-dispatcher}
+# Usar SSL con Dispatcher {#using-ssl-with-dispatcher}
 
 Utilice conexiones SSL entre Dispatcher y el equipo de procesamiento:
 
@@ -53,7 +53,7 @@ X-Forwarded-SSL-Cipher: DHE-RSA-AES256-SHA
 X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239D5C771CB5B4D
 ```
 
-### Configurar Dispatcher para usar SSL {#configuring-dispatcher-to-use-ssl}
+### Configuración de Dispatcher para utilizar SSL {#configuring-dispatcher-to-use-ssl}
 
 Para configurar Dispatcher para que se conecte con AEM o CQ a través de SSL, su archivo [dispatcher.any](dispatcher-configuration.md) necesita las siguientes propiedades:
 
@@ -111,7 +111,7 @@ En el siguiente ejemplo, el archivo `dispatcher.any` muestra los valores de prop
 }
 ```
 
-## Configurar un SSL mutuo entre Dispatcher y AEM {#configuring-mutual-ssl-between-dispatcher-and-aem}
+## Configuración de SSL mutuo entre Dispatcher y AEM {#configuring-mutual-ssl-between-dispatcher-and-aem}
 
 Para utilizar SSL mutuo, configure las conexiones entre Dispatcher y el equipo de procesamiento (normalmente una instancia de publicación de AEM o CQ):
 
@@ -133,7 +133,7 @@ Para configurar SSL mutuo, realice los siguientes pasos:
 1. [Cree un almacén de claves que contenga el certificado de procesamiento](dispatcher-ssl.md#main-pars-title-6) y configure el servicio HTTP del procesamiento.
 1. [Configure el módulo del servidor web de Dispatcher](dispatcher-ssl.md#main-pars-title-4) para SSL mutuo.
 
-### Crear o conseguir certificados firmados por la CA {#creating-or-obtaining-ca-signed-certificates}
+### Crear o obtener certificados firmados por la CA {#creating-or-obtaining-ca-signed-certificates}
 
 Cree o consiga los certificados firmados por la CA que autentican la instancia de publicación y Dispatcher.
 
@@ -152,7 +152,7 @@ Si actúa como CA, utilice [OpenSSL](https://www.openssl.org/) para crear la aut
    >
    >Varias propiedades del archivo `openssl.cnf` controlan el comportamiento del script CA.sh. Edite este archivo según sea necesario antes de crear su CA.
 
-#### Crear certificados {#creating-the-certificates}
+#### Creación de los certificados {#creating-the-certificates}
 
 Utilice OpenSSL para crear las solicitudes de certificado que se enviarán a la CA de terceros o para firmar con la CA.
 
@@ -183,7 +183,7 @@ Al crear un certificado, OpenSSL utiliza la propiedad Nombre común para identif
 
 Configure SSL en la instancia de procesamiento utilizando los archivos `rendercert.pem` y `renderkey.pem`.
 
-#### Conversión del certificado de procesamiento al formato JKS (Java™ KeyStore) {#converting-the-render-certificate-to-jks-format}
+#### Convertir el certificado de procesamiento al formato JKS (Java™ KeyStore) {#converting-the-render-certificate-to-jks-format}
 
 Utilice el siguiente comando para convertir el certificado de procesamiento, que es un archivo PEM, a un archivo PKCS#12. Incluya también el certificado de la CA que firmó el certificado de procesamiento:
 
@@ -206,7 +206,7 @@ Utilice el siguiente comando para convertir el certificado de procesamiento, que
    keytool -changealias -alias 1 -destalias jettyhttp -keystore render.keystore
    ```
 
-#### Añadir el certificado de CA al truststore del procesador. {#adding-the-ca-cert-to-the-render-s-truststore}
+#### Agregue el certificado de CA al truststore del procesador. {#adding-the-ca-cert-to-the-render-s-truststore}
 
 Si actúa como CA, importe el certificado de CA a un repositorio de claves. A continuación, configure la JVM que ejecuta la instancia de procesamiento para confiar en el repositorio de claves.
 
@@ -244,24 +244,24 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
    CQ_JVM_OPTS='-server -Xmx2048m -XX:MaxPermSize=512M -Djavax.net.ssl.trustStore=/usr/lib/cq6.0/publish/ssl/cacerts.keystore'
    ```
 
-#### Configurar la instancia de procesamiento {#configuring-the-render-instance}
+#### Configuración de la instancia de procesamiento {#configuring-the-render-instance}
 
 Para configurar el servicio HTTP de la instancia de procesamiento para que utilice SSL, utilice el certificado de procesamiento con las instrucciones en la sección *`Enable SSL on the Publish Instance`*:
 
-* AEM 6.2: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* AEM 6.1: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* Versiones de AEM anteriores: consulte [esta página.](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.2: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.1: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* Versiones de AEM anteriores: consulte [esta página.](https://experienceleague.adobe.com/es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 
-### Configurar SSL para el módulo de Dispatcher {#configuring-ssl-for-the-dispatcher-module}
+### Configuración de SSL para el módulo de Dispatcher {#configuring-ssl-for-the-dispatcher-module}
 
 Para configurar Dispatcher para que utilice SSL mutuo, prepare el certificado de Dispatcher y, a continuación, configure el módulo del servidor web.
 
-### Crear un certificado de Dispatcher unificado {#creating-a-unified-dispatcher-certificate}
+### Crear un certificado unificado de Dispatcher {#creating-a-unified-dispatcher-certificate}
 
 Combine el certificado de Dispatcher y la clave privada no cifrada en un solo archivo PEM. Utilice un editor de texto o el comando `cat` para crear un archivo similar al siguiente ejemplo:
 
 1. Abra un terminal y cambie el directorio actual a la ubicación del archivo dispkey.pem.
-1. Para desencriptar la clave privada, introduzca el siguiente comando:
+1. Para descifrar la clave privada, introduzca el siguiente comando:
 
    ```shell
    openssl rsa -in dispkey.pem -out dispkey_unencrypted.pem
@@ -280,7 +280,7 @@ Combine el certificado de Dispatcher y la clave privada no cifrada en un solo ar
    -----END CERTIFICATE-----
    ```
 
-### Especificar el certificado que se va a usar para Dispatcher {#specifying-the-certificate-to-use-for-dispatcher}
+### Especifique el certificado que se utilizará para Dispatcher {#specifying-the-certificate-to-use-for-dispatcher}
 
 Agregue las siguientes propiedades a la [configuración del módulo Dispatcher](dispatcher-install.md#main-pars-55-35-1022) (en `httpd.conf`):
 

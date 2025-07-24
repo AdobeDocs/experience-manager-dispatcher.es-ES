@@ -10,14 +10,14 @@ index: y
 internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '590'
-ht-degree: 100%
+source-wordcount: '582'
+ht-degree: 85%
 
 ---
 
-# Lista de comprobación de seguridad de Dispatcher {#the-dispatcher-security-checklist}
+# Lista de comprobación de seguridad de Dispatcher{#the-dispatcher-security-checklist}
 
 <!-- 
 
@@ -34,9 +34,9 @@ Adobe recomienda completar la siguiente lista de comprobación antes de continua
 
 >[!CAUTION]
 >
->Complete la lista de comprobación de seguridad de su versión de AEM antes de empezar. Consulte la correspondiente [Documentación de Adobe Experience Manager](https://experienceleague.adobe.com/es_es/docs/experience-manager-65/content/security/security-checklist).
+>Complete la lista de comprobación de seguridad de su versión de AEM antes de empezar. Consulte la correspondiente [Documentación de Adobe Experience Manager](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/security/security-checklist).
 
-## Utilice la última versión de Dispatcher {#use-the-latest-version-of-dispatcher}
+## Utilice la versión más reciente de Dispatcher {#use-the-latest-version-of-dispatcher}
 
 Instale la versión más reciente disponible para su plataforma. Actualice la instancia de Dispatcher para utilizar la última versión y aprovechar las mejoras del producto y la seguridad. Consulte [Instalación de Dispatcher](dispatcher-install.md).
 
@@ -48,7 +48,7 @@ Instale la versión más reciente disponible para su plataforma. Actualice la in
 >
 >Para encontrar el archivo de registro, revise la configuración de Dispatcher en su `httpd.conf`.
 
-## Restrinja clientes que puedan vaciar la caché {#restrict-clients-that-can-flush-your-cache}
+## Restringir clientes que puedan vaciar la caché {#restrict-clients-that-can-flush-your-cache}
 
 Adobe recomienda que [limite los clientes que pueden vaciar la caché.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
@@ -73,7 +73,7 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
  -->
 
-## Restrinja el acceso {#restrict-access}
+## Restringir el acceso {#restrict-access}
 
 Al configurar Dispatcher, restrinja el acceso externo en la medida de lo posible. Consulte [Ejemplo de sección /filter](dispatcher-configuration.md#main-pars_184_1_title) en la documentación de Dispatcher.
 
@@ -83,20 +83,20 @@ Asegúrese de utilizar filtros para bloquear el acceso externo a cualquier direc
 
 Consulte la [Prueba de seguridad de Dispatcher](dispatcher-configuration.md#testing-dispatcher-security) para obtener una lista de las direcciones URL que deben bloquearse.
 
-## Utilice Listas de permitidos en lugar de Listas de bloqueados {#use-allowlists-instead-of-blocklists}
+## Uso de Listas de permitidos en lugar de Listas de bloqueados {#use-allowlists-instead-of-blocklists}
 
 Las listas de permitidos son una mejor manera de controlar el acceso, ya que suponen inherentemente que todas las solicitudes de acceso deben denegarse a menos que formen parte explícita de la lista de permitidos. Este modelo proporciona un control más restrictivo sobre las nuevas solicitudes que pueden no haberse revisado aún o tenido en cuenta durante una determinada fase de configuración.
 
 ## Ejecute Dispatcher con un usuario del sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
 
-Al configurar Dispatcher, debe asegurarse de que al servidor web lo ejecute un usuario específico con menos privilegios. Se recomienda conceder el acceso de escritura únicamente a la carpeta de caché de Dispatcher.
+Configure Dispatcher para que una cuenta de usuario dedicada y con menos privilegios ejecute el servidor web. Adobe recomienda que solo conceda acceso de escritura a la carpeta de caché de Dispatcher.
 
 Además, los usuarios de IIS deben configurar su sitio web de la siguiente manera:
 
 1. En la configuración de ruta física del sitio web, seleccione **Conectar como usuario específico**.
 1. Configure el usuario.
 
-## Evite ataques de denegación de servicio (DoS) {#prevent-denial-of-service-dos-attacks}
+## Evitar ataques de denegación de servicio (DoS) {#prevent-denial-of-service-dos-attacks}
 
 Un ataque de denegación de servicio (DoS) es un intento de hacer que un recurso de equipo no esté disponible para los usuarios a los que va destinado.
 
@@ -146,9 +146,9 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
  -->
 
-## Configure Dispatcher para prevenir ataques de tipo CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
+## Configuración de Dispatcher para evitar ataques de tipo CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM ofrece un [marco de trabajo](https://experienceleague.adobe.com/es_es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) para evitar los ataques de falsificación de solicitudes entre sitios. Para hacer un uso adecuado de este marco de trabajo, admita el token CSRF de la lista de permitidos en Dispatcher haciendo lo siguiente:
+AEM ofrece un [marco de trabajo](https://experienceleague.adobe.com/es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) para evitar los ataques de falsificación de solicitudes entre sitios. Para hacer un uso adecuado de este marco de trabajo, admita el token CSRF de la lista de permitidos en Dispatcher haciendo lo siguiente:
 
 1. Crear un filtro para permitir la ruta `/libs/granite/csrf/token.json`;
 1. Agregue el encabezado `CSRF-Token` a la sección `clientheaders` de la configuración de Dispatcher.
@@ -161,5 +161,5 @@ Para obtener más información sobre los ataques de clickjacking, consulte el [s
 
 ## Realizar una prueba de penetración {#perform-a-penetration-test}
 
-Adobe recomienda encarecidamente realizar una prueba de penetración de su infraestructura de AEM antes de continuar con la producción.
+Adobe recomienda realizar una prueba de penetración de su infraestructura de AEM antes de continuar con la producción.
 

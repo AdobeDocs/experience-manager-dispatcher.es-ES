@@ -5,14 +5,14 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: 5f743be9c143e1e720e59304feebaa2e272dad87
-workflow-type: ht
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
+workflow-type: tm+mt
 source-wordcount: '1062'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
-# Notas de la versión de Dispatcher de AEM{#aem-dispatcher-release-notes}
+# Notas de la versión de AEM Dispatcher{#aem-dispatcher-release-notes}
 
 ## Información de la versión {#release-information}
 
@@ -132,7 +132,7 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 * DISP-725: los caracteres finales después de cadenas se convierten silenciosamente en un valor sin nombre
 * DISP-726: registrar una advertencia cuando ninguna granja coincida realmente con el host entrante
 * DISP-727: Dispatcher comprueba la longitud del contenido de la solicitud para los archivos de caché vacíos
-* DISP-730: 404 al intentar acceder al archivo de cabecera a través de Dispatcher
+* DISP-730: 404 al intentar acceder al archivo de encabezado a través de Dispatcher
 * DISP-731: Dispatcher es vulnerable a la inyección de registro
 * DISP-732: Dispatcher debe eliminar el &quot;/&quot; consecutivo en la URL
 * DISP-733: Dispatcher debe establecer (calcular) un encabezado de edad
