@@ -1,5 +1,5 @@
 ---
-title: Almacenar contenido seguro en caché
+title: Almacenar contenido seguro en la caché
 description: Descubra cómo funciona el almacenamiento en caché con permisos confidenciales en Dispatcher.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -7,13 +7,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '923'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
-# Almacenar contenido protegido en caché {#caching-secured-content}
+# Almacenar contenido seguro en la caché {#caching-secured-content}
 
 El almacenamiento en caché con permisos confidenciales le permite almacenar en caché las páginas seguras. Dispatcher comprueba los permisos de acceso del usuario de una página antes de enviar la página almacenada en caché.
 
@@ -61,7 +61,7 @@ Los siguientes diagramas ilustran el orden de los eventos que se producen cuando
 Para implementar el almacenamiento en caché que con permisos confidenciales, realice las siguientes tareas:
 
 * Desarrollar un servlet que realice la autenticación y la autorización
-* Configure Dispatcher
+* Configurar Dispatcher
 
 >[!NOTE]
 >
@@ -70,7 +70,7 @@ Para implementar el almacenamiento en caché que con permisos confidenciales, re
 >[!NOTE]
 >
 >Cuando hay una red de distribución de contenido (CDN) (o cualquier otra caché) delante de Dispatcher, debe configurar los encabezados de amacenamiento en caché en consecuencia para que la CDN no almacene en caché el contenido privado. Por ejemplo: `Header always set Cache-Control private`.
->&#x200B;>Para AEM as a Cloud Service, consulte la página [Almacenamiento en caché](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) para obtener más información sobre cómo establecer encabezados de almacenamiento en caché privados.
+>>Para AEM as a Cloud Service, consulte la página [Almacenamiento en caché](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) para obtener más información sobre cómo establecer encabezados de almacenamiento en caché privados.
 
 ## Creación del servlet Auth Checker {#create-the-auth-checker-servlet}
 

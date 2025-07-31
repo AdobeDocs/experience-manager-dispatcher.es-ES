@@ -6,13 +6,13 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1062'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
-# Notas de la versión de AEM Dispatcher{#aem-dispatcher-release-notes}
+# Notas de la versión de Dispatcher de AEM{#aem-dispatcher-release-notes}
 
 ## Información de la versión {#release-information}
 

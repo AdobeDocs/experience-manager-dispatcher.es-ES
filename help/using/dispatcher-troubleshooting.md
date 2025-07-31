@@ -1,5 +1,5 @@
 ---
-title: Solución de problemas de Dispatcher
+title: Resolución de problemas de Dispatcher
 description: Aprenda a solucionar problemas de Dispatcher.
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -10,13 +10,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '472'
-ht-degree: 93%
+ht-degree: 100%
 
 ---
 
-# Solución de problemas de Dispatcher {#troubleshooting-dispatcher-problems}
+# Resolución de problemas de Dispatcher {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
@@ -26,9 +26,9 @@ ht-degree: 93%
 
 >[!NOTE]
 >
->Consulte <!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[Resolución de problemas de vaciado de Dispatcher](https://experienceleague.adobe.com/search.html?lang=es#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]) y [Preguntas frecuentes sobre problemas principales de Dispatcher](dispatcher-faq.md) para obtener más información.
+>Consulte la <!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[resolución de problemas de vaciado de Dispatcher](https://experienceleague.adobe.com/search.html?lang=es#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]) y las [preguntas frecuentes sobre los problemas principales de Dispatcher](dispatcher-faq.md) para obtener más información.
 
-## Compruebe la configuración básica {#check-the-basic-configuration}
+## Comprobación de la configuración básica {#check-the-basic-configuration}
 
 Como siempre, los primeros pasos son comprobar los datos básicos:
 

@@ -1,5 +1,5 @@
 ---
-title: Usar SSL con Dispatcher
+title: Utilización de SSL con Dispatcher
 description: Aprenda a configurar Dispatcher para que se comunique con AEM mediante conexiones SSL.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -10,13 +10,13 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1305'
-ht-degree: 91%
+ht-degree: 100%
 
 ---
 
-# Usar SSL con Dispatcher {#using-ssl-with-dispatcher}
+# Utilización de SSL con Dispatcher {#using-ssl-with-dispatcher}
 
 Utilice conexiones SSL entre Dispatcher y el equipo de procesamiento:
 
@@ -27,7 +27,7 @@ Utilice conexiones SSL entre Dispatcher y el equipo de procesamiento:
 >
 >Las operaciones relacionadas con los certificados SSL están vinculadas a productos de terceros. No están cubiertos por el Contrato de Mantenimiento y Soporte Platino de Adobe.
 
-## Usar SSL cuando Dispatcher se conecta a AEM {#use-ssl-when-dispatcher-connects-to-aem}
+## Utilización de SSL cuando Dispatcher se conecta a AEM {#use-ssl-when-dispatcher-connects-to-aem}
 
 Configure Dispatcher para que se comunique con la instancia de procesamiento de AEM o CQ mediante conexiones SSL.
 
@@ -45,7 +45,7 @@ Cuando Dispatcher recibe una solicitud HTTPS, Dispatcher incluye los siguientes 
 * `X-Forwarded-SSL-Keysize`
 * `X-Forwarded-SSL-Session-ID`
 
-Una solicitud a través de Apache-2.4 con `mod_ssl` incluye encabezados similares al del siguiente ejemplo:
+Una solicitud a través de Apache 2.4 con `mod_ssl` incluye encabezados similares al del siguiente ejemplo:
 
 ```shell
 X-Forwarded-SSL: on
@@ -53,7 +53,7 @@ X-Forwarded-SSL-Cipher: DHE-RSA-AES256-SHA
 X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239D5C771CB5B4D
 ```
 
-### Configuración de Dispatcher para utilizar SSL {#configuring-dispatcher-to-use-ssl}
+### Configuración de Dispatcher para usar SSL {#configuring-dispatcher-to-use-ssl}
 
 Para configurar Dispatcher para que se conecte con AEM o CQ a través de SSL, su archivo [dispatcher.any](dispatcher-configuration.md) necesita las siguientes propiedades:
 
@@ -131,13 +131,13 @@ Para configurar SSL mutuo, realice los siguientes pasos:
 1. [Instale](dispatcher-install.md) la última versión de Dispatcher para su plataforma. Utilice un binario de Dispatcher que admita SSL (SSL está en el nombre del archivo, como `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
 1. [Cree o consiga un certificado firmado por la CA](dispatcher-ssl.md#main-pars-title-3) para Dispatcher y la instancia de procesamiento.
 1. [Cree un almacén de claves que contenga el certificado de procesamiento](dispatcher-ssl.md#main-pars-title-6) y configure el servicio HTTP del procesamiento.
-1. [Configure el módulo del servidor web de Dispatcher](dispatcher-ssl.md#main-pars-title-4) para SSL mutuo.
+1. [Configure el módulo del servidor web de Dispatcher](dispatcher-ssl.md#main-pars-title-4) para SSL mutuas.
 
-### Crear o obtener certificados firmados por la CA {#creating-or-obtaining-ca-signed-certificates}
+### Creación u obtención de certificados firmados por la CA {#creating-or-obtaining-ca-signed-certificates}
 
-Cree o consiga los certificados firmados por la CA que autentican la instancia de publicación y Dispatcher.
+Cree o consiga los certificados firmados por la CA que autentican la instancia de publicación y a Dispatcher.
 
-#### Crear su CA {#creating-your-ca}
+#### Creación de su CA {#creating-your-ca}
 
 Si actúa como CA, utilice [OpenSSL](https://www.openssl.org/) para crear la autoridad de certificación que firme los certificados de servidor y cliente. (Debe tener instaladas las bibliotecas OpenSSL). Si utiliza una CA de terceros, no realice este procedimiento.
 
@@ -179,11 +179,11 @@ Al crear un certificado, OpenSSL utiliza la propiedad Nombre común para identif
 1. Repita los pasos 2 y 3 para crear un nuevo certificado y una nueva clave pública para el módulo de Dispatcher. Asegúrese de utilizar un nombre común específico de la instancia de Dispatcher.
 1. Cambie el nombre `newcert.pem` por `dispcert.pem` y cambie el nombre `newkey.pem` por `dispkey.pem`.
 
-### Configurar SSL en el equipo de procesamiento {#configuring-ssl-on-the-render-computer}
+### Configuración de SSL en el equipo de procesamiento {#configuring-ssl-on-the-render-computer}
 
 Configure SSL en la instancia de procesamiento utilizando los archivos `rendercert.pem` y `renderkey.pem`.
 
-#### Convertir el certificado de procesamiento al formato JKS (Java™ KeyStore) {#converting-the-render-certificate-to-jks-format}
+#### Conversión del certificado de procesamiento al formato JKS (Java™ KeyStore) {#converting-the-render-certificate-to-jks-format}
 
 Utilice el siguiente comando para convertir el certificado de procesamiento, que es un archivo PEM, a un archivo PKCS#12. Incluya también el certificado de la CA que firmó el certificado de procesamiento:
 
@@ -206,7 +206,7 @@ Utilice el siguiente comando para convertir el certificado de procesamiento, que
    keytool -changealias -alias 1 -destalias jettyhttp -keystore render.keystore
    ```
 
-#### Agregue el certificado de CA al truststore del procesador. {#adding-the-ca-cert-to-the-render-s-truststore}
+#### Añadir el certificado de CA al almacén de confianza del procesador {#adding-the-ca-cert-to-the-render-s-truststore}
 
 Si actúa como CA, importe el certificado de CA a un repositorio de claves. A continuación, configure la JVM que ejecuta la instancia de procesamiento para confiar en el repositorio de claves.
 
@@ -256,7 +256,7 @@ Para configurar el servicio HTTP de la instancia de procesamiento para que utili
 
 Para configurar Dispatcher para que utilice SSL mutuo, prepare el certificado de Dispatcher y, a continuación, configure el módulo del servidor web.
 
-### Crear un certificado unificado de Dispatcher {#creating-a-unified-dispatcher-certificate}
+### Creación de un certificado de Dispatcher unificado {#creating-a-unified-dispatcher-certificate}
 
 Combine el certificado de Dispatcher y la clave privada no cifrada en un solo archivo PEM. Utilice un editor de texto o el comando `cat` para crear un archivo similar al siguiente ejemplo:
 
@@ -280,7 +280,7 @@ Combine el certificado de Dispatcher y la clave privada no cifrada en un solo ar
    -----END CERTIFICATE-----
    ```
 
-### Especifique el certificado que se utilizará para Dispatcher {#specifying-the-certificate-to-use-for-dispatcher}
+### Especificar el certificado que se va a usar para Dispatcher {#specifying-the-certificate-to-use-for-dispatcher}
 
 Agregue las siguientes propiedades a la [configuración del módulo Dispatcher](dispatcher-install.md#main-pars-55-35-1022) (en `httpd.conf`):
 

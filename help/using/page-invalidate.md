@@ -1,5 +1,5 @@
 ---
-title: Invalidar páginas en la caché de AEM
+title: Invalidación de páginas en caché de AEM
 description: Aprenda a configurar la interacción entre Dispatcher y AEM para garantizar una administración eficaz de la caché.
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -10,13 +10,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1407'
-ht-degree: 95%
+ht-degree: 100%
 
 ---
 
-# Invalidar páginas en la caché de AEM {#invalidating-cached-pages-from-aem}
+# Invalidación de páginas en caché de AEM {#invalidating-cached-pages-from-aem}
 
 Al utilizar Dispatcher con AEM, la interacción debe configurarse para garantizar una administración eficaz de la caché. Según el entorno, la configuración también podría aumentar el rendimiento.
 
@@ -24,11 +24,11 @@ Al utilizar Dispatcher con AEM, la interacción debe configurarse para garantiza
 
 La cuenta de usuario predeterminada `admin` se utiliza para autenticar los agentes de replicación instalados de forma predeterminada. Cree una cuenta de usuario dedicada para utilizarla con los agentes de replicación.
 
-Para obtener más información, consulte la sección [Configuración de usuarios de replicación y transporte](https://experienceleague.adobe.com/es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) de la Lista de comprobación de seguridad de AEM.
+Para obtener más información, consulte la sección [Configuración de usuarios de replicación y transporte](https://experienceleague.adobe.com/es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) de la lista de comprobación de seguridad de AEM.
 
-<!-- OLD URL from above https://helpx.adobe.com/es/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
-## Invalidar la caché de Dispatcher desde el entorno de creación {#invalidating-dispatcher-cache-from-the-authoring-environment}
+## Invalidación de la caché de Dispatcher desde el entorno de creación {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
 Un agente de replicación en la instancia de autor de AEM envía una solicitud de invalidación de la caché a Dispatcher cuando se publica una página. Dispatcher actualiza el archivo en la caché a medida que se publica contenido nuevo.
 
@@ -120,7 +120,7 @@ Después de configurar, cuando active una página de autor a publicación, este 
 
 1. `<publishserver> 13:29:47 127.0.0.1 POST /dispatcher/invalidate.cache 200`
 
-## Invalidar manualmente la caché de Dispatcher {#manually-invalidating-the-dispatcher-cache}
+## Invalidación manual de la caché de Dispatcher {#manually-invalidating-the-dispatcher-cache}
 
 Para invalidar (o vaciar) la caché de Dispatcher sin activar una página, puede enviar una petición HTTP a Dispatcher. Por ejemplo, puede crear una aplicación AEM que permita vaciar la caché a los administradores u otras aplicaciones.
 
@@ -169,7 +169,7 @@ page_path1
 page_pathn
 ```
 
-Las rutas de página para volver a almacenar archivos en la caché inmediatamente se enumeran en líneas independientes en el cuerpo del mensaje. El valor de `CQ-Handle` es la ruta de una página que invalida las páginas que se van a almacenar de nuevo. (Consulte el parámetro `/statfileslevel` del elemento de configuración [Cache](dispatcher-configuration.md#main-pars_146_44_0010)). El siguiente ejemplo de mensaje de solicitud HTTP elimina y vuelve a almacenar en la caché el `/content/geometrixx-outdoors/en.html page`:
+Las rutas de página para volver a almacenar archivos en la caché inmediatamente se enumeran en líneas independientes en el cuerpo del mensaje. El valor de `CQ-Handle` es la ruta de una página que invalida las páginas que se van a almacenar de nuevo. (Consulte el parámetro `/statfileslevel` del elemento de configuración [Caché](dispatcher-configuration.md#main-pars_146_44_0010)). El siguiente ejemplo de mensaje de solicitud HTTP elimina y vuelve a almacenar en la caché el `/content/geometrixx-outdoors/en.html page`:
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  

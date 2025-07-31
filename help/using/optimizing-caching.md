@@ -1,23 +1,23 @@
 ---
-title: Optimizar un sitio web para el rendimiento de la caché
+title: Optimización de un sitio web para el rendimiento de la caché
 description: Aprenda a diseñar un sitio web para maximizar las ventajas del almacenamiento en caché.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/es/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1128'
-ht-degree: 96%
+ht-degree: 100%
 
 ---
 
 
-# Optimizar un sitio web para el rendimiento de la caché {#optimizing-a-website-for-cache-performance}
+# Optimización de un sitio web para el rendimiento de la caché {#optimizing-a-website-for-cache-performance}
 
 <!-- 
 
@@ -44,7 +44,7 @@ Dispatcher ofrece una serie de mecanismos integrados que puede utilizar para opt
 >
 >En general, muchas estrategias de almacenamiento en caché implican la selección de buenas direcciones URL y no depender de estos datos adicionales.
 
-## Utilizar una codificación de página coherente {#using-consistent-page-encoding}
+## Uso de una codificación coherente de las páginas {#using-consistent-page-encoding}
 
 Los encabezados de petición HTTP no se almacenan en caché, por lo que pueden producirse problemas si almacena información de codificación de páginas en el encabezado. En este caso, cuando Dispatcher sirve una página desde la caché, se utiliza la codificación predeterminada del servidor web para la página. Existen dos formas de evitar este problema:
 
@@ -93,9 +93,9 @@ www.myCompany.com/news/main.large.html
 >
 >`www.myCompany.com/news/main.print.html`
 >
->Utilizando el script globbing de la definición de la plantilla, puede especificar un script separado que procese las páginas imprimidas.
+>Utilizando el script globalización de la definición de la plantilla, puede especificar un script separado que procese las páginas imprimidas.
 
-## Invalidar archivos de imagen utilizados como títulos {#invalidating-image-files-used-as-titles}
+## Invalidación de archivos de imagen utilizados como títulos {#invalidating-image-files-used-as-titles}
 
 Si procesa títulos de páginas u otros textos como imágenes, se recomienda almacenar los archivos para que se eliminen tras actualizar el contenido de la página:
 
@@ -110,7 +110,7 @@ Por ejemplo, puede almacenar el título de la página myPage.html en el archivo 
 >
 >El archivo de imagen no existe necesariamente en la instancia de AEM. Puede utilizar un script que cree dinámicamente el archivo de imagen. A continuación, Dispatcher almacenará el archivo en el servidor web.
 
-## Invalidar archivos de imagen utilizados para la navegación {#invalidating-image-files-used-for-navigation}
+## Invalidación de archivos de imagen utilizados para la navegación {#invalidating-image-files-used-for-navigation}
 
 Si utiliza imágenes para las entradas de navegación, el método es básicamente el mismo que con los títulos, aunque un poco más complejo. Almacene todas las imágenes de navegación con las páginas de destino. Si utiliza dos imágenes para la normal y la activa, puede utilizar los siguientes scripts:
 

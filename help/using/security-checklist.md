@@ -11,9 +11,9 @@ internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '582'
-ht-degree: 85%
+ht-degree: 100%
 
 ---
 
@@ -36,7 +36,7 @@ Adobe recomienda completar la siguiente lista de comprobación antes de continua
 >
 >Complete la lista de comprobación de seguridad de su versión de AEM antes de empezar. Consulte la correspondiente [Documentación de Adobe Experience Manager](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/security/security-checklist).
 
-## Utilice la versión más reciente de Dispatcher {#use-the-latest-version-of-dispatcher}
+## Uso de la última versión de Dispatcher {#use-the-latest-version-of-dispatcher}
 
 Instale la versión más reciente disponible para su plataforma. Actualice la instancia de Dispatcher para utilizar la última versión y aprovechar las mejoras del producto y la seguridad. Consulte [Instalación de Dispatcher](dispatcher-install.md).
 
@@ -48,7 +48,7 @@ Instale la versión más reciente disponible para su plataforma. Actualice la in
 >
 >Para encontrar el archivo de registro, revise la configuración de Dispatcher en su `httpd.conf`.
 
-## Restringir clientes que puedan vaciar la caché {#restrict-clients-that-can-flush-your-cache}
+## Restringir a los clientes que pueden vaciar la caché {#restrict-clients-that-can-flush-your-cache}
 
 Adobe recomienda que [limite los clientes que pueden vaciar la caché.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
@@ -75,21 +75,21 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## Restringir el acceso {#restrict-access}
 
-Al configurar Dispatcher, restrinja el acceso externo en la medida de lo posible. Consulte [Ejemplo de sección /filter](dispatcher-configuration.md#main-pars_184_1_title) en la documentación de Dispatcher.
+Al configurar Dispatcher, restrinja el acceso externo en la medida de lo posible. Consulte la [sección ejemplo /filtro](dispatcher-configuration.md#main-pars_184_1_title) en la documentación de Dispatcher.
 
-## Asegúrese de que se deniegue el acceso a las direcciones URL administrativas {#make-sure-access-to-administrative-urls-is-denied}
+## Asegurarse de que se deniega el acceso a las direcciones URL administrativas {#make-sure-access-to-administrative-urls-is-denied}
 
 Asegúrese de utilizar filtros para bloquear el acceso externo a cualquier dirección URL administrativa, como la consola web.
 
 Consulte la [Prueba de seguridad de Dispatcher](dispatcher-configuration.md#testing-dispatcher-security) para obtener una lista de las direcciones URL que deben bloquearse.
 
-## Uso de Listas de permitidos en lugar de Listas de bloqueados {#use-allowlists-instead-of-blocklists}
+## Utilizar listas de permitidos en lugar de listas de bloqueados {#use-allowlists-instead-of-blocklists}
 
-Las listas de permitidos son una mejor manera de controlar el acceso, ya que suponen inherentemente que todas las solicitudes de acceso deben denegarse a menos que formen parte explícita de la lista de permitidos. Este modelo proporciona un control más restrictivo sobre las nuevas solicitudes que pueden no haberse revisado aún o tenido en cuenta durante una determinada fase de configuración.
+Las listas de permitidos son una mejor manera de control de acceso, ya que suponen inherentemente que todas las solicitudes de acceso deben denegarse a menos que formen parte explícita de la lista de permitidos. Este modelo proporciona un control más restrictivo sobre las nuevas solicitudes que pueden no haberse revisado aún o tenido en cuenta durante una determinada fase de configuración.
 
-## Ejecute Dispatcher con un usuario del sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
+## Ejecutar Dispatcher con un usuario del sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
 
-Configure Dispatcher para que una cuenta de usuario dedicada y con menos privilegios ejecute el servidor web. Adobe recomienda que solo conceda acceso de escritura a la carpeta de caché de Dispatcher.
+Configure Dispatcher para que una cuenta de usuario dedicada y con menos privilegios ejecute el servidor web. Se recomienda conceder el acceso de escritura únicamente a la carpeta de caché de Dispatcher.
 
 Además, los usuarios de IIS deben configurar su sitio web de la siguiente manera:
 
@@ -146,9 +146,9 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
  -->
 
-## Configuración de Dispatcher para evitar ataques de tipo CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
+## Configurar Dispatcher para prevenir ataques de tipo CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM ofrece un [marco de trabajo](https://experienceleague.adobe.com/es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) para evitar los ataques de falsificación de solicitudes entre sitios. Para hacer un uso adecuado de este marco de trabajo, admita el token CSRF de la lista de permitidos en Dispatcher haciendo lo siguiente:
+AEM ofrece un [marco de trabajo](https://experienceleague.adobe.com/es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) para evitar los ataques de falsificación de solicitud en sitios múltiples. Para hacer un uso adecuado de este marco de trabajo, admita el token CSRF de la lista de permitidos en Dispatcher haciendo lo siguiente:
 
 1. Crear un filtro para permitir la ruta `/libs/granite/csrf/token.json`;
 1. Agregue el encabezado `CSRF-Token` a la sección `clientheaders` de la configuración de Dispatcher.
