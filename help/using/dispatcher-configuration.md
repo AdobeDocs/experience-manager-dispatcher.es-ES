@@ -2,10 +2,10 @@
 title: Configuración de Dispatcher de AEM
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, los archivos de configuración, las variables de entorno y la asignación de nombres a la instancia. Obtenga información sobre la definición de granjas, la identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '8937'
-ht-degree: 100%
+source-git-commit: fbfbe76b730d4037cccb400b70619fbe24b3b1bc
+workflow-type: tm+mt
+source-wordcount: '8938'
+ht-degree: 99%
 
 ---
 
@@ -209,7 +209,7 @@ Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 | [/failover](#using-the-failover-mechanism) | Reenviar solicitudes a diferentes procesamientos cuando falle la solicitud original. |
 | [/auth_checker](permissions-cache.md) | Para obtener información sobre el almacenamiento en caché que distingue entre permisos, consulte [Almacenamiento en caché de contenido seguro](permissions-cache.md). |
 
-## Especificar una página predeterminada (solo IIS): `/homepage` {#specify-a-default-page-iis-only-homepage}
+## Especificar una página predeterminada (solo IIS) - /homepage {#specify-a-default-page-iis-only-homepage}
 
 >[!CAUTION]
 >
