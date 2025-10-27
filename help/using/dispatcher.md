@@ -5,9 +5,9 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '3073'
+source-git-commit: 5cdfdb6d49f7d37a309fef9c5a4eb72409b54b13
+workflow-type: tm+mt
+source-wordcount: '3075'
 ht-degree: 100%
 
 ---
@@ -129,7 +129,7 @@ En una actualización de contenido, cambian uno o varios documentos AEM. AEM env
 Es necesario señalar los siguientes puntos:
 
 * Las actualizaciones de contenido se utilizan en general con un sistema de creación, que “sabe” lo que hay que reemplazar.
-* Las actualizaciones de contenido que afectan a los archivos se eliminan, pero no se reemplazan inmediatamente. La próxima vez que se solicite un archivo de ese tipo, Dispatcher recuperará el nuevo archivo de la instancia de AEM y lo colocará en la caché, sobrescribiendo el contenido anterior.
+* Se eliminan los archivos afectados con una actualización de contenido, pero no se reemplazan inmediatamente. La próxima vez que se solicite un archivo de ese tipo, Dispatcher recupera el nuevo archivo de la instancia AEM y lo coloca en la caché, sobrescribiendo así el contenido anterior.
 * En general, las imágenes creadas automáticamente y que contengan texto de una página se guardan en archivos de imagen que comiencen por el mismo identificador. De esa manera, se garantiza que exista la asociación para poder realizar la eliminación. Por ejemplo, puede guardar el texto de título de la página mypage.html como la imagen mypage.titlePicture.gif en la misma carpeta. De este modo, la imagen se elimina automáticamente de la caché cada vez que se actualiza la página, por lo que puede estar seguro de que la imagen siempre reflejará la versión actual de la página.
 * Puede tener varios archivos de estado, por ejemplo, uno por carpeta de idioma. Si se actualiza una página, AEM busca la siguiente carpeta principal que contenga un archivo de estado y que *afecte* a dicho archivo.
 
@@ -287,7 +287,7 @@ Para un control más preciso, la invalidación basada en API permite invalidar l
 
 >[!CAUTION]
 >
->Si usa [AEM con la interfaz de usuario táctil](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), **no** almacene en caché el contenido de la instancia de autor. Si el almacenamiento en caché está activado para la instancia de creación, debe desactivarlo y eliminar el contenido del directorio de la caché. Para desactivar el almacenamiento en caché, edite el archivo `author_dispatcher.any` y modifique la propiedad `/rule` de la sección `/cache` de la siguiente manera:
+>Si usa [AEM con la interfaz de usuario táctil](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), **no** almacene en caché el contenido de la instancia de autor. Si el almacenamiento en caché está habilitado para la instancia de autor, debe deshabilitarlo y eliminar el contenido del directorio de la caché. Para desactivar el almacenamiento en caché, edite el archivo `author_dispatcher.any` y modifique la propiedad `/rule` de la sección `/cache` de la siguiente manera:
 
 ```xml
 /rules
@@ -318,7 +318,7 @@ Dispatcher se puede utilizar delante de una instancia de autor para mejorar el r
 
 >[!CAUTION]
 >
->Si ha utilizado la instancia de Dispatcher de autor previamente configurada y ha activado un *agente de vaciado de Dispatcher*, haga lo siguiente:
+>Si ha utilizado la instancia de Dispatcher de autor previamente configurada y ha habilitado un *agente de vaciado de Dispatcher*, haga lo siguiente:
 
 1. Elimine o desactive el agente de vaciado del **Dispatcher de autor** en la instancia de autor de AEM.
 1. Vuelva a configurar la instancia de Dispatcher de autor siguiendo las nuevas instrucciones que le indicamos previamente.
