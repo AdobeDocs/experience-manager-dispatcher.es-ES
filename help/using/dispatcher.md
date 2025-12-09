@@ -38,7 +38,7 @@ El proceso de implementación de Dispatcher es independiente del servidor web y 
 
 Utilice la siguiente información según sea necesario:
 
-* [Lista de comprobación de seguridad de Dispatcher ](security-checklist.md)
+* [Lista de comprobación de seguridad de Dispatcher &#x200B;](security-checklist.md)
 <!-- URL is 404! * [The Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html) -->
 * [Optimizar un sitio web para el rendimiento de la caché](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
 * [Utilización de Dispatcher con múltiples dominios](dispatcher-domains.md)
