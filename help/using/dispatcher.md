@@ -5,10 +5,10 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 5cdfdb6d49f7d37a309fef9c5a4eb72409b54b13
+source-git-commit: b7ab59ad2da1b73ebbf7819670f056a68162796d
 workflow-type: tm+mt
-source-wordcount: '3075'
-ht-degree: 100%
+source-wordcount: '3065'
+ht-degree: 98%
 
 ---
 
@@ -129,7 +129,7 @@ En una actualización de contenido, cambian uno o varios documentos AEM. AEM env
 Es necesario señalar los siguientes puntos:
 
 * Las actualizaciones de contenido se utilizan en general con un sistema de creación, que “sabe” lo que hay que reemplazar.
-* Se eliminan los archivos afectados con una actualización de contenido, pero no se reemplazan inmediatamente. La próxima vez que se solicite un archivo de ese tipo, Dispatcher recupera el nuevo archivo de la instancia AEM y lo coloca en la caché, sobrescribiendo así el contenido anterior.
+* Los archivos afectados por una actualización de contenido se eliminan, pero no se reemplazan inmediatamente. La próxima vez que se solicite ese archivo, Dispatcher recuperará la versión actualizada de la instancia de AEM y reemplazará la copia en caché.
 * En general, las imágenes creadas automáticamente y que contengan texto de una página se guardan en archivos de imagen que comiencen por el mismo identificador. De esa manera, se garantiza que exista la asociación para poder realizar la eliminación. Por ejemplo, puede guardar el texto de título de la página mypage.html como la imagen mypage.titlePicture.gif en la misma carpeta. De este modo, la imagen se elimina automáticamente de la caché cada vez que se actualiza la página, por lo que puede estar seguro de que la imagen siempre reflejará la versión actual de la página.
 * Puede tener varios archivos de estado, por ejemplo, uno por carpeta de idioma. Si se actualiza una página, AEM busca la siguiente carpeta principal que contenga un archivo de estado y que *afecte* a dicho archivo.
 
@@ -281,7 +281,7 @@ Para un control más preciso, la invalidación basada en API permite invalidar l
 
 >[!NOTE]
 >
->Consulte también [AEM (CQ) seguridad de Dispatcher y CDN + Explorador de almacenamiento en caché](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) y la presentación grabada en [Almacenamiento en caché de Dispatcher](https://experienceleague.adobe.com/es/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations).
+>Consulte también [AEM (CQ) seguridad de Dispatcher y CDN + Explorador de almacenamiento en caché](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) y la presentación grabada en [Almacenamiento en caché de Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Uso de Dispatcher con un servidor de creación {#using-a-dispatcher-with-an-author-server}
 
