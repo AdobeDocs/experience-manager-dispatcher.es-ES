@@ -5,10 +5,10 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: b7ab59ad2da1b73ebbf7819670f056a68162796d
+source-git-commit: f4ed724deccf14c570ca873728a97d0ae5fe0e4f
 workflow-type: tm+mt
-source-wordcount: '1098'
-ht-degree: 94%
+source-wordcount: '1105'
+ht-degree: 93%
 
 ---
 
@@ -41,9 +41,8 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 **Mejoras**:
 
-* DISP-1040: corrección para el cliente que reescribe direcciones URL
+* DISP-1040: implemente `/allowedClients` en la configuración de Dispatcher para controlar qué direcciones IP pueden invalidar la caché y bloquear o quitar encabezados (`handle`, `cq-handle`, etc.) a menos que se necesite explícitamente
 * DISP-1046: stale-while-error también debe gestionar las respuestas 429 de AEM
-* DISP-1041: hacer configurable el URI invalidado (#179)
 * SKYOPS-107219: optimiza la implementación actual de la carga de vanityUrls
 
 ### Versión 4.3.7 (27 de marzo de 2024) {#march}
