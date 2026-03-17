@@ -2,10 +2,10 @@
 title: Configuración de Dispatcher de AEM
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, los archivos de configuración, las variables de entorno y la asignación de nombres a la instancia. Obtenga información sobre la definición de granjas, la identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: fbfbe76b730d4037cccb400b70619fbe24b3b1bc
-workflow-type: ht
-source-wordcount: '8938'
-ht-degree: 100%
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '9194'
+ht-degree: 99%
 
 ---
 
@@ -198,7 +198,7 @@ Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 | [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | Compatibilidad con la administración y la autenticación de sesiones. |
 | [/renders](#defining-page-renderers-renders) | Servidores que ofrecen páginas procesadas (normalmente instancias de publicación de AEM). |
 | [/filter](#configuring-access-to-content-filter) | Define las direcciones URL a las que Dispatcher permite el acceso. |
-| [/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls) | Configura el acceso a las URL de vanidad. |
+| [/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls) | Configura el acceso a las URL mnemónicas. |
 | [/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost) | Compatibilidad con el reenvío de solicitudes de distribución. |
 | [/cache](#configuring-the-dispatcher-cache-cache) | Configura el comportamiento del almacenamiento en caché. |
 | [/statistics](#configuring-load-balancing-statistics) | Definir categorías estadísticas para cálculos de equilibrio de carga. |
@@ -225,7 +225,7 @@ Comment Type: draft
 <p>Typically this situation occurs when a user specifies an URL for which neither IIS or AEM provides an automatic redirection target. For example, if the AEM render instance is shut down after the content is cached, the content redirect URL is unavailable.</p> 
 <p>The following example configuration displays the <span class="code">index.html</span> page in such circumstances:</p>
 
- -->
+-->
 
 <!-- 
 
@@ -235,7 +235,7 @@ Comment Type: draft
   /homepage&nbsp;"/index.html" 
 </codeblock>
 
- -->
+-->
 
 <!-- 
 
@@ -243,7 +243,7 @@ Comment Type: draft
 
 <p>The <span class="code">/homepage</span> section is located inside the <span class="code">/farms</span> section, for example:<br /> </p>
 
- -->
+-->
 
 <!-- 
 
@@ -253,7 +253,7 @@ Comment Type: draft
   #name&nbsp;of&nbsp;dispatcher!!discoiqbr!!/name&nbsp;"day&nbsp;sites"!!discoiqbr!!!!discoiqbr!!#farms&nbsp;section&nbsp;defines&nbsp;a&nbsp;list&nbsp;of&nbsp;farms&nbsp;or&nbsp;sites!!discoiqbr!!/farms!!discoiqbr!!{!!discoiqbr!!&nbsp;&nbsp;&nbsp;/daycom!!discoiqbr!!&nbsp;&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/homepage&nbsp;"/index.html"!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...!!discoiqbr!!&nbsp;&nbsp;&nbsp;}!!discoiqbr!!&nbsp;&nbsp;&nbsp;/docdaycom!!discoiqbr!!&nbsp;&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...!!discoiqbr!!&nbsp;&nbsp;&nbsp;}!!discoiqbr!!} 
 </codeblock>
 
- -->
+-->
 
 ## Especificar los encabezados HTTP que deben pasarse {#specifying-the-http-headers-to-pass-through-clientheaders}
 
@@ -402,7 +402,7 @@ En este ejemplo, la siguiente tabla muestra los hosts virtuales que se resuelven
 
 >[!CAUTION]
 >
->`/allowAuthorized` Establezca `"0"` en la sección `/cache` para activar esta funcionalidad. Tal y como se detalla en la sección [Almacenamiento en caché cuando se utiliza la autenticación](#caching-when-authentication-is-used), cuando configure `/allowAuthorized 0 `, las solicitudes que incluyen información de autenticación **no** se guardan en la caché. Si se requiere un almacenamiento en caché que distinga los permisos, consulte la página [Almacenamiento en caché de contenido seguro](https://experienceleague.adobe.com/es/docs/experience-manager-dispatcher/using/configuring/permissions-cache).
+>`/allowAuthorized` Establezca `"0"` en la sección `/cache` para habilitar esta funcionalidad. Tal y como se detalla en la sección [Almacenamiento en caché cuando se utiliza la autenticación](#caching-when-authentication-is-used), cuando configure `/allowAuthorized 0 `, las solicitudes que incluyen información de autenticación **no** se guardan en la caché. Si se requiere un almacenamiento en caché que distinga los permisos, consulte la página [Almacenamiento en caché de contenido seguro](https://experienceleague.adobe.com/es/docs/experience-manager-dispatcher/using/configuring/permissions-cache).
 
 Cree una sesión segura para acceder al conjunto de procesamiento, de modo que los usuarios tengan que iniciar la sesión para acceder a cualquier página del conjunto. Tras iniciar sesión, los usuarios pueden acceder a las páginas de la granja. Consulte [Creación de un grupo de usuarios cerrado](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used) para obtener información sobre el uso de esta función con CUG. Además, consulte la [Lista de comprobación de seguridad](/help/using/security-checklist.md) de Dispatcher antes de empezar.
 
@@ -719,7 +719,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 <p>We should mention the config files that are shipped with the dispatcher distribution and only give a few examples here. This aims to avoid confusion and reduce content maintenance.<br /> </p>
 
- -->
+-->
 
 ```xml
   /filter
@@ -778,10 +778,11 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 >
 >Cuando se utilice con Apache, diseñe los patrones de URL del filtro según la propiedad DispatcherUseProcessedURL del módulo Dispatcher. (Consulte [Servidor web Apache: Configurar el servidor web Apache para Dispatcher](dispatcher-install.md##apache-web-server-configure-apache-web-server-for-dispatcher)).
 
-<!----
+<!--
 >[!NOTE]
 >
->Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher. -->
+>Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher. 
+-->
 
 Tenga en cuenta las siguientes recomendaciones si decide ampliar el acceso:
 
@@ -912,13 +913,13 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">For https://jira.corp.adobe.com/browse/DOC-4812</p> 
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
- -->
+-->
 
 Configure Dispatcher para habilitar el acceso a las URL mnemónicas configuradas para sus páginas de AEM.
 
-Cuando se habilita el acceso a las URL de vanidad, Dispatcher llama periódicamente a un servicio que se ejecuta en la instancia de procesamiento para obtener una lista de URL de vanidad. Dispatcher almacena esta lista en un archivo local. Cuando se deniega una solicitud de una página debido a un filtro en la sección `/filter`, Dispatcher consulta la lista de URL de vanidad. Si la URL denegada está en la lista, Dispatcher permite el acceso a la URL de vanidad.
+Cuando se habilita el acceso a las URL mnemónicas, Dispatcher llama periódicamente a un servicio que se ejecuta en la instancia de procesamiento para obtener una lista de URL mnemónicas. Dispatcher almacena esta lista en un archivo local. Cuando se deniega una solicitud de una página debido a un filtro en la sección `/filter`, Dispatcher consulta la lista de URL mnemónicas. Si la URL denegada está en la lista, Dispatcher permite el acceso a la URL mnemónica.
 
-Para habilitar el acceso a las URL de vanidad, agregue una sección `/vanity_urls` a la sección `/farms`, similar al siguiente ejemplo:
+Para habilitar el acceso a las URL mnemónicas, agregue una sección `/vanity_urls` a la sección `/farms`, similar al siguiente ejemplo:
 
 ```xml
  /vanity_urls {
@@ -930,19 +931,19 @@ Para habilitar el acceso a las URL de vanidad, agregue una sección `/vanity_url
 
 La sección `/vanity_urls` contiene las siguientes propiedades:
 
-* `/url`: Ruta al servicio de URL de vanidad que se ejecuta en la instancia de procesamiento. El valor de esta propiedad debe ser `"/libs/granite/dispatcher/content/vanityUrls.html"`.
+* `/url`: Ruta al servicio de URL mnemónica que se ejecuta en la instancia de procesamiento. El valor de esta propiedad debe ser `"/libs/granite/dispatcher/content/vanityUrls.html"`.
 
-* `/file`: Ruta al archivo local donde Dispatcher almacena la lista de URL de vanidad. Asegúrese de que Dispatcher tenga acceso de escritura a este archivo.
+* `/file`: Ruta al archivo local donde Dispatcher almacena la lista de URL mnemónicas. Asegúrese de que Dispatcher tenga acceso de escritura a este archivo.
 * `/delay`: (segundos) El tiempo entre llamadas a servicio de la URL mnemónica.
 
 >[!NOTE]
 >
->Si su procesamiento es una instancia de AEM debe instalar el [paquete VanityURLS-Components desde la distribución de software](https://experience.adobe.com/#/downloads/content/software-distribution/es/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) para habilitar el servicio de URL de vanidad. (Consulte [Distribución de software](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution) para obtener más información).
+>Si su procesamiento es una instancia de AEM debe instalar el [paquete VanityURLS-Components desde la distribución de software](https://experience.adobe.com/#/downloads/content/software-distribution/es/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) para habilitar el servicio de URL mnemónica. (Consulte [Distribución de software](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution) para obtener más información).
 
-Utilice el siguiente procedimiento para habilitar el acceso a las URL de vanidad.
+Utilice el siguiente procedimiento para habilitar el acceso a las URL mnemónicas.
 
 1. Si el servicio de procesamiento es una instancia de AEM, instale el paquete `com.adobe.granite.dispatcher.vanityurl.content` en la instancia de publicación (consulte la nota anterior).
-1. Para cada URL de vanidad que haya configurado para una página de AEM o CQ, asegúrese de que la configuración [`/filter`](#configuring-access-to-content-filter) deniegue la URL. Si es necesario, agregue un filtro que deniegue la dirección URL.
+1. Para cada URL mnemónica que haya configurado para una página de AEM o CQ, asegúrese de que la configuración [`/filter`](#configuring-access-to-content-filter) deniegue la URL. Si es necesario, agregue un filtro que deniegue la dirección URL.
 1. Agregue la sección `/vanity_urls` debajo de `/farms`.
 1. Reinicie el servidor web Apache.
 
@@ -1130,7 +1131,7 @@ Comment Type: draft
  <p> </p> 
 </note>
 
- -->
+-->
 
 <!-- 
 
@@ -1138,7 +1139,7 @@ Comment Type: draft
 
 <p>The following rule caches all documents in compressed form; Apache can return either the uncompressed or the compressed form to the client:</p>
 
- -->
+-->
 
 <!-- 
 
@@ -1148,7 +1149,7 @@ Comment Type: draft
   /rules!!discoiqbr!!&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;/rulelabel&nbsp;&nbsp;{&nbsp;&nbsp;/glob&nbsp;"*"&nbsp;/type&nbsp;"allow"&nbsp;&nbsp;/compress&nbsp;"gzip"&nbsp;}!!discoiqbr!!&nbsp;&nbsp;} 
 </codeblock>
 
- -->
+-->
 
 <!-- 
 
@@ -1158,7 +1159,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 <p>Hidden the <span class="code">mod_gzip</span> content as requested in CQDOC-11124.</p>
 
- -->
+-->
 
 ### Invalidar archivos por el nivel de carpeta {#invalidating-files-by-folder-level}
 
@@ -1208,7 +1209,7 @@ Para obtener más información sobre las propiedades de Glob, consulte [Diseño 
 
 Esta configuración provoca la siguiente actividad cuando se activa `/content/wknd/us/en`:
 
-* Todos los archivos con patrón en.* se eliminarán de la carpeta `/content/wknd/us`.
+* Todos los archivos con el patrón en.* se eliminarán de la carpeta `/content/wknd/us`.
 * Se eliminará la carpeta `/content/wknd/us/en./_jcr_content`.
 * El resto de archivos que coinciden con la configuración `/invalidate` no se eliminarán inmediatamente. Estos archivos se eliminarán cuando se produzca la siguiente solicitud. En nuestro ejemplo, `/content/wknd.html` no se elimina; se eliminará cuando se solicite `/content/wknd.html`.
 
@@ -1304,7 +1305,7 @@ Para especificar qué parámetros se ignoran, agregue reglas glob a la propiedad
 >[!NOTE]
 >
 >Al configurar la propiedad glob, tenga en cuenta que debe coincidir con el nombre del parámetro de consulta. Por ejemplo, si desea ignorar el parámetro &quot;p1&quot; de la siguiente dirección URL `http://example.com/path/test.html?p1=test&p2=v2`, la propiedad glob debe ser:
->> `/0002 { /glob "p1" /type "allow" }`
+> `/0002 { /glob "p1" /type "allow" }`
 
 El siguiente ejemplo hace que Dispatcher ignore todos los parámetros, excepto el parámetro `nocache`. Dispatcher nunca almacena en caché las direcciones URL de solicitud que incluyen el parámetro `nocache`:
 
@@ -1585,7 +1586,7 @@ Si el valor no se define explícitamente, el valor predeterminado es `5`.
 
 ### Uso del mecanismo de conmutación por error {#using-the-failover-mechanism}
 
-Para reenviar solicitudes a diferentes procesamientos cuando falla la solicitud original, active el mecanismo de conmutación por error en su conjunto de Dispatcher. Cuando la conmutación por error esté habilitada, Dispatcher se comportará de la siguiente forma:
+Para reenviar solicitudes a diferentes procesamientos cuando falla la solicitud original, habilite el mecanismo de conmutación por error en su conjunto de Dispatcher. Cuando la conmutación por error esté habilitada, Dispatcher se comportará de la siguiente forma:
 
 * Cuando una solicitud a un procesamiento devuelve el estado HTTP 503 (NO DISPONIBLE), Dispatcher envía la solicitud a un procesamiento diferente.
 * Cuando una solicitud a un procesamiento devuelve el estado HTTP 50x (distinto de 503), Dispatcher envía una solicitud para la página configurada para la propiedad `health_check`.
@@ -1610,7 +1611,7 @@ Para habilitar la conmutación por error, agregue la siguiente línea a la granj
 >
 >`Error while reading response: Interrupted system call`
 
-Cualquier llamada al sistema orientada al sistema de archivos puede interrumpirse `EINTR` si el objeto de la llamada está ubicado en un sistema remoto al que se accede mediante NFS. El hecho de que estas llamadas del sistema puedan agotarse o suspenderse depende de cómo esté montado el sistema de archivos subyacente en el equipo local.
+Cualquier llamada al sistema orientada al sistema de archivos puede interrumpirse `EINTR` si el objeto de la llamada está ubicado en un sistema remoto al que se accede mediante NFS. El hecho de que estas llamadas del sistema puedan exceder el tiempo de espera o interrumpirse depende de cómo esté montado el sistema de archivos subyacente en el equipo local.
 
 Utilice el parámetro `/ignoreEINTR` si la instancia tiene dicha configuración y el registro contiene el siguiente mensaje:
 
@@ -1642,13 +1643,14 @@ Los valores `glob` pueden incluir caracteres comodín y alfanuméricos para defi
 |--- |--- |--- |
 | `*` | Coincide con cero o más instancias contiguas de cualquier carácter de la cadena. El carácter final de la coincidencia viene determinado por cualquiera de las siguientes situaciones: <br/>Un carácter de la cadena coincide con el siguiente carácter del patrón y este tiene las siguientes características:<br/><ul><li>No un `*`</li><li>No un `?`</li><li>Un carácter literal (incluido un espacio) o una clase de carácter.</li><li>Se llega al final del patrón.</li></ul>Dentro de una clase de caracteres, el carácter se interpreta literalmente. | `*/geo*` Coincide con cualquier página debajo de los nodos `/content/geometrixx` y `/content/geometrixx-outdoors`. Las siguientes solicitudes HTTP coinciden con el patrón glob: <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>Coincide con cualquier página debajo del nodo `/content/geometrixx-outdoors`. Por ejemplo, la siguiente solicitud HTTP coincide con el patrón glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | Coincide con cualquier carácter individual. Utilice clases de caracteres externos. Dentro de una clase de caracteres, este carácter se interpreta literalmente. | `*outdoors/??/*`<br/> Coincide con las páginas de cualquier idioma del sitio de geometrixx-outdoors. Por ejemplo, la siguiente solicitud HTTP coincide con el patrón glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>La siguiente solicitud no coincide con el patrón glob: <br/><ul><li>&quot;GET /content/geometrixx-outdoors/en.html&quot;</li></ul> |
-| `[ and ]` | Marca el principio y el final de una clase de caracteres. Las clases de caracteres pueden incluir uno o más rangos de caracteres y caracteres únicos.<br/>Se produce una coincidencia si el carácter de destino coincide con cualquiera de los caracteres de la clase o dentro de un intervalo definido.<br/>Si no se incluye el soporte de cierre, el patrón no producirá coincidencias. | `*[o]men.html*`<br/> Coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>No coincide con la siguiente petición HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Coincide con las siguientes peticiones HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `[ and ]` | Marca el principio y el final de una clase de caracteres. Las clases de caracteres pueden incluir uno o más intervalos de caracteres y caracteres únicos.<br/>Se produce una coincidencia si el carácter de destino coincide con cualquiera de los caracteres de la clase o dentro de un intervalo definido.<br/>Si no se incluye el corchete de cierre, el patrón no producirá coincidencias. | `*[o]men.html*`<br/> Coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>No coincide con la siguiente petición HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Coincide con las siguientes peticiones HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indica un rango de caracteres. Para su uso en clases de caracteres. Fuera de una clase de caracteres, este carácter se interpreta literalmente. | `*[m-p]men.html*` Coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>No coincide con la siguiente petición HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | Anula los caracteres o clase de caracteres que sigue. Se utiliza solo para negar caracteres e intervalos de caracteres dentro de clases. Equivalente a `^ wildcard`. <br/>Fuera de una clase de caracteres, este carácter se interpreta literalmente. | `*[!o]men.html*`<br/> Coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>No coincide con la siguiente petición HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/>No coincide con la siguiente petición HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` o `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Anula los caracteres o el rango de caracteres que sigue. Se utiliza para negar solo caracteres e intervalos de caracteres dentro de clases. Equivale al carácter comodín `!`. <br/>Fuera de una clase de caracteres, este carácter se interpreta literalmente. | Se aplican los ejemplos del carácter comodín `!`, sustituyendo los caracteres `!` de los patrones de ejemplo por los caracteres `^`. |
 
 
-<!--- need to troubleshoot table
+<!--
+need to troubleshoot table
 
 The following table describes the wildcard characters.
 

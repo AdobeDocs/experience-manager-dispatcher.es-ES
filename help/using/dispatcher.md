@@ -5,9 +5,9 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: b7ab59ad2da1b73ebbf7819670f056a68162796d
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
 workflow-type: tm+mt
-source-wordcount: '3065'
+source-wordcount: '3227'
 ht-degree: 98%
 
 ---
@@ -38,7 +38,7 @@ El proceso de implementación de Dispatcher es independiente del servidor web y 
 
 Utilice la siguiente información según sea necesario:
 
-* [Lista de comprobación de seguridad de Dispatcher &#x200B;](security-checklist.md)
+* [Lista de comprobación de seguridad de Dispatcher](security-checklist.md)
 <!-- URL is 404! * [The Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html) -->
 * [Optimizar un sitio web para el rendimiento de la caché](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
 * [Utilización de Dispatcher con múltiples dominios](dispatcher-domains.md)
@@ -157,7 +157,7 @@ Puede [definir qué documentos almacena en caché Dispatcher en el archivo de co
 
 Dispatcher siempre solicita el documento directamente desde la instancia de AEM en los siguientes casos:
 
-* El URI de la solicitud contiene el signo de interrogación `?`.  Este escenario generalmente indica una página dinámica, como un resultado de búsqueda, que no necesita almacenarse en la caché.
+* El URI de la solicitud contiene el signo de interrogación `?`. Este escenario generalmente indica una página dinámica, como un resultado de búsqueda, que no necesita almacenarse en la caché.
 * Si falta la extensión del archivo. El servidor web necesita la extensión para determinar el tipo de documento (el tipo MIME).
 * El encabezado de autenticación está establecido (configurable).
 
@@ -281,7 +281,7 @@ Para un control más preciso, la invalidación basada en API permite invalidar l
 
 >[!NOTE]
 >
->Consulte también [AEM (CQ) seguridad de Dispatcher y CDN + Explorador de almacenamiento en caché](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) y la presentación grabada en [Almacenamiento en caché de Dispatcher](https://experienceleague.adobe.com/es/docs/events/experience-manager-gems-recordings/overview#).
+>Consulte también [AEM (CQ) seguridad de Dispatcher y CDN + Explorador de almacenamiento en caché](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) y la presentación grabada en [Almacenamiento en caché de Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Uso de Dispatcher con un servidor de creación {#using-a-dispatcher-with-an-author-server}
 
@@ -312,13 +312,13 @@ Dispatcher se puede utilizar delante de una instancia de autor para mejorar el r
 1. Elimine todos los archivos existentes en el directorio `/cache` > `/docroot` que configuró anteriormente.
 1. Reinicie el servidor web.
 
->[!NOTE]
->
->Con la configuración de `author_dispatcher.any` proporcionada, cuando instale un paquete de funciones CQ5, una revisión o un paquete de código de aplicación que afecta a cualquier contenido de `/libs` o `/apps`, debe eliminar los archivos en caché. Los archivos están en esos directorios en su caché de Dispatcher. Al hacerlo, se garantiza que la próxima vez que se soliciten se recuperen los archivos recién actualizados y no los antiguos que se guardaron en la caché.
+   >[!NOTE]
+   >
+   >Con la configuración de `author_dispatcher.any` proporcionada, cuando instale un paquete de funciones CQ5, una revisión o un paquete de código de aplicación que afecta a cualquier contenido de `/libs` o `/apps`, debe eliminar los archivos en caché. Los archivos están en esos directorios en su caché de Dispatcher. Al hacerlo, se garantiza que la próxima vez que se soliciten se recuperen los archivos recién actualizados y no los antiguos que se guardaron en la caché.
 
->[!CAUTION]
->
->Si ha utilizado la instancia de Dispatcher de autor previamente configurada y ha habilitado un *agente de vaciado de Dispatcher*, haga lo siguiente:
+   >[!CAUTION]
+   >
+   >Si ha utilizado la instancia de Dispatcher de autor previamente configurada y ha habilitado un *agente de vaciado de Dispatcher*, haga lo siguiente:
 
 1. Elimine o desactive el agente de vaciado del **Dispatcher de autor** en la instancia de autor de AEM.
 1. Vuelva a configurar la instancia de Dispatcher de autor siguiendo las nuevas instrucciones que le indicamos previamente.
@@ -326,7 +326,9 @@ Dispatcher se puede utilizar delante de una instancia de autor para mejorar el r
 <!--
 [Author Dispatcher configuration file (Dispatcher 4.1.2 or later)](assets/author_dispatchernew.any)
 -->
-<!--[!NOTE]
+
+<!--
+>[!NOTE]
 >
 >A related knowledge base article can be found here:  
 >[How to configure the dispatcher in front of an authoring environment](https://helpx.adobe.com/cq/kb/HowToConfigureDispatcherForAuthoringEnvironment.html)

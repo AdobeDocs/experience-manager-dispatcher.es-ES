@@ -5,14 +5,14 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-index: y
+index: true
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '1305'
-ht-degree: 100%
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '1390'
+ht-degree: 98%
 
 ---
 
@@ -34,7 +34,7 @@ Configure Dispatcher para que se comunique con la instancia de procesamiento de 
 Antes de configurar Dispatcher, configure AEM o CQ para utilizar SSL. Para obtener más información, consulte lo siguiente:
 
 * [SSL/TLS predeterminado](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/security/ssl-by-default)
-* [Uso del Asistente para SSL en AEM](https://experienceleague.adobe.com/es/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
+* [Uso del asistente SSL en AEM](https://experienceleague.adobe.com/es/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
 
 ### Encabezados de solicitud relacionados con SSL {#ssl-related-request-headers}
 
