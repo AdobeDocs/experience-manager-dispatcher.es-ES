@@ -1,10 +1,16 @@
 ---
-source-git-commit: d889ccdf4b8ea169a21658e8a2251e70dfa5596c
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '7'
-ht-degree: 0%
+source-wordcount: '72'
+ht-degree: 5%
 
 ---
-# ARCHIVADO
+# Detección de patrones de Adobe Experience Manager
 
-Este repositorio se ha migrado a <https://github.com/Adobe-Enterprise-Docs/experience-manager-dispatcher.es-ES>
+Este repositorio para la detección de patrones de Adobe Experience Manager.
+
+Sus contribuciones a la documentación son bienvenidas. Consulte los siguientes recursos:
+
+* [contributing.md](contributing.md) Para obtener una descripción general de cómo contribuir a la documentación.
+* [guidelines.md](guidelines.md) Para obtener información general sobre lo que se espera en las contribuciones y cómo componer las contribuciones de documentación.
+* [code-of-conduct.md](code-of-conduct.md) Para obtener una descripción general de los estándares de comportamiento que Adobe espera al contribuir en este proyecto de documentación.
