@@ -2,10 +2,10 @@
 title: Configuración de Dispatcher de AEM
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, los archivos de configuración, las variables de entorno y la asignación de nombres a la instancia. Obtenga información sobre la definición de granjas, la identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+source-git-commit: 97c7cec0b89dd20532e35e026281c19a55aa61f9
 workflow-type: tm+mt
 source-wordcount: '9194'
-ht-degree: 99%
+ht-degree: 97%
 
 ---
 
@@ -127,7 +127,7 @@ Por ejemplo, si los archivos `farm_1.any` hasta `farm_5.any` contienen la config
 
 Puede utilizar variables de entorno en propiedades con valor en cadena en el archivo dispatcher.any en lugar de programar los valores. Para incluir el valor de una variable de entorno, utilice el formato `${variable_name}`.
 
-Por ejemplo, si el archivo dispatcher.any se encuentra en el mismo directorio que el directorio de caché, se puede utilizar el siguiente valor para la propiedad [docroot](#specifying-the-cache-directory):
+Por ejemplo, si el archivo `dispatcher.any` está en el mismo directorio que el directorio de caché, se puede usar el siguiente valor para la propiedad [docroot](#specifying-the-cache-directory):
 
 ```xml
 /docroot "${PWD}/cache"
@@ -1643,7 +1643,7 @@ Los valores `glob` pueden incluir caracteres comodín y alfanuméricos para defi
 |--- |--- |--- |
 | `*` | Coincide con cero o más instancias contiguas de cualquier carácter de la cadena. El carácter final de la coincidencia viene determinado por cualquiera de las siguientes situaciones: <br/>Un carácter de la cadena coincide con el siguiente carácter del patrón y este tiene las siguientes características:<br/><ul><li>No un `*`</li><li>No un `?`</li><li>Un carácter literal (incluido un espacio) o una clase de carácter.</li><li>Se llega al final del patrón.</li></ul>Dentro de una clase de caracteres, el carácter se interpreta literalmente. | `*/geo*` Coincide con cualquier página debajo de los nodos `/content/geometrixx` y `/content/geometrixx-outdoors`. Las siguientes solicitudes HTTP coinciden con el patrón glob: <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>Coincide con cualquier página debajo del nodo `/content/geometrixx-outdoors`. Por ejemplo, la siguiente solicitud HTTP coincide con el patrón glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | Coincide con cualquier carácter individual. Utilice clases de caracteres externos. Dentro de una clase de caracteres, este carácter se interpreta literalmente. | `*outdoors/??/*`<br/> Coincide con las páginas de cualquier idioma del sitio de geometrixx-outdoors. Por ejemplo, la siguiente solicitud HTTP coincide con el patrón glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>La siguiente solicitud no coincide con el patrón glob: <br/><ul><li>&quot;GET /content/geometrixx-outdoors/en.html&quot;</li></ul> |
-| `[ and ]` | Marca el principio y el final de una clase de caracteres. Las clases de caracteres pueden incluir uno o más intervalos de caracteres y caracteres únicos.<br/>Se produce una coincidencia si el carácter de destino coincide con cualquiera de los caracteres de la clase o dentro de un intervalo definido.<br/>Si no se incluye el corchete de cierre, el patrón no producirá coincidencias. | `*[o]men.html*`<br/> Coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>No coincide con la siguiente petición HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Coincide con las siguientes peticiones HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `[ and ]` | Marca el principio y el final de una clase de caracteres. Las clases de caracteres pueden incluir uno o más rangos de caracteres y caracteres únicos.<br/>Se produce una coincidencia si el carácter de destino coincide con cualquiera de los caracteres de la clase o dentro de un intervalo definido.<br/>Si no se incluye el soporte de cierre, el patrón no producirá coincidencias. | `*[o]men.html*`<br/> Coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>No coincide con la siguiente petición HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Coincide con las siguientes peticiones HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indica un rango de caracteres. Para su uso en clases de caracteres. Fuera de una clase de caracteres, este carácter se interpreta literalmente. | `*[m-p]men.html*` Coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>No coincide con la siguiente petición HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | Anula los caracteres o clase de caracteres que sigue. Se utiliza solo para negar caracteres e intervalos de caracteres dentro de clases. Equivalente a `^ wildcard`. <br/>Fuera de una clase de caracteres, este carácter se interpreta literalmente. | `*[ !o]men.html*`<br/> Coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>No coincide con la siguiente petición HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[ !o!/]men.html*`<br/>No coincide con la siguiente petición HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` o `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Anula los caracteres o el rango de caracteres que sigue. Se utiliza para negar solo caracteres e intervalos de caracteres dentro de clases. Equivale al carácter comodín `!`. <br/>Fuera de una clase de caracteres, este carácter se interpreta literalmente. | Se aplican los ejemplos del carácter comodín `!`, sustituyendo los caracteres `!` de los patrones de ejemplo por los caracteres `^`. |
@@ -1872,7 +1872,7 @@ A continuación se muestra una lista que contiene los encabezados de respuesta q
   El archivo de destino no está en la caché y Dispatcher ha determinado que es válido almacenar la salida en caché y entregarla.
 * **almacenamiento en caché: el archivo .stat es más reciente**
 El archivo de destino se encuentra en la caché. Sin embargo, un archivo .stat más reciente puede invalidarlo. Dispatcher elimina el archivo de destino, lo recrea desde la salida y lo envía.
-* **no almacenable en caché: sin raíz de documento**
+* **no almacenable en caché: raíz de documento inexistente**
 La configuración de la granja no contiene una raíz de documento (elemento de configuración `cache.docroot`).
 * **no almacenable en caché: ruta del archivo de caché demasiado larga**\
   El archivo de destino, (la concatenación de la raíz del documento y el archivo URL), supera el nombre de archivo más largo permitido por el sistema.
@@ -1880,8 +1880,8 @@ La configuración de la granja no contiene una raíz de documento (elemento de c
   La plantilla del nombre de archivo temporal supera el nombre de archivo más largo permitido por el sistema. Dispatcher crea primero un archivo temporal, antes de crear o sobrescribir realmente el archivo almacenado en caché. El nombre del archivo temporal es el nombre del archivo de destino con los caracteres `_YYYYXXXXXX` anexados a él, donde los caracteres `Y` y `X` se reemplazarán para crear un nombre único.
 * **no almacenable en caché: la dirección URL de solicitud no tiene extensión**\
   La dirección URL de solicitud no tiene extensión o hay una ruta después de la extensión de archivo, por ejemplo: `/test.html/a/path`.
-* **no almacenable en caché: la solicitud no era un GET ni HEAD**
-El método HTTP no es ni GET ni HEAD. Dispatcher supone que la salida contiene datos dinámicos que no deben almacenarse en caché.
+* **no almacenable en caché: la solicitud debía ser de GET o HEAD**
+El método HTTP no es una GET ni una HEAD. Dispatcher supone que la salida contiene datos dinámicos que no deben almacenarse en caché.
 * **no almacenable en caché: solicitud contenida en una cadena de consulta**\
   La solicitud contenía una cadena de consulta. Dispatcher supone que la salida depende de la cadena de consulta dada y, por lo tanto, no se almacena en caché.
 * **no almacenable en caché: el administrador de sesiones debe autenticarse**\
@@ -1896,10 +1896,10 @@ El método HTTP no es ni GET ni HEAD. Dispatcher supone que la salida contiene d
   Las reglas de caché de la granja deniegan explícitamente el almacenamiento en caché de la salida de alguna URL de solicitud.
 * **no almacenable en caché: acceso denegado del verificador de autorizaciones**\
   El verificador de autorizaciones de la granja denegó el acceso al archivo en caché.
-* **no almacenable en caché: sesión no válida**
-Un administrador de sesiones (la configuración contiene un nodo `sessionmanagement`) rige la caché de la granja y la sesión del usuario ya no es válida.
+* **no almacenable en caché: la sesión no es válida**
+Un administrador de sesiones (la configuración contiene un nodo `sessionmanagement`) controla la caché de la granja y la sesión del usuario ya no es válida.
 * **no almacenable en caché: la respuesta contiene`no_cache`**
-El servidor remoto devolvió un encabezado `Dispatcher: no_cache`, prohibiendo que Dispatcher almacene en caché la salida.
-* **no almacenable en caché: la longitud del contenido de respuesta es cero**. 
-La longitud del contenido de la respuesta es cero; Dispatcher no creará un archivo de longitud cero.
+El servidor remoto devolvió un encabezado `Dispatcher: no_cache`, prohibiendo que Dispatcher almacene en caché el resultado.
+* **no almacenable en caché: la longitud del contenido de respuesta es cero**
+La longitud del contenido de la respuesta es cero; Dispatcher no crea un archivo de longitud cero.
 
