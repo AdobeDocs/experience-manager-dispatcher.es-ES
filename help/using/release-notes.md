@@ -5,10 +5,14 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: f4ed724deccf14c570ca873728a97d0ae5fe0e4f
+TQID: https://experienceleague.adobe.com/9k2g0y1gnTAwUmLbFw4ZXAfE3z3Y8tAggojWRBknhTg
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87cid: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: '1105'
-ht-degree: 93%
+source-wordcount: 1345
+ht-degree: 80%
 
 ---
 
@@ -41,7 +45,7 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 **Mejoras**:
 
-* DISP-1040: implemente `/allowedClients` en la configuración de Dispatcher para controlar qué direcciones IP pueden invalidar la caché y bloquear o quitar encabezados (`handle`, `cq-handle`, etc.) a menos que se necesite explícitamente
+* DISP-1040: implemente `/allowedClients` en la configuración de Dispatcher para controlar qué direcciones IP pueden invalidar la caché y bloquear o quitar encabezados (`handle`, `cq-handle`, etc.) a menos que sea explícitamente necesario
 * DISP-1046: stale-while-error también debe gestionar las respuestas 429 de AEM
 * SKYOPS-107219: optimiza la implementación actual de la carga de vanityUrls
 

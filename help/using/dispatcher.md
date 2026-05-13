@@ -5,10 +5,15 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+TQID: https://experienceleague.adobe.com/Ir-slXay90FcQsvKGLioMgFhmhsaTfkYxIQJzfjDsfY
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2: id: b1210526-416b-4ef6-bcc0-1692e99f30e9
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: '3227'
-ht-degree: 98%
+source-wordcount: 3227
+ht-degree: 96%
 
 ---
 
@@ -192,10 +197,10 @@ Equilibrio de carga es la práctica de distribuir la carga de cálculo del sitio
 Se obtiene lo siguiente:
 
 * **mayor potencia de procesamiento**
-En la práctica, esto significa que Dispatcher comparte solicitudes de documento entre varias instancias de AEM. Dado que cada instancia tiene ahora menos documentos para procesar, los tiempos de respuesta son más rápidos. Dispatcher guarda estadísticas internas de cada categoría de documento, de modo que puede estimar la carga y distribuir las consultas de forma eficaz.
+En la práctica, una mayor potencia de procesamiento significa que Dispatcher comparte solicitudes de documentos entre varias instancias de AEM. Dado que cada instancia tiene ahora menos documentos para procesar, los tiempos de respuesta son más rápidos. Dispatcher guarda estadísticas internas de cada categoría de documento, de modo que puede estimar la carga y distribuir las consultas de forma eficaz.
 
-* **mayor cobertura de seguridad contra fallos**
-Si Dispatcher no recibe respuestas de una instancia, reenviará automáticamente las solicitudes a una de las otras instancias. Por lo tanto, si una instancia deja de estar disponible, el único efecto es una ralentización del sitio, proporcional a la potencia de cálculo perdida. Sin embargo, todos los servicios continuarán.
+* **aumento de la cobertura de seguridad contra fallos**
+Si Dispatcher no recibe respuestas de una instancia, reenvía automáticamente las solicitudes a una de las otras instancias. Por lo tanto, si una instancia deja de estar disponible, el único efecto es una ralentización del sitio, proporcional a la potencia de cálculo perdida. Sin embargo, todos los servicios continuarán.
 
 * También puede administrar distintos sitios web en el mismo servidor web estático.
 
@@ -281,7 +286,7 @@ Para un control más preciso, la invalidación basada en API permite invalidar l
 
 >[!NOTE]
 >
->Consulte también [AEM (CQ) seguridad de Dispatcher y CDN + Explorador de almacenamiento en caché](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) y la presentación grabada en [Almacenamiento en caché de Dispatcher](https://experienceleague.adobe.com/es/docs/events/experience-manager-gems-recordings/overview#).
+>Consulte también [AEM (CQ) seguridad de Dispatcher y CDN + Explorador de almacenamiento en caché](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) y la presentación grabada en [Almacenamiento en caché de Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Uso de Dispatcher con un servidor de creación {#using-a-dispatcher-with-an-author-server}
 

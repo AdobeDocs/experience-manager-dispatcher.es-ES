@@ -9,10 +9,14 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '1407'
-ht-degree: 100%
+TQID: https://experienceleague.adobe.com/yeMU0lrfxz38PkwRYZ6tcXVBp4obt9qxJAiGi0GGsX4
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
+workflow-type: tm+mt
+source-wordcount: 1447
+ht-degree: 98%
 
 ---
 
@@ -26,7 +30,7 @@ La cuenta de usuario predeterminada `admin` se utiliza para autenticar los agent
 
 Para obtener más información, consulte la sección [Configuración de usuarios de replicación y transporte](https://experienceleague.adobe.com/es/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) de la lista de comprobación de seguridad de AEM.
 
-<!-- OLD URL from above https://helpx.adobe.com/es/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## Invalidación de la caché de Dispatcher desde el entorno de creación {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
@@ -68,7 +72,7 @@ Utiliza el siguiente procedimiento para configurar un agente de replicación en 
 
 También puede acceder y configurar el agente de vaciado de Dispatcher desde la [interfaz de usuario táctil de AEM](https://experienceleague.adobe.com/es/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent).
 
-Para obtener más información sobre cómo habilitar el acceso a las URL de vanidad, consulte [Habilitar el acceso a las URL de vanidad](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
+Para obtener más información sobre cómo habilitar el acceso a las URL mnemónicas, consulte [Habilitar el acceso a las URL mnemónicas](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
 
 >[!NOTE]
 >
@@ -169,7 +173,7 @@ page_path1
 page_pathn
 ```
 
-Las rutas de página para volver a almacenar archivos en la caché inmediatamente se enumeran en líneas independientes en el cuerpo del mensaje. El valor de `CQ-Handle` es la ruta de una página que invalida las páginas que se van a almacenar de nuevo. (Consulte el parámetro `/statfileslevel` del elemento de configuración [Caché](dispatcher-configuration.md#main-pars_146_44_0010)). El siguiente ejemplo de mensaje de solicitud HTTP elimina y vuelve a almacenar en la caché el `/content/geometrixx-outdoors/en.html page`:
+Las rutas de página para volver a almacenar archivos en la caché inmediatamente se enumeran en líneas independientes en el cuerpo del mensaje. El valor de `CQ-Handle` es la ruta de una página que invalida las páginas que se van a almacenar de nuevo. (Consulte el parámetro `/statfileslevel` del elemento de configuración [Cache](dispatcher-configuration.md#main-pars_146_44_0010)). El siguiente ejemplo de mensaje de solicitud HTTP elimina y vuelve a almacenar en la caché el `/content/geometrixx-outdoors/en.html page`:
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
