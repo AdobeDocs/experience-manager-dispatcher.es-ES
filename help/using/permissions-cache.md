@@ -16,8 +16,8 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 948
-ht-degree: 100%
+source-wordcount: 926
+ht-degree: 96%
 
 ---
 
@@ -77,7 +77,7 @@ Para implementar el almacenamiento en caché que con permisos confidenciales, re
 
 >[!NOTE]
 >
->Cuando hay una red de distribución de contenido (CDN) (o cualquier otra caché) delante de Dispatcher, debe configurar los encabezados de amacenamiento en caché en consecuencia para que la CDN no almacene en caché el contenido privado. Por ejemplo: `Header always set Cache-Control private`.
+>Cuando hay una CDN (o cualquier otra caché) delante de Dispatcher, debe configurar los encabezados de almacenamiento en caché en consecuencia para que la CDN no almacene en caché el contenido privado. Por ejemplo: `Header always set Cache-Control private`.
 >Para AEM as a Cloud Service, consulte la página [Almacenamiento en caché](https://experienceleague.adobe.com/es/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) para obtener más información sobre cómo establecer encabezados de almacenamiento en caché privados.
 
 ## Creación del servlet Auth Checker {#create-the-auth-checker-servlet}
