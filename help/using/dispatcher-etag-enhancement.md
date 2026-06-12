@@ -68,6 +68,6 @@ Después de habilitar la variable de entorno e implementar los cambios de config
 
 Para obtener instrucciones de línea de base de cara al cliente sobre el almacenamiento en caché de encabezados y la administración de `ETag` en Dispatcher, consulte:
 
-- [Configuración de Dispatcher: almacenamiento en caché de encabezados de respuesta HTTP](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
+- [Configuración de Dispatcher: almacenamiento en caché de encabezados de respuesta HTTP](https://experienceleague.adobe.com/es/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
 
 &quot;Esta funcionalidad está disponible en Dispatcher `2.0.264` (AEM SDK `2026.2.24464`). Cuando está habilitado, Dispatcher puede validar `If-None-Match` con valores de `ETag` en caché y devolver `304 Not Modified` en las visitas de caché. En AEM as a Cloud Service, esto es compatible y se puede habilitar mediante la configuración del entorno de Cloud Manager&quot;.
