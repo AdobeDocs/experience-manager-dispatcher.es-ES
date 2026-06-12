@@ -7,9 +7,14 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
 TQID: https://experienceleague.adobe.com/o-B8WewNSKJhcw8UXJsWg6scuVEgrUU30R1q6VkYMnQ
-product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
 source-wordcount: 3754
@@ -269,7 +274,7 @@ Utilice el siguiente procedimiento para escribir los mensajes de registro de Dis
 
 Antes de empezar a utilizar Dispatcher, debe saber lo siguiente:
 
-* [Configuración de ](dispatcher-configuration.md) Dispatcher
+* [Configuración de &#x200B;](dispatcher-configuration.md) Dispatcher
 * [Configurar AEM](page-invalidate.md) para que funcione con Dispatcher.
 
 ## Servidor web Apache {#apache-web-server}
@@ -560,7 +565,7 @@ Dispatcher utiliza OpenSSL para implementar la comunicación segura a través de
 
 Ahora, antes de empezar a utilizar Dispatcher, debe hacer lo siguiente:
 
-* [Configuración de ](dispatcher-configuration.md) Dispatcher
+* [Configuración de &#x200B;](dispatcher-configuration.md) Dispatcher
 * [Configurar AEM](page-invalidate.md) para que funcione con Dispatcher.
 
 ## Sun Java™ System Web Server / iPlanet {#sun-java-system-web-server-iplanet}
@@ -674,5 +679,5 @@ Service fn="dispService" method="(GET|HEAD|POST)" type="\*/\*"
 
 Antes de empezar a utilizar Dispatcher, ahora debe hacer lo siguiente:
 
-* [Configuración de ](dispatcher-configuration.md) Dispatcher
+* [Configuración de &#x200B;](dispatcher-configuration.md) Dispatcher
 * [Configure AEM](page-invalidate.md) para que funcione con Dispatcher.
