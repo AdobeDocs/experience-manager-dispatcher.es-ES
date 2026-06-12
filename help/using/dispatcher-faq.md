@@ -13,8 +13,8 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 1625
-ht-degree: 100%
+source-wordcount: 1530
+ht-degree: 97%
 
 ---
 
@@ -112,9 +112,9 @@ Content-Length: 0
 
 Dispatcher eliminará los archivos en caché y las carpetas que tengan nombres que coincidan con el valor del encabezado CQ-Handle. Por ejemplo, un CQ-Handle de `/content/geomtrixx-outdoors/en` coincide con los siguientes elementos:
 
-Todos los archivos (de cualquier extensión) llamados en el directorio geometrixx-outdoors.
+Todos los archivos (de cualquier extensión) denominados en del directorio geometrixx-outdoors.
 Cualquier directorio llamado `_jcr_content` debajo del directorio en (que, si existe, contiene procesamientos en caché de subnodos de la página).
-El directorio `en` solo se elimina si la variable `CQ-Action` es `Delete` o `Deactivate`.
+El directorio `en` solo se eliminará si `CQ-Action` es `Delete` o `Deactivate`.
 
 Para obtener más información sobre este tema, consulte [Invalidar manualmente la caché de Dispatcher](page-invalidate.md).
 
@@ -161,8 +161,8 @@ Para habilitarlo:
 ¿Cómo determina Dispatcher si un documento está actualizado?
 Para determinar si un documento está actualizado, Dispatcher realiza estas acciones:
 
-Comprueba si el documento depende de la invalidación automática. En caso contrario, el documento se considera actualizado.
-Si el documento está configurado para la invalidación automática, Dispatcher comprueba si es anterior o posterior a la fecha del último cambio disponible. Si es anterior, Dispatcher solicita la versión actual a la instancia de AEM y reemplaza la versión en la caché.
+Comprueba si el documento está sujeto a la invalidación automática. Si no es así, el documento se considera actualizado.
+Si el documento está configurado para la invalidación automática, Dispatcher comprueba si es anterior o posterior al último cambio disponible. Si es anterior, Dispatcher solicita la versión actual a la instancia de AEM y reemplaza la versión en la caché.
 
 ### ¿Cómo devuelve documentos Dispatcher?
 

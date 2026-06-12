@@ -18,7 +18,7 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 3227
+source-wordcount: 3169
 ht-degree: 96%
 
 ---
@@ -274,10 +274,10 @@ Normalmente, Dispatcher es el siguiente servidor que puede proporcionar el docum
 Existen varias formas de controlar durante cuánto tiempo una CDN almacena en caché un recurso antes de recuperarlo de Dispatcher.
 
 1. Configuración explícita.
-Configure el tiempo durante el que se retienen recursos concretos en la caché de CDN, según el tipo MIME, la extensión, el tipo de solicitud, etc.
+Configure cuánto tiempo se retienen recursos concretos en la caché de CDN, según el tipo MIME, la extensión, el tipo de solicitud, etc.
 
 1. Caducidad y encabezados de control de caché.
-La mayoría de las CDN respetan los encabezados HTTP `Expires:` y `Cache-Control:` si es el servidor de flujo ascendente el que los envía. Esto se puede lograr, por ejemplo, utilizando el módulo Apache [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html).
+La mayoría de las CDN respetan los encabezados HTTP `Expires:` y `Cache-Control:` si el servidor de flujo ascendente los envía. Este método se puede lograr, por ejemplo, usando el módulo Apache [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html).
 
 1. Invalidación manual.
 Las CDN permiten que los recursos se eliminen de la caché a través de interfaces web.
